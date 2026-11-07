@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RutaB — Licencia Clase B Chile</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf7f2;--card:#ffffff;--ink:#2f2a3d;--muted:#766f86;--line:#ece4f3;--pink:#f7b8cf;--coral:#f9c6a8;--mint:#b6e8d3;--sky:#b9dcf7;--sun:#fde7a3;--lav:#cfc2f5;--ok:#2e9e6b;--bad:#d9546a;--r:18px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:16px;line-height:1.5;min-height:100vh}
+h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;margin:0 0 .4em;font-weight:600}
+button{font-family:inherit;font-size:15px;cursor:pointer}
+.wrap{max-width:900px;margin:0 auto;padding:14px 14px 90px}
+header.top{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--lav);color:var(--ink);position:relative;z-index:6;}
+.logo{width:44px;height:44px;border-radius:14px;background:#fff;display:grid;place-items:center;font-family:Fredoka;font-size:24px;color:#7b62d6;flex-shrink:0}
+.top small{display:block;font-size:12px;color:#4d4363}
+nav.tabs{display:flex;gap:8px;overflow-x:auto;padding:10px 14px;background:rgba(253,246,238,.92);backdrop-filter:blur(6px);position:sticky;top:0;z-index:5;border-bottom:2px dashed var(--line)}
+nav.tabs button{background:#fff;border:2px solid var(--line);color:var(--ink);padding:7px 13px;border-radius:999px;white-space:nowrap;font-weight:800}
+nav.tabs button.on{background:var(--lav);color:var(--ink);border-color:#b9a8ee}
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:16px;margin:12px 0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.stat{border-radius:16px;padding:12px;color:var(--ink)}.stat b{font-size:28px;font-family:Fredoka;display:block}.stat span{font-size:13px;opacity:.95}
+.s1{background:var(--lav)}.s2{background:var(--mint)}.s3{background:var(--pink)}.s4{background:var(--sun)}
+.btn{border:0;border-radius:14px;padding:11px 16px;font-weight:800;color:var(--ink);background:var(--sky);box-shadow:0 3px 0 #9cc4e6}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.y{background:var(--sun);box-shadow:0 3px 0 #e8cf7f}.btn.p{background:var(--pink);box-shadow:0 3px 0 #e39ab6}.btn.m{background:var(--mint);box-shadow:0 3px 0 #92cdb4}
+.btn.o{background:#fff;color:var(--ink);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.pill{display:inline-block;font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px;background:#f1ecfc;color:#6d58c4}
+.pill.d{background:#fff3cc;color:#a77800}
+.opt{display:block;width:100%;text-align:left;background:#fbf9ff;border:2px solid var(--line);color:var(--ink);padding:12px 14px;border-radius:14px;margin:8px 0;font-weight:600}
+.opt:hover{border-color:#9cc4e6}
+.opt.ok{border-color:var(--ok);background:#e5fbf1}.opt.bad{border-color:var(--bad);background:#ffe9ec}.opt.sel{border-color:#b9a8ee;background:#f1ecfc}
+.exp{border-left:5px solid var(--sun);padding:10px 12px;background:#fffaeb;border-radius:0 12px 12px 0;margin-top:10px;font-size:15px}
+.bar{height:12px;background:#f1eaff;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--mint)}
+.mod h3{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.mod ul{margin:.3em 0 0;padding-left:1.2em}.mod li{margin:.35em 0}
+.src{font-size:12px;color:var(--muted)}
+.big{font-size:46px;font-family:Fredoka;font-weight:700;color:#7b62d6}
+.hearts{font-size:22px;letter-spacing:2px}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+a{color:#6d58c4}
+.timer{font-family:Fredoka;font-size:22px}
+.spk{background:#fff;border:2px solid var(--line);color:var(--ink);border-radius:12px;padding:4px 10px;font-size:13px;font-weight:800}
+.spk.playing{background:var(--pink);border-color:var(--pink)}
+.bookbtn{background:#eafaf4;border:2px solid #c6f0e0;color:#178a66;border-radius:12px;padding:4px 10px;font-size:13px;font-weight:800}
+/* libro */
+.viewer{position:relative;background:#fff;border-radius:14px;overflow:hidden;border:2px solid var(--line);margin:8px auto;max-width:760px}
+.viewer img{display:block;width:100%;height:auto}
+.hl{position:absolute;background:rgba(253,215,110,.45);border:2px solid #f0b46e;border-radius:4px;box-shadow:0 0 0 4px rgba(240,180,110,.2);animation:pulse 1.4s ease-in-out 3}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,138,92,.05)}}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700;cursor:pointer}
+.chip.on{background:var(--sun);border-color:var(--sun)}
+input[type=text],input[type=number]{font-family:inherit;font-size:15px;padding:9px 11px;border:2px solid var(--line);border-radius:12px}
+.code{font-family:Fredoka;font-size:40px;letter-spacing:8px;color:var(--lav)}
+.player{display:flex;justify-content:space-between;padding:8px 10px;border-radius:12px;background:#faf7ff;margin:4px 0;font-weight:700}
+.vol{display:flex;align-items:center;gap:8px;font-size:13px}
+input[type=range]{accent-color:#7b62d6}
+@media(max-width:520px){header.top h1{font-size:17px!important}.top small{font-size:11px}.vol input{width:60px!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo">B</div>
+  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Libro para la Conducción en Chile — CONASET, edición febrero 2026</small></div>
+  <div class="vol" title="Volumen de la voz">🔈<input id="vol" type="range" min="0.1" max="1" step="0.1" style="width:80px"></div>
+</header>
+<nav class="tabs" id="tabs"></nav>
+<main class="wrap" id="app"></main>
+
+<script>
+const TEMAS={sin:'Siniestros y física',veh:'El vehículo y seguridad',per:'La persona en el tránsito',vul:'Usuarios vulnerables y niños',cir:'Normas de circulación',est:'Estacionamiento',esp:'Circunstancias especiales',lic:'Proceso de licencia'};
+const Q=[
+{t:'sin',q:'Según el libro, ¿qué pasa con la probabilidad de que un peatón muera atropellado si la velocidad sube de 30 a 50 km/h?',o:['Se duplica','Se multiplica por ocho','Aumenta un 10%','No cambia'],a:1,e:'La probabilidad de muerte del peatón se multiplica por ocho cuando la velocidad sube de 30 a 50 km/h.',p:8,d:1},
+{t:'sin',q:'Un peatón impactado a 30 km/h o menos tiene aproximadamente…',o:['50% de posibilidades de sobrevivir','90% de posibilidades de sobrevivir','10% de posibilidades de sobrevivir','Ninguna posibilidad'],a:1,e:'A 30 km/h o menos, los peatones tienen 90% de posibilidades de sobrevivir; a 45 km/h o más, menos del 50%.',p:8,d:1},
+{t:'sin',q:'¿En qué porcentaje de los siniestros de tránsito está presente la falla humana?',o:['Cerca del 30%','Cerca del 50%','Más del 90%','Menos del 10%'],a:2,e:'Las estadísticas indican que la falla humana está presente en más del 90% de los siniestros.',p:8},
+{t:'sin',q:'¿Cuál es un tiempo normal de reacción de una persona conductora?',o:['Un segundo','Tres segundos','Medio minuto','Una décima de segundo'],a:0,e:'Un tiempo normal de reacción es de un segundo. En ese segundo, a 36 km/h se recorren 10 metros; a 72 km/h, 20 metros.',p:23},
+{t:'sin',q:'Durante un segundo de reacción, un vehículo a 72 km/h recorre aproximadamente…',o:['5 metros','10 metros','20 metros','72 metros'],a:2,e:'A 36 km/h se recorren 10 m por segundo; al doble de velocidad (72 km/h), 20 m.',p:23,d:1},
+{t:'sin',q:'Si duplicas la velocidad, la distancia de frenado…',o:['También se duplica','Aumenta cuatro veces','Se mantiene igual','Disminuye'],a:1,e:'La distancia de frenado crece con el cuadrado de la velocidad: al duplicarla, aumenta cuatro veces; al triplicarla, nueve.',p:24,d:1},
+{t:'sin',q:'Con pavimento bueno y seco, ¿cuántos metros se necesitan aproximadamente para detenerse a 50 km/h?',o:['Unos 10 metros','Unos 25 metros','Unos 80 metros','Unos 150 metros'],a:1,e:'A 50 km/h se necesitan unos 25 metros; a 100 km/h, unos 80 metros.',p:96,d:1},
+{t:'sin',q:'¿Qué ocurre en un "aquaplaning" o hidroplaneo?',o:['El motor se moja y se apaga','Una capa de agua se interpone entre la calzada y los neumáticos y se pierde adherencia','Los frenos se recalientan','El parabrisas se empaña'],a:1,e:'Con lluvia intensa se forma una película de agua entre la calzada y los neumáticos, haciendo muy difícil el control.',p:121},
+{t:'veh',q:'¿Cuál es la profundidad mínima aconsejable de los surcos de los neumáticos?',o:['1 mm','3 mm','6 mm','No importa'],a:1,e:'Se aconseja un mínimo de 3 mm. Bajo 1,6 mm empeora mucho la fricción con pavimento mojado.',p:18},
+{t:'veh',q:'Un choque a 50 km/h sin cinturón de seguridad equivale a…',o:['Caer desde un segundo piso','Tirarse a la calle desde un cuarto piso sin red','Un golpe sin consecuencias','Caer de una silla'],a:1,e:'El libro compara un choque a 50 km/h sin cinturón con tirarse desde un cuarto piso sin red de seguridad.',p:26,d:1},
+{t:'veh',q:'Según los estudios citados en el libro, quienes no usan cinturón tienen…',o:['La misma probabilidad de fallecer','El doble de probabilidad de fallecer','La mitad de probabilidad de fallecer','Menos lesiones'],a:1,e:'Las personas que no usan cinturón tienen el doble de probabilidad de fallecer en un siniestro.',p:28,d:1},
+{t:'veh',q:'¿Por qué no debes poner toallas o almohadones sobre el asiento o detrás de la espalda?',o:['Porque ensucian el tapiz','Porque favorecen el deslizamiento y anulan la protección contra el "efecto submarino"','Porque son ilegales','Porque calientan el asiento'],a:1,e:'Estos elementos favorecen que la persona se deslice por debajo de la banda abdominal (efecto submarino).',p:28,d:1},
+{t:'veh',q:'¿A qué altura se debe regular el apoya cabezas?',o:['A la altura del cuello','A la altura de las orejas','Lo más bajo posible','Da lo mismo'],a:1,e:'La eficacia del airbag se combina con el cinturón, buena posición de manos y apoya cabezas al nivel de las orejas.',p:30},
+{t:'veh',q:'Al cargar combustible debes…',o:['Mantener el motor encendido','Apagar el motor y no hablar por celular','Fumar solo fuera del auto','Abrir y cerrar la tapa varias veces'],a:1,e:'Para prevenir incendios: apagar el motor, no encender cigarrillos, no hablar por celular y evitar inhalar vapores.',p:13},
+{t:'veh',q:'Adelante, un automóvil debe tener como mínimo:',o:['Un foco central','Dos focos de luces altas y bajas, dos luces de estacionamiento y dos luces destellantes de viraje','Solo luces de niebla','Dos focos y una bocina'],a:1,e:'Parte delantera: dos focos de luces altas y bajas, dos luces de estacionamiento y dos destellantes de viraje.',p:20},
+{t:'per',q:'Conducir con 0,31 a 0,79 gramos por mil de alcohol en la sangre se considera…',o:['Permitido','Bajo la influencia del alcohol','Estado de ebriedad','Solo una advertencia'],a:1,e:'Entre 0,31 y 0,79 g/l es "bajo la influencia del alcohol": multas y suspensión de licencia.',p:50,d:1},
+{t:'per',q:'¿Desde qué nivel de alcohol en la sangre se considera "estado de ebriedad"?',o:['0,1 gramos por mil','0,3 gramos por mil','0,8 o más gramos por mil','1,5 gramos por mil'],a:2,e:'0,8 o más g/l es estado de ebriedad: multas, cancelación de licencia y presidio.',p:50,d:1},
+{t:'per',q:'¿En qué año se promulgó la "Ley Tolerancia Cero"?',o:['2006','2012','2014','2020'],a:1,e:'La Ley Tolerancia Cero (2012) redujo los niveles de alcohol permitidos y aumentó las sanciones.',p:50,d:1},
+{t:'per',q:'¿Qué establece la Ley Emilia (2014)?',o:['Uso obligatorio de casco','Cárcel efectiva de al menos un año a quien, en estado de ebriedad, cause lesiones gravísimas o la muerte','Límite de 50 km/h en ciudad','Uso de SRI'],a:1,e:'La Ley Emilia sanciona con cárcel efectiva de al menos un año a conductores ebrios que causen lesiones gravísimas o muerte.',p:51,d:1},
+{t:'per',q:'Con una alcoholemia entre 0,5 y 0,8 g/l, el riesgo de sufrir un siniestro es…',o:['Igual que sin beber','El doble','Cinco veces mayor','Diez veces menor'],a:2,e:'Entre 0,3 y 0,5 g/l el riesgo se duplica; entre 0,5 y 0,8 g/l es cinco veces mayor.',p:50,d:1},
+{t:'per',q:'¿Qué tipo de visión disminuye con el alcohol aunque la persona no lo note?',o:['La visión de colores','La visión periférica','La visión de cerca','Ninguna'],a:1,e:'La visión directa puede parecer normal, pero la periférica disminuye y cuesta descubrir obstáculos a tiempo.',p:51,d:1},
+{t:'per',q:'Si participas en un siniestro y te niegas sin justificación a la prueba de alcohol…',o:['No pasa nada','Se te sanciona con suspensión de licencia, multas y posibles penas de cárcel','Solo se anota en tu hoja de vida','Debes pagar una multa menor'],a:1,e:'Negarse injustificadamente a las pruebas trae suspensión de licencia, multas y penas que pueden ser efectivas.',p:51,d:1},
+{t:'per',q:'En viajes largos, ¿cada cuánto se recomienda descansar?',o:['Cada 6 horas','Al menos 20 a 30 minutos cada 2 horas o 200 km como máximo','Solo al llegar','Cada 500 km'],a:1,e:'Descansa al menos 20 a 30 minutos cada 2 horas o 200 kilómetros de conducción, como máximo.',p:66},
+{t:'per',q:'¿Qué efecto tiene el cansancio o sueño al conducir?',o:['Mejora la concentración','Aumenta el tiempo de reacción y las distracciones','Solo afecta de noche','No tiene efectos'],a:1,e:'Aumenta el tiempo de reacción y las distracciones, y altera el juicio. El sueño también aparece de día.',p:62},
+{t:'vul',q:'Al pasar cerca de una persona ciclista, ¿qué espacio lateral mínimo exige la normativa?',o:['50 cm','1 metro','1,5 metros','3 metros'],a:2,e:'Debes dejar al menos 1,5 metros, porque la persona ciclista podría desviarse o tambalear.',p:71},
+{t:'vul',q:'Como conductor de un vehículo motorizado, en una ciclovía…',o:['Puedes detenerte un momento','No puedes circular, detenerte ni estacionar','Puedes estacionar de noche','Puedes circular si no hay ciclistas'],a:1,e:'No puedes circular, detenerte ni estacionar en ciclovías; mira antes de abrir la puerta si estás cerca de una.',p:72},
+{t:'vul',q:'Desde marzo de 2016, los menores de 12 años deben viajar…',o:['En cualquier asiento con cinturón','En el asiento trasero (salvo vehículos de cabina simple), con SRI adecuado o cinturón si ya les queda bien','Siempre adelante para vigilarlos','En brazos de un adulto'],a:1,e:'Se prohibió llevar a menores de 12 años adelante; van atrás, con SRI o cinturón bien posicionado.',p:73,d:1},
+{t:'vul',q:'¿Hasta qué edad o medidas es obligatorio llevar a niñas y niños en Sistema de Retención Infantil (SRI)?',o:['Hasta los 4 años','Hasta 8 años inclusive, o estatura ≤135 cm y 33 kg','Hasta los 12 años sin excepción','Hasta 1 metro de altura'],a:1,e:'Desde marzo de 2017: hasta 8 años inclusive (un día antes de cumplir 9), o ≤135 cm y 33 kg.',p:73,d:1},
+{t:'vul',q:'¿Cómo se recomienda instalar el SRI de los más pequeños?',o:['Mirando hacia adelante desde el nacimiento','A contramarcha (mirando hacia atrás) el mayor tiempo posible, mínimo hasta los dos años','En el asiento delantero','Sin anclaje'],a:1,e:'Se recomienda a contramarcha el mayor tiempo posible, hasta los límites del fabricante (mínimo hasta los 2 años).',p:75,d:1},
+{t:'vul',q:'Si el SRI está bien instalado con ISOFIX, LATCH o cinturón…',o:['Hay que usar siempre dos sistemas','Cualquiera de los tres es seguro por sí mismo; no se usan dos a la vez salvo que lo indique el fabricante','Solo ISOFIX es seguro','Ninguno es seguro'],a:1,e:'Bien instalado, cualquiera de los tres es seguro por sí mismo.',p:75,d:1},
+{t:'vul',q:'¿Cómo es la etiqueta de certificación de una silla infantil acreditada en Chile?',o:['Verde con letras blancas','Amarilla con letras negras','Roja','No lleva etiqueta'],a:1,e:'La etiqueta va pegada a la silla, es amarilla con letras negras y mide 9,5 × 7,5 cm.',p:75,d:1},
+{t:'vul',q:'¿Entre qué edades comienzan niñas y niños a actuar con seguridad en el tránsito?',o:['2 y 4 años','5 y 7 años','9 y 12 años','15 y 18 años'],a:2,e:'Les cuesta juzgar distancia y velocidad; comienzan a actuar con seguridad entre los 9 y 12 años.',p:70},
+{t:'vul',q:'Vas por la pista izquierda y en la derecha hay un vehículo detenido antes de un paso de cebra. ¿Qué haces?',o:['Lo adelanto rápido','Disminuyo la velocidad y me preparo para detenerme: puede haber peatones cruzando','Toco la bocina','Sigo igual'],a:1,e:'Podría haber peatones que comenzaron a cruzar y que tú no ves.',p:68},
+{t:'cir',q:'¿Qué indica una luz roja intermitente?',o:['Detención total hasta luz verde','Ceda el paso','Prevención','Paso libre'],a:1,e:'Luz roja intermitente = ceda el paso: continúas si verificas que no viene nadie por la otra vía.',p:78},
+{t:'cir',q:'¿Qué indica una luz amarilla intermitente?',o:['Detención','Advierte peligro: aproxímate a velocidad reducida y continúa con precaución','Que el semáforo está apagado','Paso exclusivo de buses'],a:1,e:'La amarilla intermitente advierte peligro; se avanza a velocidad reducida y con precaución.',p:78},
+{t:'cir',q:'Tienes luz verde, pero pasado el cruce no hay espacio libre. ¿Qué haces?',o:['Avanzo igual','No avanzo si no tengo al menos 10 metros expeditos en mi pista','Avanzo hasta la mitad del cruce','Toco la bocina'],a:1,e:'Aun con verde, no avances si pasado el cruce no tienes al menos 10 metros expeditos.',p:78},
+{t:'cir',q:'Con luz verde vas a virar y hay peatones y ciclistas cruzando. ¿Quién tiene preferencia?',o:['Yo, porque tengo verde','Los peatones y ciclistas que cruzan','El que llegue primero','Nadie'],a:1,e:'Peatones que enfrentan la verde tienen prioridad; si vas a virar debes cederles el paso, también a ciclistas.',p:78},
+{t:'cir',q:'Si enfrentas luz roja y flecha verde…',o:['Puedes ir en cualquier dirección','Puedes entrar con cuidado solo en la dirección de la flecha, respetando a los peatones','Debes detenerte igual','Solo pueden pasar buses'],a:1,e:'Se entra cuidadosamente solo en la dirección indicada, respetando a peatones.',p:79},
+{t:'cir',q:'En un cruce sin semáforo, sin Carabinero y sin señales PARE o Ceda el Paso, ¿a quién das preferencia?',o:['Al que viene por mi izquierda','A los vehículos que se aproximan por mi derecha','Al vehículo más grande','Al que toque la bocina'],a:1,e:'Siempre debes dar preferencia a los vehículos que se aproximan desde tu derecha.',p:84},
+{t:'cir',q:'Cuando vas a virar…',o:['Tienes preferencia','Pierdes toda preferencia y respetas a vehículos y peatones','Solo cedes a buses','Puedes virar sin mirar'],a:1,e:'Al virar careces de toda preferencia.',p:84},
+{t:'cir',q:'Al entrar a una rotonda…',o:['Tengo preferencia por entrar','Debo ceder el paso a los vehículos que ya circulan en ella','Debo tocar la bocina','Puedo entrar sin reducir velocidad'],a:1,e:'Al incorporarte a una rotonda o minirrotonda debes ceder el paso a quienes circulan por ella.',p:84},
+{t:'cir',q:'Dentro de una rotonda, ¿cuándo debes señalizar a la derecha para salir?',o:['Al entrar','Tan pronto pases la salida inmediatamente anterior a la que usarás','Nunca','Al detenerte'],a:1,e:'Señaliza a la derecha apenas pases la salida inmediatamente anterior a la tuya.',p:94},
+{t:'cir',q:'En zona rural, si llegas a una vía principal desde una secundaria…',o:['Tienes preferencia','Cedes el paso a los vehículos de la vía principal','Pasa el más rápido','Pasa el de la derecha siempre'],a:1,e:'En áreas rurales, quien viene por la secundaria cede el paso a la principal.',p:85},
+{t:'cir',q:'¿Qué significa "ceder el paso"?',o:['Detenerse siempre 1 minuto','Que quien tiene preferencia no deba cambiar su trayectoria ni su velocidad por tu culpa','Tocar la bocina','Hacer señas con las luces'],a:1,e:'Quien tiene la preferencia no debe verse obligado a modificar su trayectoria ni su velocidad.',p:85},
+{t:'cir',q:'Al salir de un estacionamiento o de una casa a la calle…',o:['Tienes preferencia','Cedes el paso a vehículos en tránsito (incluidos ciclistas) y peatones','Solo cedes a camiones','Pasas rápido'],a:1,e:'Al incorporarte desde una vía particular, inmueble o estacionamiento cedes a todos, incluidos ciclistas y peatones.',p:85},
+{t:'cir',q:'Se acerca una ambulancia con luces y sirena. ¿Qué haces?',o:['Sigo igual','Le cedo el derecho a vía desplazándome hacia un lado y deteniéndome si es necesario','Acelero delante de ella','Freno en seco en mi pista'],a:1,e:'Ante vehículos de emergencia (policía, bomberos, ambulancias, PDI) usando señales debes cederles el paso.',p:85},
+{t:'cir',q:'¿Con cuánta anticipación mínima debes señalizar un viraje?',o:['5 metros','Al menos 30 metros','100 metros','No es necesario'],a:1,e:'Señaliza con al menos 30 metros de anticipación cuando vayas a virar.',p:86},
+{t:'cir',q:'¿Cuál es la secuencia correcta para cambiar de pista o maniobrar?',o:['Maniobra – espejo – señal','Espejo – señalización – maniobra','Señal – maniobra – espejo','Bocina – maniobra'],a:1,e:'Recuerda siempre: espejo – señalización – maniobra.',p:86},
+{t:'cir',q:'Con el brazo extendido horizontalmente por la ventana estás indicando…',o:['Viraje a la derecha','Viraje a la izquierda','Que te detienes','Que te adelanten'],a:1,e:'Horizontal = izquierda; en ángulo recto hacia arriba = derecha; hacia abajo = disminución o detención.',p:86},
+{t:'cir',q:'Brazo extendido hacia abajo indica…',o:['Viraje a la derecha','Disminución de velocidad o detención','Viraje en U','Adelantamiento'],a:1,e:'Brazo hacia abajo indica que disminuyes la velocidad o te detienes.',p:86},
+{t:'cir',q:'¿Para qué sirve la "Regla de los Tres Segundos"?',o:['Para cruzar un semáforo en amarillo','Para saber si vas a una distancia adecuada del vehículo de adelante en carretera','Para estacionar','Para cambiar marchas'],a:1,e:'Fija un punto; cuando el de adelante lo pase, cuenta "mil uno, mil dos, mil tres". Si llegas antes, vas muy cerca.',p:88},
+{t:'cir',q:'¿Dónde NO debes virar en "U"?',o:['En avenidas con bandejón donde está permitido','A menos de 200 m de una curva, cima, cruce ferroviario, puente, túnel o viaducto','En calles de doble tránsito sin línea continua','En ningún caso hay prohibición'],a:1,e:'Prohibido en intersecciones, pasos peatonales, a menos de 200 m de esos puntos y donde la señal lo prohíba.',p:94},
+{t:'cir',q:'¿Cuál es la velocidad máxima en zonas urbanas?',o:['40 km/h','50 km/h','60 km/h','80 km/h'],a:1,e:'En zonas urbanas la velocidad máxima permitida es 50 km/h (salvo señal distinta).',p:96,d:1},
+{t:'cir',q:'Zona no urbana, calzada con una sola pista por sentido: velocidad máxima para vehículos livianos.',o:['80 km/h','90 km/h','100 km/h','120 km/h'],a:2,e:'Con una pista por sentido: 100 km/h. Con 2 o más pistas en el mismo sentido: 120 km/h.',p:96,d:1},
+{t:'cir',q:'Zona no urbana con 2 o más pistas en el mismo sentido: velocidad máxima para livianos.',o:['100 km/h','110 km/h','120 km/h','130 km/h'],a:2,e:'Cuando hay 2 o más pistas en un mismo sentido, el límite sube a 120 km/h.',p:96,d:1},
+{t:'cir',q:'Buses, camiones y transporte escolar no deben circular a más de…',o:['80 km/h','90 km/h','100 km/h','120 km/h'],a:1,e:'Buses, camiones y transporte escolar: máximo 90 km/h; buses interurbanos: 100 km/h.',p:96,d:1},
+{t:'cir',q:'¿Cuándo es obligatorio reducir la velocidad?',o:['Solo de noche','Al acercarse a una curva, a la cima de una cuesta, con visibilidad reducida y en zonas densamente pobladas','Nunca si vas bajo el límite','Solo en autopistas'],a:1,e:'El libro enumera situaciones de mayor riesgo donde debes reducir obligatoriamente la velocidad.',p:96,d:1},
+{t:'cir',q:'Los adelantamientos deben hacerse siempre…',o:['Por la derecha','Por la izquierda','Por donde haya espacio','Por la berma'],a:1,e:'Los adelantamientos se efectúan siempre por la izquierda.',p:103},
+{t:'cir',q:'No debes adelantar traspasando el eje de la calzada al aproximarte a un puente, túnel o cruce ferroviario desde…',o:['50 metros','100 metros','200 metros','1 kilómetro'],a:2,e:'Desde una distancia mínima de 200 metros.',p:103},
+{t:'cir',q:'¿En qué caso puedes adelantar por la derecha?',o:['Nunca','Cuando el vehículo de adelante vira o está por virar a la izquierda, o en vía urbana con 3 o más pistas en el mismo sentido','Cuando tienes prisa','Por la berma en carretera'],a:1,e:'Son las dos únicas excepciones que señala el libro.',p:103},
+{t:'cir',q:'Cuando otro vehículo te está adelantando, debes…',o:['Acelerar','Mantenerte lo más a la derecha posible y no aumentar tu velocidad','Frenar en seco','Moverte a la izquierda'],a:1,e:'Facilita el adelantamiento: derecha y sin acelerar; en peligro, reduce velocidad.',p:102},
+{t:'cir',q:'Tras adelantar, ¿cuándo vuelves a la pista derecha?',o:['De inmediato','Cuando veas en tu espejo retrovisor interior al vehículo adelantado y parte de la calzada delante de él','Cuando te toque la bocina','Después de 1 km'],a:1,e:'Vuelve cuando lo veas en el espejo interior; mantén el señalizador hasta terminar.',p:102},
+{t:'cir',q:'Un vehículo viene de frente invadiendo tu pista. ¿Qué haces?',o:['Me paso a la izquierda','Freno enérgicamente, hago señales con luces y bocina y trato de moverme a la derecha','Acelero','Me detengo en el centro'],a:1,e:'Nunca te pases a la izquierda: el otro conductor podría corregir y volver a su lado.',p:99},
+{t:'est',q:'Si estacionas en paralelo a la cuneta, ¿a qué distancia máxima de ella debes quedar?',o:['10 cm','30 cm','1 metro','2 metros'],a:1,e:'A no más de 30 cm de la cuneta y dejando al menos 60 cm respecto de otros vehículos.',p:104},
+{t:'est',q:'¿Qué distancia mínima debes dejar respecto de otros vehículos estacionados?',o:['10 cm','30 cm','60 cm','2 metros'],a:2,e:'Distancia mínima de 60 centímetros.',p:104},
+{t:'est',q:'Estacionas en una pendiente en subida. ¿Cómo dejas las ruedas?',o:['Rectas','Orientadas hacia el interior de la calzada','Orientadas hacia la cuneta','Da lo mismo'],a:1,e:'En subida, hacia el interior de la calzada; en bajada, hacia la cuneta. Además freno de mano y vehículo enganchado.',p:104},
+{t:'est',q:'¿A qué distancia mínima de un grifo no debes estacionar?',o:['1 metro','3 metros','5 metros','10 metros'],a:2,e:'No estaciones a menos de 5 metros de un grifo.',p:105},
+{t:'est',q:'¿A qué distancia de una señal PARE o Ceda el Paso no debes estacionar?',o:['A menos de 3 m','A menos de 5 m','A menos de 10 m','A menos de 50 m'],a:2,e:'A menos de 10 metros de PARE, Ceda el Paso o señales de advertencia de peligro; también de cuarteles de bomberos, postas y hospitales.',p:105},
+{t:'est',q:'Frente a puertas de iglesias, colegios, hoteles y salas de espectáculos, en horas de afluencia, no estaciones a menos de…',o:['1 metro','3 metros','10 metros','20 metros'],a:1,e:'A menos de 3 metros de sus puertas durante las horas de afluencia de público.',p:105},
+{t:'est',q:'Una línea amarilla continua pintada a lo largo de la solera indica…',o:['Estacionamiento para motos','Que no debes estacionar','Paradero de buses','Zona de carga libre'],a:1,e:'Donde exista línea amarilla continua a lo largo de la solera no debes estacionar.',p:105},
+{t:'est',q:'Detenido detrás de otro vehículo esperando la luz verde, la distancia es adecuada si…',o:['Tocas su parachoques','Puedes ver sus neumáticos traseros','Estás a 20 metros','No ves su patente'],a:1,e:'Se estima adecuada si puedes ver los neumáticos traseros del vehículo de adelante.',p:105},
+{t:'est',q:'¿Dónde está prohibido estacionar y detenerse?',o:['En el lado derecho de la calzada','En doble fila, dentro de un cruce, en ciclovías, puentes y túneles','En estacionamientos habilitados','Fuera de la vía pública'],a:1,e:'El libro enumera, entre otros: aceras, pasos peatonales, doble fila, dentro de cruces, ciclovías, puentes y túneles.',p:104},
+{t:'esp',q:'Tu vehículo falla en una autopista y no puedes salir. ¿Qué es correcto?',o:['Instalar el triángulo en la calzada de la autopista','Ubicarte en la berma, encender luces de advertencia y salir por la puerta derecha','Quedarte en la pista con el capó abierto','Caminar por la autopista a buscar ayuda'],a:1,e:'Ponte en la berma lo más lejos de la calzada, luces de advertencia, salir por la derecha. No instales el triángulo en la calzada de la autopista.',p:117},
+{t:'esp',q:'Si debes salir del vehículo detenido en una autopista, ¿qué debes llevar puesto?',o:['Casco','Chaleco reflectante','Nada especial','Lentes de sol'],a:1,e:'Si sales, hazlo solo cuando no sea riesgoso y con el chaleco reflectante puesto.',p:118},
+{t:'esp',q:'¿Cuándo puedes detenerte en una autopista?',o:['Para hablar por teléfono','Solo ante una emergencia o si te lo solicita Carabineros','Para dejar pasajeros','Para descansar en la berma'],a:1,e:'No te detengas salvo emergencia o petición de Carabineros; no recojas ni bajes pasajeros.',p:117},
+{t:'esp',q:'En un vehículo eléctrico (no híbrido sin recarga exterior), ¿qué debes portar siempre?',o:['Un bidón de bencina','El cable de viaje para cargar','Cadenas para nieve','Un segundo cargador de celular'],a:1,e:'Siempre portar el cable de viaje y planificar el viaje según la autonomía.',p:148},
+{t:'esp',q:'Al conducir de noche con una falla, ¿qué debes hacer con anticipación?',o:['Apagar todas las luces','Instalar el triángulo para casos de emergencia y, si funciona, encender las intermitentes','Seguir conduciendo','Dejar el vehículo en la pista'],a:1,e:'Estaciona a la derecha, instala el triángulo con anticipación y enciende intermitentes si el sistema eléctrico funciona.',p:112},
+{t:'lic',q:'Si repruebas el examen teórico, ¿en qué plazo puedes repetirlo dentro del mismo proceso?',o:['Al día siguiente sin límite','En un plazo no superior a 25 días hábiles desde la primera reprobación','Después de 6 meses','No se puede repetir'],a:1,e:'Hay dos oportunidades por examen; la repetición debe ser dentro de 25 días hábiles.',p:169},
+{t:'lic',q:'¿Cuántas oportunidades tienes por cada examen (teórico y práctico) en un proceso?',o:['Una','Dos','Tres','Ilimitadas'],a:1,e:'El proceso da dos oportunidades por cada examen teórico y práctico.',p:169}
+];
+const MODULOS=[
+ {id:'sin',ic:'⚠️',tit:'1. Siniestros y física de la conducción',p:'pp. 6–25',pts:['Se dice "siniestro", no "accidente": son evitables.','Falla humana presente en más del 90% de los siniestros.','30→50 km/h: la probabilidad de muerte del peatón se multiplica por 8. A 30 km/h sobrevive el 90%; a 45 km/h o más, menos del 50%.','Tiempo normal de reacción: 1 segundo (36 km/h = 10 m; 72 km/h = 20 m).','Distancia de frenado: al duplicar la velocidad, se multiplica por 4; al triplicarla, por 9.','Detención en seco: ~25 m a 50 km/h; ~80 m a 100 km/h.']},
+ {id:'veh',ic:'🚗',tit:'2. El vehículo y elementos de seguridad',p:'pp. 11–32',pts:['Neumáticos: surcos de al menos 3 mm aconsejables; bajo 1,6 mm empeora mucho el agarre en mojado.','Choque a 50 km/h sin cinturón = caer desde un 4.º piso. Sin cinturón se duplica la probabilidad de morir.','Nada de toallas ni cojines en el asiento (efecto submarino).','Apoya cabezas a la altura de las orejas.','Al cargar combustible: motor apagado, sin cigarro, sin celular.','Luces delanteras: altas/bajas, 2 de estacionamiento, 2 destellantes de viraje.']},
+ {id:'per',ic:'🧠',tit:'3. La persona: alcohol, drogas, sueño',p:'pp. 37–66',pts:['0,31–0,79 g/l = bajo la influencia → multas y suspensión.','0,8 g/l o más = estado de ebriedad → multas, cancelación y cárcel.','Ley Tolerancia Cero (2012); Ley Emilia (2014): cárcel efectiva mínima 1 año si ebrio causas lesiones gravísimas o muerte.','0,3–0,5 g/l: riesgo ×2; 0,5–0,8 g/l: riesgo ×5. El alcohol reduce la visión periférica.','Negarse sin justificación al test tras un siniestro también se sanciona.','Viajes largos: descanso de 20–30 min cada 2 horas o 200 km.']},
+ {id:'vul',ic:'🧒',tit:'4. Usuarios vulnerables y niños',p:'pp. 68–76',pts:['Ciclistas: al menos 1,5 m de distancia lateral. Prohibido circular, detenerse o estacionar en ciclovías.','Menores de 12 años: asiento trasero (salvo cabina simple).','SRI obligatorio hasta 8 años inclusive o ≤135 cm y 33 kg.','SRI a contramarcha el mayor tiempo posible (mínimo hasta los 2 años).','Etiqueta de certificación: amarilla con letras negras.','Niños actúan con seguridad en el tránsito recién entre los 9 y 12 años.']},
+ {id:'cir',ic:'🚦',tit:'5. Normas de circulación',p:'pp. 77–103',pts:['Roja intermitente = ceda el paso. Amarilla intermitente = peligro, velocidad reducida.','Con verde no avances si no hay 10 m libres después del cruce. Al virar, cede a peatones y ciclistas.','Cruce sin señales: preferencia al que viene por tu derecha. Al virar pierdes la preferencia.','Rotonda: cedes a quienes ya circulan; señalizas a la derecha tras la salida anterior a la tuya.','Señaliza al menos 30 m antes de virar. Espejo – señal – maniobra.','Velocidades: urbana 50; rural 1 pista/sentido 100; 2+ pistas 120; buses/camiones/escolares 90.','Adelanta siempre por la izquierda; no a menos de 200 m de puente, túnel o cruce ferroviario. Sin U a menos de 200 m de curva, cima, puente o túnel.']},
+ {id:'est',ic:'🅿️',tit:'6. Estacionamiento y detención',p:'pp. 104–105',pts:['Paralelo a no más de 30 cm de la cuneta; 60 cm de otros vehículos.','Subida: ruedas hacia la calzada. Bajada: hacia la cuneta.','Grifo: 5 m. PARE / Ceda el Paso / advertencias / bomberos / hospitales: 10 m. Puertas de colegios, iglesias, hoteles: 3 m (horas de afluencia).','Línea amarilla continua en la solera: no estacionar.','En semáforo, distancia correcta = ves los neumáticos traseros del de adelante.']},
+ {id:'esp',ic:'🌧️',tit:'7. Circunstancias especiales y electromovilidad',p:'pp. 108–150',pts:['Aquaplaning: capa de agua entre neumático y calzada; reduce la velocidad.','Autopista: detenerse solo por emergencia o si lo pide Carabineros.','Falla en autopista: berma, luces de advertencia, salir por la derecha, chaleco reflectante. No poner triángulo en la calzada de la autopista.','Vehículo eléctrico: siempre portar el cable de viaje y planificar la carga.']},
+ {id:'lic',ic:'📝',tit:'8. El examen y el proceso',p:'p. 169 + CONASET/MTT',pts:['Examen teórico Clase B (Nexteo): 35 preguntas, 38 puntos; se aprueba con 33. Tres preguntas valen doble.','Las preguntas de doble puntaje se vinculan a alcohol, velocidad, cinturón y sistemas de retención infantil.','Tiempo máximo: 45 minutos.','Dos oportunidades por examen; repetición dentro de 25 días hábiles.']}
+];
+const GLOS=[['Siniestro de tránsito','Término que reemplaza a "accidente": los siniestros son evitables.'],['SRI','Sistema de Retención Infantil: silla o alzador certificado según peso, talla y desarrollo.'],['ISOFIX / LATCH','Sistemas de anclaje del SRI al vehículo.'],['Efecto submarino','Deslizamiento del cuerpo por debajo de la banda abdominal del cinturón en un choque.'],['Distancia de reacción','Metros recorridos mientras reaccionas (≈1 segundo).'],['Distancia de frenado','Metros desde que pisas el freno hasta detenerte; crece con el cuadrado de la velocidad.'],['Aquaplaning','Pérdida de adherencia por una capa de agua entre neumático y calzada.'],['Ceder el paso','Que quien tiene preferencia no cambie su trayectoria ni su velocidad por tu maniobra.'],['Sobrepaso','Ponerse delante de otro vehículo sin invadir la pista contraria (no es adelantamiento legal).'],['Nexteo','Plataforma digital del examen teórico en las Direcciones de Tránsito.'],['Bajo la influencia del alcohol','0,31 a 0,79 gramos por mil de alcohol en la sangre.'],['Estado de ebriedad','0,8 o más gramos por mil de alcohol en la sangre.']];
+
+
+const HL={"0": {"p": 8, "r": [[0.2, 0.5954, 0.1789, 0.0215]]}, "1": {"p": 8, "r": [[0.258, 0.6415, 0.1983, 0.0215], [0.1071, 0.6592, 0.0789, 0.0215]]}, "2": {"p": 8, "r": [[0.6513, 0.62, 0.2457, 0.0215]]}, "3": {"p": 23, "r": [[0.4674, 0.8062, 0.3894, 0.0215]]}, "4": {"p": 23, "r": [[0.4898, 0.8239, 0.2506, 0.0215]]}, "5": {"p": 24, "r": [[0.3133, 0.3685, 0.0944, 0.0215], [0.0787, 0.3862, 0.2883, 0.0215]]}, "6": {"p": 96, "r": [[0.4962, 0.3231, 0.3033, 0.0215]]}, "7": {"p": 121, "r": [[0.0787, 0.3996, 0.2415, 0.0215]]}, "8": {"p": 18, "r": [[0.5192, 0.2456, 0.3479, 0.0215]]}, "9": {"p": 26, "r": [[0.8759, 0.6289, 0.0453, 0.0215], [0.6258, 0.6466, 0.2954, 0.0215]]}, "10": {"p": 28, "r": [[0.7704, 0.6936, 0.1506, 0.0215], [0.0787, 0.7113, 0.2028, 0.0215]]}, "11": {"p": 28, "r": [[0.5353, 0.2033, 0.2882, 0.0215]]}, "12": {"p": 30, "r": [[0.7152, 0.6019, 0.1806, 0.0215]]}, "13": {"p": 13, "r": [[0.1258, 0.3209, 0.2361, 0.0215]]}, "14": {"p": 20, "r": [[0.2639, 0.2733, 0.1248, 0.0215], [0.109, 0.291, 0.2449, 0.0215]]}, "15": {"p": 50, "r": [[0.4101, 0.2953, 0.2145, 0.0215]]}, "16": {"p": 50, "r": [[0.4101, 0.3617, 0.2032, 0.0215]]}, "17": {"p": 50, "r": [[0.7542, 0.1639, 0.1667, 0.0215]]}, "18": {"p": 51, "r": [[0.385, 0.1006, 0.2125, 0.0215]]}, "19": {"p": 50, "r": [[0.6745, 0.4937, 0.2466, 0.022]]}, "20": {"p": 51, "r": [[0.8505, 0.6632, 0.0704, 0.0215], [0.0787, 0.6809, 0.1961, 0.0215]]}, "21": {"p": 51, "r": [[0.1507, 0.2812, 0.2321, 0.0215]]}, "22": {"p": 66, "r": [[0.2697, 0.7401, 0.2057, 0.0215], [0.1072, 0.7578, 0.1998, 0.0215]]}, "23": {"p": 62, "r": [[0.092, 0.4647, 0.2655, 0.0215]]}, "24": {"p": 71, "r": [[0.2945, 0.7767, 0.3362, 0.0215]]}, "25": {"p": 72, "r": [[0.6746, 0.7033, 0.2464, 0.022], [0.0994, 0.7213, 0.2494, 0.022]]}, "26": {"p": 73, "r": [[0.2096, 0.5074, 0.3805, 0.0215]]}, "27": {"p": 73, "r": [[0.1679, 0.6135, 0.18, 0.0215]]}, "28": {"p": 75, "r": [[0.1659, 0.121, 0.2272, 0.0215]]}, "29": {"p": 75, "r": [[0.7829, 0.3508, 0.1382, 0.0215], [0.0787, 0.3685, 0.2223, 0.0215]]}, "30": {"p": 75, "r": [[0.1411, 0.7631, 0.1612, 0.0179], [0.1071, 0.7782, 0.0876, 0.0179]]}, "31": {"p": 70, "r": [[0.4879, 0.56, 0.2402, 0.0215]]}, "32": {"p": 68, "r": [[0.3272, 0.7897, 0.1482, 0.0215], [0.1072, 0.8074, 0.2962, 0.0215]]}, "33": {"p": 78, "r": [[0.2761, 0.6155, 0.3389, 0.0215]]}, "34": {"p": 78, "r": [[0.2761, 0.8077, 0.362, 0.0215]]}, "35": {"p": 78, "r": [[0.8023, 0.412, 0.0919, 0.0215], [0.2707, 0.4297, 0.1751, 0.0215]]}, "36": {"p": 78, "r": [[0.5147, 0.4967, 0.3016, 0.0215]]}, "37": {"p": 79, "r": [[0.5285, 0.1422, 0.3713, 0.0215], [0.2761, 0.1599, 0.1095, 0.0215]]}, "38": {"p": 84, "r": [[0.3518, 0.7802, 0.1488, 0.0215]]}, "39": {"p": 84, "r": [[0.0908, 0.8155, 0.3574, 0.0215]]}, "40": {"p": 84, "r": [[0.7118, 0.8757, 0.2089, 0.0215], [0.0785, 0.8934, 0.2619, 0.0215]]}, "41": {"p": 94, "r": [[0.3372, 0.7661, 0.3132, 0.0215], [0.0787, 0.7838, 0.1286, 0.0215]]}, "42": {"p": 85, "r": [[0.7398, 0.1033, 0.1811, 0.0215], [0.0787, 0.121, 0.3851, 0.0215]]}, "43": {"p": 85, "r": [[0.8998, 0.1884, 0.0213, 0.0215], [0.0787, 0.206, 0.6083, 0.0215]]}, "44": {"p": 85, "r": [[0.4087, 0.3441, 0.1742, 0.0215]]}, "45": {"p": 85, "r": [[0.4329, 0.5576, 0.2832, 0.0215]]}, "46": {"p": 86, "r": [[0.6663, 0.4639, 0.197, 0.0215]]}, "47": {"p": 86, "r": [[0.4349, 0.1917, 0.2837, 0.0215]]}, "48": {"p": 86, "r": [[0.1119, 0.8004, 0.1307, 0.0215], [0.1119, 0.818, 0.1879, 0.0215], [0.1119, 0.8357, 0.1603, 0.0215]]}, "49": {"p": 86, "r": [[0.6846, 0.8004, 0.178, 0.0215], [0.6846, 0.8181, 0.2002, 0.0215], [0.6846, 0.8357, 0.2067, 0.0215]]}, "50": {"p": 88, "r": [[0.3556, 0.121, 0.2452, 0.0215]]}, "51": {"p": 94, "r": [[0.1295, 0.4161, 0.4051, 0.0215]]}, "52": {"p": 96, "r": [[0.2883, 0.5247, 0.5461, 0.0215]]}, "53": {"p": 96, "r": [[0.6616, 0.56, 0.2597, 0.0215], [0.0787, 0.5777, 0.2948, 0.0215]]}, "54": {"p": 96, "r": [[0.7608, 0.5777, 0.1605, 0.0215], [0.0787, 0.5954, 0.0944, 0.0215]]}, "55": {"p": 96, "r": [[0.7277, 0.5954, 0.1929, 0.0215], [0.0787, 0.6131, 0.0904, 0.0215]]}, "56": {"p": 96, "r": [[0.0787, 0.7014, 0.552, 0.0215]]}, "57": {"p": 103, "r": [[0.0787, 0.1282, 0.5324, 0.0215]]}, "58": {"p": 103, "r": [[0.2143, 0.2662, 0.3517, 0.0215]]}, "59": {"p": 103, "r": [[0.0787, 0.5209, 0.4313, 0.0215]]}, "60": {"p": 102, "r": [[0.0922, 0.8528, 0.2144, 0.0215]]}, "61": {"p": 102, "r": [[0.2768, 0.5241, 0.5463, 0.0206]]}, "62": {"p": 99, "r": [[0.189, 0.2684, 0.4559, 0.0215]]}, "63": {"p": 104, "r": [[0.0787, 0.3087, 0.2829, 0.0215]]}, "64": {"p": 104, "r": [[0.8477, 0.3087, 0.0734, 0.0215], [0.0787, 0.3264, 0.2142, 0.0215]]}, "65": {"p": 104, "r": [[0.1388, 0.4817, 0.3264, 0.0215]]}, "66": {"p": 105, "r": [[0.0922, 0.8291, 0.3869, 0.0215]]}, "67": {"p": 105, "r": [[0.0922, 0.8539, 0.3352, 0.0215]]}, "68": {"p": 105, "r": [[0.0921, 0.7866, 0.3816, 0.0215]]}, "69": {"p": 105, "r": [[0.0922, 0.7369, 0.2949, 0.0215]]}, "70": {"p": 105, "r": [[0.4061, 0.6624, 0.3119, 0.022]]}, "71": {"p": 104, "r": [[0.0922, 0.7464, 0.1036, 0.0215]]}, "72": {"p": 117, "r": [[0.0941, 0.8171, 0.3162, 0.0215]]}, "73": {"p": 118, "r": [[0.6381, 0.2485, 0.2829, 0.0215], [0.0787, 0.2662, 0.0586, 0.0215]]}, "74": {"p": 117, "r": [[0.0787, 0.4593, 0.2647, 0.0215]]}, "75": {"p": 148, "r": [[0.0943, 0.6746, 0.2576, 0.0215]]}, "76": {"p": 112, "r": [[0.3455, 0.2696, 0.3095, 0.0215]]}, "77": {"p": 169, "r": [[0.3018, 0.5844, 0.2781, 0.0215]]}, "78": {"p": 169, "r": [[0.6969, 0.4889, 0.2242, 0.0215], [0.0787, 0.5065, 0.0631, 0.0215]]}};
+const CAPS=[[1,'Portada e índice'],[5,'1 · Los siniestros de tránsito'],[10,'2 · Los principios de la conducción'],[32,'3 · Convivencia vial'],[36,'4 · La persona en el tránsito'],[67,'5 · Usuarios vulnerables'],[76,'6 · Normas de circulación'],[108,'7 · Circunstancias especiales'],[126,'8 · Conducción eficiente'],[135,'9 · Informaciones importantes'],[149,'Anexo 1 · Señales de tránsito'],[161,'Anexo 2 · Glosario'],[167,'Anexo 3 · Proceso de licencia']];
+const NPAG=170;
+Q.forEach((q,i)=>{ if(HL[i]) q.p=HL[i].p; });
+
+// ============ ESTADO ============
+const LS='rutaB.v1';
+let S={vistos:{},buenas:{},malas:{},mods:{},intentos:[],racha:0,vol:0.7,nombre:''};
+try{const r=localStorage.getItem(LS); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
+function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
+const $=s=>document.querySelector(s);
+const app=$('#app');
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function mark(i,ok){S.vistos[i]=1; if(ok){S.buenas[i]=(S.buenas[i]||0)+1; delete S.malas[i];} else {S.malas[i]=(S.malas[i]||0)+1;} save();}
+$('#vol').value=S.vol; $('#vol').oninput=e=>{S.vol=+e.target.value;save();};
+
+// ---- Voz (misma configuración que RutaSEC: es-CL, velocidad 0.9, tono 1.05, primera voz en español) + volumen
+let curBtn=null;
+function speak(text,btn){
+ try{
+  const was=(curBtn&&curBtn===btn);
+  if(speechSynthesis.speaking) speechSynthesis.cancel();
+  if(curBtn){curBtn.classList.remove('playing'); curBtn.innerHTML=curBtn.dataset.lbl||'🔊'; curBtn=null;}
+  if(was||!text) return;
+  const u=new SpeechSynthesisUtterance(text); u.lang='es-CL'; u.rate=0.9; u.pitch=1.05; u.volume=S.vol;
+  const go=()=>{const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith('es')); if(v) u.voice=v;
+   u.onend=u.onerror=()=>{ if(btn&&curBtn===btn){btn.classList.remove('playing');btn.innerHTML=btn.dataset.lbl||'🔊';curBtn=null;} };
+   if(btn){btn.dataset.lbl=btn.dataset.lbl||btn.innerHTML; btn.innerHTML='⏹ Detener'; btn.classList.add('playing'); curBtn=btn;}
+   speechSynthesis.speak(u);};
+  if(speechSynthesis.getVoices().length) go(); else {speechSynthesis.onvoiceschanged=()=>{speechSynthesis.onvoiceschanged=null;go();}; setTimeout(go,400);}
+ }catch(e){}
+}
+
+// ============ NAV ============
+const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Resúmenes'],['practicar','✏️ Por tema'],['simulacro','⏱️ Simulacro'],['trivia','🔥 Trivia'],['errores','🔁 Errores'],['glosario','📚 Glosario'],['fuentes','🔎 Fuentes']];
+let cur='inicio', timerId=null;
+function nav(){ $('#tabs').innerHTML=VIEWS.map(([k,l])=>`<button data-v="${k}" class="${cur===k?'on':''}">${l}</button>`).join(''); document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v)); }
+function go(v,arg){ if(timerId){clearInterval(timerId);timerId=null;} try{speechSynthesis.cancel()}catch(e){} curBtn=null; cur=v; try{history.replaceState(null,'','#'+v)}catch(e){} nav(); (R[v]||R.inicio)(arg); window.scrollTo(0,0); }
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1); if(h&&h!==cur&&R[h]) go(h);});
+const R={};
+
+// ============ LIBRO ============
+let libroPag=1, libroQ=null;
+function bookBtn(i){return `<button class="bookbtn" data-book="${i}">📖 Ver en el libro</button>`}
+function wireBook(root){(root||document).querySelectorAll('[data-book]').forEach(b=>b.onclick=()=>{const i=+b.dataset.book; go('libro',{p:Q[i].p,q:i});});}
+R.libro=(arg)=>{
+ if(arg){libroPag=arg.p; libroQ=arg.q;}
+ const render=()=>{
+  const qs=Q.map((q,i)=>i).filter(i=>HL[i]&&HL[i].p===libroPag);
+  const cap=CAPS.filter(c=>c[0]<=libroPag).pop();
+  app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">📖 ${esc(cap[1])}</h2><span class="pill">Página ${libroPag} de ${NPAG}</span></div>
+  <div class="row" style="margin-top:8px"><button class="btn o" id="pv">◀</button><input type="number" id="pg" min="1" max="${NPAG}" value="${libroPag}" style="width:84px"><button class="btn o" id="nx">▶</button>
+  <select id="cap" style="font-family:inherit;padding:9px;border:2px solid var(--line);border-radius:12px;max-width:100%">${CAPS.map(c=>`<option value="${c[0]}" ${c===cap?'selected':''}>${esc(c[1])} (p. ${c[0]})</option>`).join('')}</select></div>
+  ${qs.length?`<p style="margin:10px 0 4px"><b>Preguntas que salen de esta página</b> (toca una para destacarla):</p><div class="chips">${qs.map(i=>`<span class="chip ${libroQ===i?'on':''}" data-hq="${i}">${esc(Q[i].q.slice(0,60))}${Q[i].q.length>60?'…':''}</span>`).join('')}</div>`:'<p class="src" style="margin-top:8px">Ninguna pregunta del banco sale de esta página.</p>'}
+  </div>
+  <div class="viewer" id="vw"><img src="libro/p-${String(libroPag).padStart(3,'0')}.jpg" alt="Página ${libroPag} del libro"></div>
+  ${libroQ!==null&&HL[libroQ]&&HL[libroQ].p===libroPag?`<div class="card"><b>${esc(Q[libroQ].q)}</b><div class="exp"><b>Respuesta:</b> ${esc(Q[libroQ].o[Q[libroQ].a])}. ${esc(Q[libroQ].e)}</div><div class="row" style="margin-top:10px"><button class="btn m" id="prq">Practicar esta pregunta</button></div></div>`:''}
+  <p class="src">Páginas del libro oficial de CONASET. Lo destacado en amarillo es el texto exacto en que se basa la pregunta.</p>`;
+  if(libroQ!==null&&HL[libroQ]&&HL[libroQ].p===libroPag){const vw=$('#vw'); HL[libroQ].r.forEach(([x,y,w,h])=>{const d=document.createElement('div');d.className='hl';d.style.cssText=`left:${x*100-0.6}%;top:${y*100-0.4}%;width:${w*100+1.2}%;height:${h*100+0.8}%`;vw.appendChild(d);}); const img=vw.querySelector('img'); const scroll=()=>{const r=HL[libroQ].r[0]; window.scrollTo({top:vw.offsetTop+img.clientHeight*r[1]-180,behavior:'smooth'});}; img.complete?scroll():img.onload=scroll; const b=$('#prq'); if(b) b.onclick=()=>quiz([libroQ],'Pregunta del libro');}
+  $('#pv').onclick=()=>{if(libroPag>1){libroPag--;libroQ=null;render();window.scrollTo(0,0);}};
+  $('#nx').onclick=()=>{if(libroPag<NPAG){libroPag++;libroQ=null;render();window.scrollTo(0,0);}};
+  $('#pg').onchange=e=>{const v=Math.max(1,Math.min(NPAG,+e.target.value||1));libroPag=v;libroQ=null;render();};
+  $('#cap').onchange=e=>{libroPag=+e.target.value;libroQ=null;render();};
+  app.querySelectorAll('[data-hq]').forEach(c=>c.onclick=()=>{libroQ=+c.dataset.hq;render();});
+ }; render();
+};
+
+// ============ VISTAS ============
+R.inicio=()=>{
+ const dom=Object.keys(S.buenas).length, err=Object.keys(S.malas).length, best=S.intentos.reduce((m,x)=>Math.max(m,x.pts),0), last=S.intentos.slice(-5).reverse();
+ app.innerHTML=`<div class="card"><h2>¡Hola! Vamos por tu licencia 🚗💨</h2>
+  <p class="muted">Formato real del examen: <b>35 preguntas · 38 puntos · apruebas con 33 · 45 minutos</b>. Las <span class="pill d">×2</span> valen doble (alcohol, velocidad, cinturón y sillas para niños).</p>
+  <div class="grid"><div class="stat s1"><b>${Q.length}</b><span>preguntas</span></div><div class="stat s2"><b>${dom}</b><span>dominadas</span></div><div class="stat s3"><b>${err}</b><span>por repasar</span></div><div class="stat s4"><b>${best||'—'}</b><span>mejor simulacro</span></div></div>
+  <p style="margin:14px 0 6px;font-weight:800">Avance</p><div class="bar"><i style="width:${Math.round(dom/Q.length*100)}%"></i></div></div>
+ <div class="row"><button class="btn y" onclick="go('simulacro')">⏱️ Simulacro</button><button class="btn" onclick="go('libro')">📖 Leer el libro</button><button class="btn m" onclick="go('trivia')">🔥 Trivia</button></div>
+ ${last.length?`<div class="card"><h3>Últimos simulacros</h3><table>${last.map(x=>`<tr><td>${x.f}</td><td>${x.pts}/38</td><td>${x.pts>=33?'✅ Aprobado':'❌ Reprobado'}</td></tr>`).join('')}</table></div>`:''}
+ <p class="src">Tu avance se guarda en este navegador.</p>`;
+};
+R.estudiar=()=>{
+ app.innerHTML=`<p class="muted">Lo clave de cada capítulo. Toca 🔊 para escucharlo.</p>`+MODULOS.map(m=>`<div class="card mod"><h3><span>${m.ic} ${m.tit}</span><button class="spk" data-m="${m.id}">🔊 Escuchar</button></h3><span class="src">${m.p}</span><ul>${m.pts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+ <div class="row" style="margin-top:10px"><button class="btn o" data-ok="${m.id}">${S.mods[m.id]?'✅ Leído':'Marcar leído'}</button><button class="btn" data-pr="${m.id}">Practicar</button></div></div>`).join('');
+ app.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=MODULOS.find(x=>x.id===b.dataset.m); speak(m.tit+'. '+m.pts.join('. '),b);});
+ app.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{S.mods[b.dataset.ok]=1;save();b.textContent='✅ Leído';});
+ app.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===b.dataset.pr),'Tema: '+TEMAS[b.dataset.pr]);});
+};
+R.practicar=()=>{
+ app.innerHTML=`<div class="card"><h2>Practicar por tema</h2><p class="muted">Respuesta inmediata, explicación y el lugar exacto del libro.</p>${Object.entries(TEMAS).map(([k,v])=>`<button class="opt" data-t="${k}">${v} <span class="pill">${Q.filter(q=>q.t===k).length}</span></button>`).join('')}<button class="opt" data-t="all">🎲 Todas al azar <span class="pill">${Q.length}</span></button></div>`;
+ app.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{const t=b.dataset.t; quiz(Q.map((q,i)=>i).filter(i=>t==='all'||Q[i].t===t), t==='all'?'Todas':TEMAS[t]);});
+};
+function quiz(ids,titulo){
+ ids=shuffle(ids); let k=0, ok=0;
+ const step=()=>{
+  if(k>=ids.length){app.innerHTML=`<div class="card"><h2>${esc(titulo)}</h2><div class="big">${ok}/${ids.length}</div><p class="muted">correctas</p><div class="row"><button class="btn" onclick="go('practicar')">Otro tema</button><button class="btn o" onclick="go('errores')">Repasar errores</button></div></div>`;return;}
+  const i=ids[k],q=Q[i]; const ord=shuffle(q.o.map((t,j)=>j));
+  app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">${k+1}/${ids.length} · ${TEMAS[q.t]}</span><span>${q.d?'<span class="pill d">×2</span> ':''}<button class="spk" id="spk">🔊 Escuchar</button></span></div><h3 style="margin-top:10px">${esc(q.q)}</h3><div id="opts">${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}</div><div id="fb"></div></div>`;
+  $('#spk').onclick=e=>speak(q.q+'. '+ord.map(j=>q.o[j]).join('. '),e.currentTarget);
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+   const j=+b.dataset.j, good=j===q.a; if(good) ok++; mark(i,good);
+   app.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q.a) x.classList.add('ok'); else if(x===b) x.classList.add('bad');});
+   $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'❌ No era esa.'}</b> ${esc(q.e)} <span class="src">— Libro, p. ${q.p}</span></div><div class="row" style="margin-top:12px"><button class="btn" id="nx">Siguiente →</button><button class="spk" id="spe">🔊 Explicación</button>${bookBtn(i)}</div>`;
+   $('#nx').onclick=()=>{k++;step();}; $('#spe').onclick=e=>speak(q.e,e.currentTarget); wireBook(app);
+  });
+ }; step();
+}
+R.simulacro=()=>{
+ app.innerHTML=`<div class="card"><h2>⏱️ Simulacro Clase B</h2><p><b>35 preguntas</b>, <b>3 de doble puntaje</b> (38 puntos), <b>apruebas con 33</b>, <b>45 minutos</b>. Ves los resultados al entregar.</p><button class="btn y" id="go">¡Comenzar!</button></div>`;
+ $('#go').onclick=startSim;
+};
+function startSim(){
+ const dob=shuffle(Q.map((q,i)=>i).filter(i=>Q[i].d)).slice(0,3), rest=shuffle(Q.map((q,i)=>i).filter(i=>!dob.includes(i))).slice(0,32);
+ const ids=shuffle(dob.concat(rest)), ans={}, ords={}; ids.forEach(i=>ords[i]=shuffle(Q[i].o.map((t,j)=>j)));
+ const dobSet=new Set(dob); let k=0, left=45*60;
+ const tick=()=>{const el=$('#tm'); if(el) el.textContent=`⏱️ ${Math.floor(left/60)}:${String(left%60).padStart(2,'0')}`;};
+ const render=()=>{const i=ids[k],q=Q[i];
+  app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="timer" id="tm"></span><span class="pill">Respondidas ${Object.keys(ans).length}/35</span></div>
+  <div class="card"><div class="row" style="justify-content:space-between"><span class="pill">Pregunta ${k+1}/35</span>${dobSet.has(i)?'<span class="pill d">Vale 2 puntos</span>':''}</div><h3 style="margin-top:10px">${esc(q.q)}</h3>${ords[i].map(j=>`<button class="opt ${ans[i]===j?'sel':''}" data-j="${j}">${esc(q.o[j])}</button>`).join('')}</div>
+  <div class="row"><button class="btn o" id="pv" ${k===0?'disabled':''}>← Anterior</button><button class="btn" id="nx">${k===34?'Última':'Siguiente →'}</button><button class="btn y" id="fin">Entregar</button></div>`;
+  tick(); app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ans[i]=+b.dataset.j; render();});
+  $('#pv').onclick=()=>{k--;render()}; $('#nx').onclick=()=>{if(k<34){k++;render()}}; $('#fin').onclick=finish;};
+ const finish=()=>{clearInterval(timerId); timerId=null; let pts=0;
+  ids.forEach(i=>{const good=ans[i]===Q[i].a; if(good) pts+=dobSet.has(i)?2:1; mark(i,good);});
+  S.intentos.push({f:new Date().toLocaleDateString('es-CL'),pts}); save();
+  const wrong=ids.filter(i=>ans[i]!==Q[i].a);
+  app.innerHTML=`<div class="card"><h2>${pts>=33?'🎉 ¡Aprobado!':'💪 Aún no'}</h2><div class="big">${pts}/38</div><p class="muted">Necesitas 33. ${pts>=33?'¡Sigue así para llegar con margen!':'Te faltaron '+(33-pts)+' puntos.'}</p><div class="row"><button class="btn y" onclick="go('simulacro')">Otro simulacro</button><button class="btn o" onclick="go('errores')">Repasar errores</button></div></div>
+  ${wrong.length?`<div class="card"><h3>Revisión (${wrong.length})</h3>${wrong.map(i=>`<div style="margin:12px 0"><b>${esc(Q[i].q)}</b>${dobSet.has(i)?' <span class="pill d">×2</span>':''}<div class="muted">Tu respuesta: ${ans[i]===undefined?'en blanco':esc(Q[i].o[ans[i]])}</div><div class="exp"><b>Correcta:</b> ${esc(Q[i].o[Q[i].a])}. ${esc(Q[i].e)}</div><div style="margin-top:6px">${bookBtn(i)}</div></div>`).join('')}</div>`:''}`;
+  wireBook(app); window.scrollTo(0,0);};
+ timerId=setInterval(()=>{left--; tick(); if(left<=0) finish();},1000); render();
+}
+R.trivia=()=>{
+ let vidas=3, pts=0, pool=shuffle(Q.map((q,i)=>i));
+ const step=()=>{
+  if(vidas<=0||!pool.length){ if(pts>(S.racha||0)){S.racha=pts;save();} app.innerHTML=`<div class="card"><h2>Fin de la trivia</h2><div class="big">${pts}</div><p class="muted">seguidas · récord ${S.racha}</p><div class="row"><button class="btn y" onclick="go('trivia')">🔁 Otra vez</button></div></div>`;return;}
+  const i=pool.pop(),q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
+  app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="hearts">${'💖'.repeat(vidas)}${'🤍'.repeat(3-vidas)}</span><span class="pill">🔥 ${pts} · récord ${S.racha||0}</span></div><div class="card"><h3>${esc(q.q)}</h3>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="fb"></div></div>`;
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j, good=j===q.a; mark(i,good); if(good) pts++; else vidas--;
+   app.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q.a) x.classList.add('ok'); else if(x===b) x.classList.add('bad');});
+   $('#fb').innerHTML=`<div class="exp">${esc(q.e)} <span class="src">p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">Seguir →</button>${bookBtn(i)}</div>`; $('#nx').onclick=step; wireBook(app);});
+ }; step();
+};
+
+R.errores=()=>{
+ const ids=Object.keys(S.malas).map(Number).filter(i=>Q[i]);
+ if(!ids.length){app.innerHTML=`<div class="card"><h2>Sin errores pendientes 🎉</h2><p class="muted">Lo que falles aparece aquí hasta que lo respondas bien.</p></div>`;return;}
+ app.innerHTML=`<div class="card"><h2>Mis errores (${ids.length})</h2><button class="btn y" id="rp">Repasar ahora</button></div>`+ids.map(i=>`<div class="card"><b>${esc(Q[i].q)}</b><div class="exp">${esc(Q[i].o[Q[i].a])} — ${esc(Q[i].e)}</div><div style="margin-top:8px">${bookBtn(i)}</div></div>`).join('');
+ $('#rp').onclick=()=>quiz(ids,'Repaso de errores'); wireBook(app);
+};
+R.glosario=()=>{app.innerHTML=`<div class="card"><h2>📚 Glosario</h2><table>${GLOS.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}</table><div class="row" style="margin-top:10px"><button class="btn" onclick="go('libro',{p:161,q:null})">Ver el glosario oficial del libro</button></div></div>`;};
+R.fuentes=()=>{app.innerHTML=`<div class="card"><h2>🔎 Fuentes</h2>
+<p><b>Libro:</b> "Libro para la Conducción en Chile — Automovilistas, Licencia Clase B", CONASET (MTT), edición <b>febrero 2026</b>. Las páginas que ves en 📖 Libro son de ese documento. Cada pregunta marca el texto exacto en que se basa.</p>
+<p><b>Examen:</b> 35 preguntas, 3 de doble puntaje, 38 puntos, aprobación con 33 y banco de más de 1.000 preguntas (CONASET/MTT). 45 minutos y temas de doble puntaje, según PracticaTest.</p>
+<ul><li>Descarga oficial gratuita: <a href="https://mejoresconductores.conaset.cl">mejoresconductores.conaset.cl</a></li><li><a href="https://energia.gob.cl/noticias/nacional/nuevo-libro-del-conductor-con-enfasis-en-electromovilidad-y-seguridad-infantil">Gobierno de Chile: nuevo Libro del Conductor y Nexteo</a></li><li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b">PracticaTest: puntaje del examen Clase B</a></li></ul>
+<p class="src">RutaB es material de estudio independiente, no una app oficial de CONASET.</p></div>`;};
+
+const h=location.hash.slice(1); go(R[h]?h:'inicio');
+</script>
+</body>
+</html>
