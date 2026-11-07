@@ -140,6 +140,8 @@ nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
 .tbtn .e{font-size:30px}.tbtn .n{font-size:12px;background:var(--sol);border:2px solid var(--tinta);border-radius:999px;padding:1px 8px}
 .tbtn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--tinta)}
 .pgd{background:#fff;border:3px solid var(--tinta);border-radius:16px;box-shadow:3px 3px 0 var(--tinta);padding:10px 12px;margin:8px 0}.pgd summary{cursor:pointer;font-size:15px}
+.gidx{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.gidx a{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sol);border:2px solid var(--tinta);color:var(--tinta);text-decoration:none;font-family:'Chewy';font-size:18px;box-shadow:2px 2px 0 var(--tinta)}
+.gdet{margin:10px 0;scroll-margin-top:70px}.gdet summary{display:inline-flex;gap:8px;align-items:center;cursor:pointer;list-style:none;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);border-radius:999px;box-shadow:4px 4px 0 var(--tinta);padding:6px 18px;font-family:'Chewy';font-size:22px}.gdet summary::-webkit-details-marker{display:none}.gdet summary span{font-family:'Baloo 2';font-size:13px;background:#fff;color:var(--tinta);border-radius:999px;padding:0 8px}
 .gletter{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta);font-family:'Chewy';font-size:24px;margin:14px 0 6px}
 .gitem{border:2px solid var(--tinta);border-radius:14px;padding:10px 12px;margin:8px 0;color:var(--tinta)}
 .leyes p{margin:0 0 10px;line-height:1.45}
@@ -149,7 +151,7 @@ nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
 .steps{counter-reset:st;list-style:none;padding:0;margin:0}.steps li{counter-increment:st;position:relative;padding:8px 0 8px 44px;border-bottom:2px dashed #e4dcf3}
 .steps li::before{content:counter(st);position:absolute;left:0;top:6px;width:32px;height:32px;border-radius:50%;background:var(--sol);border:3px solid var(--tinta);display:grid;place-items:center;font-family:'Chewy';font-size:18px}
 main.wrap{padding-bottom:130px}
-#alien{position:fixed;right:16px;bottom:18px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:6px;cursor:pointer}
+#alien{position:fixed;right:16px;bottom:18px;left:auto!important;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:6px;cursor:pointer}
 #alien .a{width:66px;height:66px;border-radius:50%;background:var(--limon);border:4px solid var(--tinta);box-shadow:4px 4px 0 var(--tinta);display:grid;place-items:center;font-size:36px;animation:flot 3s ease-in-out infinite}
 #alien .t{background:#fff;border:3px solid var(--tinta);border-radius:16px;padding:4px 10px;font-size:13px;font-weight:800;box-shadow:2px 2px 0 var(--tinta)}
 #alien .a.puff{animation:puff 1.4s ease-out forwards;background:#fff}#alien .a.pop{animation:pop2 .6s ease-out}
@@ -166,7 +168,7 @@ main.wrap{padding-bottom:130px}
 </header>
 <nav class="tabs" id="tabs"></nav>
 <main class="wrap" id="app"></main>
-<div id="alien" title="Pregunta sorpresa"><div class="t">¡Pregunta sorpresa!</div><div class="a">👽</div></div>
+<div id="alien" title="Pregunta sorpresa"><div class="a">👽</div></div>
 <div id="amodal"><div class="box" id="abox"></div></div>
 
 <script>
@@ -296,14 +298,23 @@ function hdr(){const a=$('#xpd'),b=$('#rcd');if(a)a.textContent=S.xp||0;if(b)b.t
 
 // ---- Voz (misma configuración que RutaSEC: es-CL, velocidad 0.9, tono 1.05, primera voz en español) + volumen
 let curBtn=null;
+// Voz masculina, cálida: elige la mejor voz de hombre en español que tenga el dispositivo
+const HOMBRES=/(lorenzo|jorge|juan|diego|pablo|[aá]lvaro|ra[uú]l|carlos|andr[eé]s|gonzalo|enrique|tom[aá]s|federico|gerardo|alonso|dar[ií]o|emilio|liam|arnau|teo|mateo|rodrigo|sergio|antonio|eduardo|male|hombre|masculin)/i;
+const MUJERES=/(paulina|m[oó]nica|helena|laura|sabina|elvira|dalia|catalina|isabel|marisol|luc[ií]a|paloma|elena|francisca|camila|valentina|ximena|soledad|ang[eé]lica|female|mujer|femenin|sof[ií]a|elsa|irene|carmen|ana|marta|vera|larissa)/i;
+const esHombre=v=>HOMBRES.test(v.name)&&!MUJERES.test(v.name);
+let VOZ=null;
+function vozHombre(){ if(VOZ) return VOZ; const vs=speechSynthesis.getVoices().filter(v=>/^es/i.test(v.lang)); if(!vs.length) return null;
+ const sc=v=>(esHombre(v)?20:0)-(MUJERES.test(v.name)?10:0)+(/natural|neural|online|premium|enhanced|mejorada/i.test(v.name)?6:0)+(/es[-_]CL/i.test(v.lang)?3:/es[-_](419|MX|US|AR|CO)/i.test(v.lang)?2:0);
+ VOZ=vs.slice().sort((a,b)=>sc(b)-sc(a))[0]; return VOZ;}
+try{speechSynthesis.onvoiceschanged=()=>{VOZ=null;};}catch(e){}
 function speak(text,btn){
  try{
   const was=(curBtn&&curBtn===btn);
   if(speechSynthesis.speaking) speechSynthesis.cancel();
   if(curBtn){curBtn.classList.remove('playing'); curBtn.innerHTML=curBtn.dataset.lbl||'🔊'; curBtn=null;}
   if(was||!text) return;
-  const u=new SpeechSynthesisUtterance(text); u.lang='es-CL'; u.rate=0.9; u.pitch=1.05; u.volume=S.vol;
-  const go=()=>{const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith('es')); if(v) u.voice=v;
+  const u=new SpeechSynthesisUtterance(text); u.lang='es-CL'; u.rate=0.92; u.volume=S.vol;
+  const go=()=>{const v=vozHombre(); if(v){u.voice=v;u.lang=v.lang;} u.pitch=(v&&esHombre(v))?0.92:0.72;
    u.onend=u.onerror=()=>{ if(btn&&curBtn===btn){btn.classList.remove('playing');btn.innerHTML=btn.dataset.lbl||'🔊';curBtn=null;} };
    if(btn){btn.dataset.lbl=btn.dataset.lbl||btn.innerHTML; btn.innerHTML='⏹ Detener'; btn.classList.add('playing'); curBtn=btn;}
    speechSynthesis.speak(u);};
@@ -351,8 +362,8 @@ function compData(){return Object.entries(TEMAS).map(([k,v],n)=>{const ids=Q.map
 function ultimoExamen(){const e=S.ev||{};const f=e.fin||e.inter||e.diag;return f?f.pct+'%':'—';}
 function probab(){const c=compData();const avg=c.reduce((a,x)=>a+x.pct,0)/c.length;const e=S.ev||{};const best=Math.max(e.fin?e.fin.pct:0,...S.intentos.map(x=>Math.round(x.pts/38*100)),0);return Math.min(97,Math.round(avg*0.55+best*0.45));}
 function resumenVoz(){const c=compData();const listas=c.filter(x=>x.ok).length;const debil=c.slice().sort((a,b)=>a.pct-b.pct).slice(0,2);
- return `Llevas ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
- c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. ¡Vamos que se puede!`;}
+ return `Hola, preciosa. Vamos a ver cómo vas. Llevas ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
+ c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. Sigue así, que lo estás haciendo increíble. Aquí estoy contigo.`;}
 const LEYES=[
  {n:'18.290',t:'Ley de Tránsito',d:'La ley principal: regula quién puede conducir, las licencias, las normas de circulación, las infracciones y las sanciones. Su texto vigente está refundido en el DFL N° 1 de 2007.',u:'https://www.bcn.cl/leychile/navegar?idLey=18290',u2:'https://www.bcn.cl/leychile/navegar?i=1007469'},
  {n:'21.797',t:'Ley Jacinta (2026)',d:'Modifica la Ley de Tránsito para hacer efectiva la exigencia de contar con aptitudes para conducir. Agrega una declaración jurada de salud al obtener o renovar la licencia.',u:'https://www.bcn.cl/leychile/navegar?idLey=21797'},
@@ -501,13 +512,17 @@ R.reforzar=()=>{
  app.querySelectorAll('[data-ev]').forEach(d=>d.onclick=()=>{const k=d.dataset.ev; if(k==='fin'){startSim();} else if(k==='trivia') R.trivia(); else evaluacion(k);});
 };
 R.glosario=()=>{
- app.innerHTML=shead('Glosario','📚 Glosario',`Todas las palabras del glosario oficial del libro y las de la app: ${GLOS.length} en total, de la A a la Z.`)+
+ app.innerHTML=shead('Glosario','📚 Glosario',`${GLOS.length} palabras del libro y de la app. Toca una letra para abrirla, o busca la palabra.`)+
  `<div class="card"><input type="text" id="gq" placeholder="🔍 Buscar una palabra…" style="width:100%"><div id="gl" style="margin-top:10px"></div></div>`;
  const norm=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
- const GCOL=['#fff7d6','#e3f6ef','#e6f2fc','#fde8ef','#efe9fc','#fdeee3'];const draw=()=>{const q=norm($('#gq').value.trim());let last='',gi=0;
-  $('#gl').innerHTML=GLOS.filter(([a,b])=>!q||norm(a+' '+b).includes(q)).map(([a,b])=>{const L=norm(a)[0].toUpperCase();const h=L!==last?`<div class="gletter">${L}</div>`:'';last=L;gi++;return h+`<div class="gitem" style="background:${GCOL[gi%GCOL.length]}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b style="font-size:17px">${esc(a)}</b><button class="spk" data-sp="${esc(a)}: ${esc(b)}">🔊</button></div><div>${esc(b)}</div></div>`;}).join('')||'<p class="muted">No encontré esa palabra.</p>';
-  $('#gl').querySelectorAll('[data-sp]').forEach(x=>x.onclick=e=>speak(x.dataset.sp,e.currentTarget));};
- $('#gq').oninput=draw; draw();
+ const GCOL=['#fff7d6','#e3f6ef','#e6f2fc','#fde8ef','#efe9fc','#fdeee3'];
+ const draw=()=>{const q=norm($('#gq').value.trim());const G={};let gi=0;
+  GLOS.filter(([a,b])=>!q||norm(a+' '+b).includes(q)).forEach(([a,b])=>{const L=norm(a)[0].toUpperCase();(G[L]=G[L]||[]).push([a,b]);});
+  const Ls=Object.keys(G).sort();
+  $('#gl').innerHTML=Ls.length?`<div class="gidx">${Ls.map(L=>`<a href="#" data-gl="${L}">${L}</a>`).join('')}</div>`+Ls.map(L=>`<details class="gdet" id="gd-${L}" ${q?'open':''}><summary>${L} <span>${G[L].length}</span></summary>${G[L].map(([a,b])=>{gi++;return `<div class="gitem" style="background:${GCOL[gi%GCOL.length]}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b style="font-size:17px">${esc(a)}</b><button class="spk" data-sp="${esc(a)}: ${esc(b)}">🔊</button></div><div>${esc(b)}</div></div>`;}).join('')}</details>`).join(''):'<p class="muted">No encontré esa palabra.</p>';
+  $('#gl').querySelectorAll('[data-sp]').forEach(x=>x.onclick=e=>speak(x.dataset.sp,e.currentTarget));
+  $('#gl').querySelectorAll('[data-gl]').forEach(a=>a.onclick=e=>{e.preventDefault();const d=$('#gd-'+a.dataset.gl);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});});};
+$('#gq').oninput=draw; draw();
 };
 R.licencia=()=>{
  app.innerHTML=shead('Requisitos','📋 Proceso y requisitos para la licencia Clase B','Lo que pide la ley para obtener tu primera licencia no profesional Clase B, paso a paso.')+
@@ -558,7 +573,7 @@ R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía',
  };
  $('#alien').onclick=()=>{md.classList.add('on');pregunta();};
  const al=$('#alien'),ai=al.querySelector('.a');
- setInterval(()=>{ai.textContent='💨';ai.classList.add('puff');setTimeout(()=>{ai.classList.remove('puff');ai.textContent='👽';ai.classList.add('pop');setTimeout(()=>ai.classList.remove('pop'),600);},1400);},20000);
+ setInterval(()=>{ai.textContent='💨';ai.classList.add('puff');setTimeout(()=>{ai.classList.remove('puff');ai.textContent='👽';ai.classList.add('pop');setTimeout(()=>ai.classList.remove('pop'),600);},1400);},90000);
  md.onclick=e=>{if(e.target===md)md.classList.remove('on');};
 })();
 const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();

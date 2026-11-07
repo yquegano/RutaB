@@ -2,6 +2,13 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v8 (versión principal)
+Archivo: `versiones/RutaB_2026-11-07_v8.html`. La anterior queda en `versiones/RutaB_2026-11-07_v7.html`.
+- Voz masculina y cálida: elige automáticamente la mejor voz de hombre en español del dispositivo, prefiriendo las naturales o neuronales y las de Chile, más pausada. Si el dispositivo no tiene voz masculina, usa un tono más grave.
+- El resumen hablado ahora es más cercano y coqueto: "Hola, preciosa…".
+- Marciano: fijo abajo a la derecha, solo flota. Sin el cartel "¡Pregunta sorpresa!". Se hace humo cada 90 segundos.
+- Glosario: índice de letras arriba y cada letra como botón desplegable (igual al de "Para Charlotte"), con la cantidad de palabras.
+
 ## 2026-11-07 · v7 (versión principal)
 Archivo: `versiones/RutaB_2026-11-07_v7.html`. La anterior queda en `versiones/RutaB_2026-11-07_v6.html`.
 - Vuelve la dedicatoria de admiración, ahora como botón "💌 Para Charlotte" en "Sobre esta plataforma", que despliega el texto. Se quita el recuadro rosado.
