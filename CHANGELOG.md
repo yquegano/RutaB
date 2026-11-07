@@ -2,6 +2,10 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v4b cute (vista previa)
+Archivo: `versiones/RutaB_2026-11-07_v4b-cute-hojita-vistaprevia.html`
+- La mascota Ruedita 🚗 se cambia por Hojita 🌿, con mensajes de naturaleza y un globo de diálogo verde menta.
+
 ## 2026-11-07 · v4 cute (vista previa, todavía no publicada como principal)
 Archivo: `versiones/RutaB_2026-11-07_v4-cute-vistaprevia.html`
 - Estilo El Sobrinito: letras Chewy y Baloo 2, bordes gruesos con sombra, colores planos sin degradados.
