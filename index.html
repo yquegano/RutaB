@@ -97,7 +97,7 @@ nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
 .hs,.prob{border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta)}
 .hs:nth-child(1){background:var(--sol)}.hs:nth-child(2){background:var(--menta)}.hs:nth-child(3){background:var(--rosa)}.hs:nth-child(4){background:var(--cielo)}
 .hs b{color:var(--tinta)}.prob b{color:var(--lila-d)}
-.sec{color:#fff;text-shadow:3px 3px 0 var(--tinta);font-size:24px}
+.sec{display:inline-block;color:var(--tinta);text-shadow:none;font-size:20px;background:var(--sol);border:3px solid var(--tinta);border-radius:999px;box-shadow:3px 3px 0 var(--tinta);padding:2px 16px;margin:16px 0 8px}
 .comp .ic{border:3px solid var(--tinta)}
 .ev{border-left-width:4px!important}.ev.c1{background:var(--cielo)}.ev.c2{background:var(--sol)}.ev.c3{background:var(--menta)}.ev.c4{background:var(--rosa)}
 .ev .d,.ev .mt{color:var(--tinta)}
@@ -140,6 +140,10 @@ nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
 .tbtn .e{font-size:30px}.tbtn .n{font-size:12px;background:var(--sol);border:2px solid var(--tinta);border-radius:999px;padding:1px 8px}
 .tbtn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--tinta)}
 .pgd{background:#fff;border:3px solid var(--tinta);border-radius:16px;box-shadow:3px 3px 0 var(--tinta);padding:10px 12px;margin:8px 0}.pgd summary{cursor:pointer;font-size:15px}
+.gletter{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta);font-family:'Chewy';font-size:24px;margin:14px 0 6px}
+.gitem{border:2px solid var(--tinta);border-radius:14px;padding:10px 12px;margin:8px 0;color:var(--tinta)}
+.leyes p{margin:0 0 10px;line-height:1.45}
+.dedbtn{margin:10px 0}.dedbtn summary{display:inline-block;cursor:pointer;list-style:none;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);border-radius:999px;box-shadow:4px 4px 0 var(--tinta);padding:8px 18px;font-family:'Chewy';font-size:19px}.dedbtn summary::-webkit-details-marker{display:none}.dedtx{margin-top:10px;border-left:5px solid var(--lila-d);padding:4px 12px}.dedtx p{margin:.4em 0}
 .dedi2{background:var(--rosa);border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:16px;margin:12px 0;text-align:center}
 .dedi2 h3{margin:0 0 6px}.dedi2 p{margin:.3em 0}
 .steps{counter-reset:st;list-style:none;padding:0;margin:0}.steps li{counter-increment:st;position:relative;padding:8px 0 8px 44px;border-bottom:2px dashed #e4dcf3}
@@ -158,7 +162,7 @@ main.wrap{padding-bottom:130px}
 <body>
 <header class="top">
   <div class="logo">🐱</div>
-  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Ejemplo de app para la licencia de vehículo Clase B · Información: Libro para la Conducción en Chile (CONASET), edición febrero 2026</small></div>
+  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Información: Libro para la Conducción en Chile (CONASET), edición febrero 2026</small></div>
 </header>
 <nav class="tabs" id="tabs"></nav>
 <main class="wrap" id="app"></main>
@@ -308,7 +312,7 @@ function speak(text,btn){
 }
 
 // ============ NAV ============
-const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Módulos'],['practicar','✏️ Por tema'],['reforzar','💪 Para reforzar'],['licencia','📋 Requisitos'],['glosario','📚 Glosario'],['fuentes','🌐 Créditos']];
+const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Módulos'],['reforzar','💪 Para reforzar'],['licencia','📋 Requisitos'],['glosario','📚 Glosario'],['fuentes','🌐 Créditos']];
 let cur='inicio', timerId=null;
 function nav(){ $('#tabs').innerHTML=VIEWS.map(([k,l])=>`<button data-v="${k}" class="${cur===k?'on':''}">${l}</button>`).join(''); document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v)); }
 function go(v,arg){ if(timerId){clearInterval(timerId);timerId=null;} try{speechSynthesis.cancel()}catch(e){} curBtn=null; cur=v; try{history.replaceState(null,'','#'+v)}catch(e){} nav(); (R[v]||R.inicio)(arg); window.scrollTo(0,0); }
@@ -354,7 +358,7 @@ const LEYES=[
  {n:'21.797',t:'Ley Jacinta (2026)',d:'Modifica la Ley de Tránsito para hacer efectiva la exigencia de contar con aptitudes para conducir. Agrega una declaración jurada de salud al obtener o renovar la licencia.',u:'https://www.bcn.cl/leychile/navegar?idLey=21797'},
  {n:'20.580',t:'Ley Tolerancia Cero (2012)',d:'Aumenta las sanciones por conducir en estado de ebriedad, bajo la influencia del alcohol o de drogas.',u:'https://www.bcn.cl/leychile/navegar?idLey=20580'},
  {n:'20.770',t:'Ley Emilia (2014)',d:'Endurece las penas por conducir en estado de ebriedad causando lesiones gravísimas o la muerte.',u:'https://www.bcn.cl/leychile/navegar?idLey=20770'}];
-function leyesHTML(){return `<div class="mlist">${LEYES.map(l=>`<div class="mitem" style="cursor:default"><div class="ic" style="background:var(--durazno)">⚖️</div><div style="flex:1"><b>Ley N° ${l.n} · ${l.t}</b><small>${l.d}</small><div class="row" style="margin-top:6px"><a class="bookbtn" style="text-decoration:none" href="${l.u}" target="_blank" rel="noopener">📜 Leer la ley en bcn.cl ↗</a>${l.u2?`<a class="bookbtn" style="text-decoration:none" href="${l.u2}" target="_blank" rel="noopener">📘 Texto vigente (DFL 1) ↗</a>`:''}</div></div></div>`).join('')}</div>`;}
+function leyesHTML(){return `<div class="card leyes">${LEYES.map(l=>`<p><b>⚖️ Ley N° ${l.n} · ${l.t}.</b> ${l.d} <a href="${l.u}" target="_blank" rel="noopener">Leer la ley ↗</a>${l.u2?` · <a href="${l.u2}" target="_blank" rel="noopener">Texto vigente (DFL 1) ↗</a>`:''}</p>`).join('')}<p class="src" style="margin:0">Textos oficiales en la Biblioteca del Congreso Nacional (bcn.cl).</p></div>`;}
 function shead(tag,tit,desc){return `<div class="shead"><h2>${tit}</h2><p>${desc}</p></div>`;}
 R.inicio=()=>{
  const c=compData(), listas=c.filter(x=>x.ok).length;
@@ -420,7 +424,7 @@ function modulo(id){
   b.querySelector('[data-st]').onclick=e=>speak(t,e.currentTarget);
   b.querySelector('[data-tx]').onclick=e=>{const x=b.querySelector('.ptx');const on=x.style.display==='none';x.style.display=on?'block':'none';e.currentTarget.textContent=on?'🙈 Ocultar texto':'📝 Ver texto';};}));
  $('#ok').onclick=e=>{S.mods[id]=1;save();e.currentTarget.textContent='✅ Leído';};
- $('#pr').onclick=()=>{cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===id),'Módulo: '+TEMAS[id]);};
+ $('#pr').onclick=()=>{cur='estudiar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===id),'Módulo: '+TEMAS[id]);};
 }
 R.practicar=()=>{
  app.innerHTML=shead('Por tema','✏️ Practicar por tema','Elige un tema. Tienes respuesta inmediata, la explicación y el lugar exacto del libro en que se basa cada pregunta.')+
@@ -430,7 +434,7 @@ R.practicar=()=>{
 function quiz(ids,titulo){
  ids=shuffle(ids); let k=0, ok=0;
  const step=()=>{
-  if(k>=ids.length){app.innerHTML=`<div class="card"><h2>${esc(titulo)}</h2><div class="big">${ok}/${ids.length}</div><p class="muted">correctas</p><div class="row"><button class="btn" onclick="go('practicar')">Otro tema</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>`;return;}
+  if(k>=ids.length){app.innerHTML=`<div class="card"><h2>${esc(titulo)}</h2><div class="big">${ok}/${ids.length}</div><p class="muted">correctas</p><div class="row"><button class="btn" onclick="go('estudiar')">🧠 Volver a los módulos</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>`;return;}
   const i=ids[k],q=Q[i]; const ord=shuffle(q.o.map((t,j)=>j));
   app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">${k+1}/${ids.length} · ${TEMAS[q.t]}</span><span>${q.d?'<span class="pill d">×2</span> ':''}<button class="spk" id="spk">🔊 Escuchar</button></span></div><h3 style="margin-top:10px">${esc(q.q)}</h3><div id="opts">${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}</div><div id="fb"></div></div>`;
   $('#spk').onclick=e=>speak(q.q+'. '+ord.map(j=>q.o[j]).join('. '),e.currentTarget);
@@ -500,8 +504,8 @@ R.glosario=()=>{
  app.innerHTML=shead('Glosario','📚 Glosario',`Todas las palabras del glosario oficial del libro y las de la app: ${GLOS.length} en total, de la A a la Z.`)+
  `<div class="card"><input type="text" id="gq" placeholder="🔍 Buscar una palabra…" style="width:100%"><div id="gl" style="margin-top:10px"></div></div>`;
  const norm=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
- const draw=()=>{const q=norm($('#gq').value.trim());let last='';
-  $('#gl').innerHTML=GLOS.filter(([a,b])=>!q||norm(a+' '+b).includes(q)).map(([a,b])=>{const L=norm(a)[0].toUpperCase();const h=L!==last?`<div class="sec" style="font-size:22px;margin:12px 0 4px">${L}</div>`:'';last=L;return h+`<div style="padding:8px 0;border-bottom:2px dashed #e4dcf3"><b>${esc(a)}</b><div>${esc(b)}</div><button class="spk" style="margin-top:4px" data-sp="${esc(a)}: ${esc(b)}">🔊</button></div>`;}).join('')||'<p class="muted">No encontré esa palabra.</p>';
+ const GCOL=['#fff7d6','#e3f6ef','#e6f2fc','#fde8ef','#efe9fc','#fdeee3'];const draw=()=>{const q=norm($('#gq').value.trim());let last='',gi=0;
+  $('#gl').innerHTML=GLOS.filter(([a,b])=>!q||norm(a+' '+b).includes(q)).map(([a,b])=>{const L=norm(a)[0].toUpperCase();const h=L!==last?`<div class="gletter">${L}</div>`:'';last=L;gi++;return h+`<div class="gitem" style="background:${GCOL[gi%GCOL.length]}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b style="font-size:17px">${esc(a)}</b><button class="spk" data-sp="${esc(a)}: ${esc(b)}">🔊</button></div><div>${esc(b)}</div></div>`;}).join('')||'<p class="muted">No encontré esa palabra.</p>';
   $('#gl').querySelectorAll('[data-sp]').forEach(x=>x.onclick=e=>speak(x.dataset.sp,e.currentTarget));};
  $('#gq').oninput=draw; draw();
 };
@@ -530,14 +534,15 @@ R.licencia=()=>{
  <p class="src">Fuente: ChileAtiende, ficha "Licencia de conducir no profesional (clase B)" (actualizada el 31 de marzo de 2026), y Ley de Tránsito (bcn.cl). Revisa siempre los requisitos de tu municipalidad antes de ir.</p>`;
 };
 R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía','Las fuentes oficiales en que se basa RutaB y quién la hizo.')+
-`<div class="blk ley"><div class="bl">📜 Normativa oficial</div>Textos oficiales en la Biblioteca del Congreso Nacional (bcn.cl).</div>${leyesHTML()}
+`<div class="sec">📜 Normativa oficial</div>${leyesHTML()}
 <div class="blk tem"><div class="bl">🚦 CONASET y Ministerio de Transportes</div><ul>
 <li><b>Libro para la Conducción en Chile — Automovilistas, Licencia Clase B</b>, CONASET, edición febrero 2026. Las páginas que ves en 📖 Libro son de ese documento. Descarga gratuita en <a href="https://mejoresconductores.conaset.cl" target="_blank" rel="noopener">mejoresconductores.conaset.cl ↗</a></li>
 <li><a href="https://energia.gob.cl/noticias/nacional/nuevo-libro-del-conductor-con-enfasis-en-electromovilidad-y-seguridad-infantil" target="_blank" rel="noopener">Gobierno de Chile: nuevo Libro del Conductor y examen Nexteo ↗</a></li></ul></div>
 <div class="blk sab"><div class="bl">🏛️ Trámites</div><ul>
 <li><a href="https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b" target="_blank" rel="noopener">ChileAtiende: licencia de conducir no profesional Clase B ↗</a></li>
 <li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b" target="_blank" rel="noopener">PracticaTest: formato y puntaje del examen teórico ↗</a></li></ul></div>
-<div class="card"><h3>✨ Sobre esta plataforma</h3><p><b>RutaB · Licencia Clase B</b> es un ejemplo de app de estudio para el examen teórico de la licencia Clase B. Funciona en el navegador y guarda tu avance en tu dispositivo.</p><div class="dedi2" style="margin:10px 0"><p style="font-size:18px">“Nunca permitas que el mundo te haga olvidar lo increíble que eres.”</p><p class="muted" style="margin:0">Para Charlotte Valenzuela 🐱</p></div><p class="muted">Es material de estudio independiente: no es una app oficial de CONASET ni reemplaza a una escuela de conductores. Revisa siempre las fuentes oficiales.</p>
+<div class="card"><h3>✨ Sobre esta plataforma</h3><p><b>RutaB · Licencia Clase B</b> es una app de estudio para el examen teórico de la licencia Clase B. Funciona en el navegador y guarda tu avance en tu dispositivo.</p><p class="muted">Es material de estudio independiente: no es una app oficial de CONASET ni reemplaza a una escuela de conductores. Revisa siempre las fuentes oficiales.</p>
+<details class="dedbtn"><summary>💌 Para Charlotte</summary><div class="dedtx"><p>Para <b>Charlotte Valenzuela</b>, con toda mi admiración.</p><p>Por tu valentía para aprender cosas nuevas, por tu constancia y por esa forma tuya de no rendirte nunca. Esta ruta es para que llegues lejos, segura y libre: cada pregunta que respondas es un kilómetro más hacia tu meta.</p><p>Con cariño, Johanna 🐱</p></div></details>
 <div style="border-top:3px dashed #e4dcf3;margin-top:10px;padding-top:10px"><div class="bl" style="font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Desarrolladora</div><div style="font-size:18px;font-weight:800">Johanna Torres</div><div class="muted">Desarrolladora de herramientas educativas y apps web</div>
 <div class="row" style="margin-top:8px"><a class="btn o" href="mailto:johanna.ttorres@gmail.com">📧 johanna.ttorres@gmail.com</a><a class="btn o" href="https://www.linkedin.com/in/johannattorres/" target="_blank" rel="noopener">💼 LinkedIn</a></div></div></div>`;};
 
@@ -553,7 +558,7 @@ R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía',
  };
  $('#alien').onclick=()=>{md.classList.add('on');pregunta();};
  const al=$('#alien'),ai=al.querySelector('.a');
- setInterval(()=>{ai.textContent='💨';ai.classList.add('puff');setTimeout(()=>{ai.classList.remove('puff');const L=Math.random()<.5;al.style.left=L?'16px':'auto';al.style.right=L?'auto':'16px';al.style.alignItems=L?'flex-start':'flex-end';ai.textContent='👽';ai.classList.add('pop');setTimeout(()=>ai.classList.remove('pop'),600);},1400);},20000);
+ setInterval(()=>{ai.textContent='💨';ai.classList.add('puff');setTimeout(()=>{ai.classList.remove('puff');ai.textContent='👽';ai.classList.add('pop');setTimeout(()=>ai.classList.remove('pop'),600);},1400);},20000);
  md.onclick=e=>{if(e.target===md)md.classList.remove('on');};
 })();
 const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();

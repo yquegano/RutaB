@@ -1,6 +1,6 @@
 # RutaB · Licencia Clase B (Chile) 🐱
 
-Ejemplo de app para estudiar el examen teórico de la licencia de conducir **Clase B**, basada en la
+App para estudiar el examen teórico de la licencia de conducir **Clase B**, basada en la
 **Ley de Tránsito N° 18.290** (DFL N° 1 de 2007) y en el *Libro para la Conducción en Chile — Automovilistas*
 de CONASET (edición febrero 2026).
 
@@ -8,13 +8,13 @@ App: https://yquegano.github.io/RutaB/
 
 - 8 módulos con objetivo, puntos a tratar y lo que debes saber.
 - 82 preguntas con explicación y la página exacta del libro, destacada en amarillo.
-- Libro completo (170 páginas), práctica por tema y sección "Para reforzar".
+- Libro completo (170 páginas), sección "Para reforzar".
 - Diagnóstico inicial, evaluación intermedia, evaluación final (formato real: 35 preguntas, 45 min) y trivia de 80 preguntas con 5 vidas.
 - Pregunta sorpresa del marciano 👽.
 - Contenido completo del libro dentro de cada módulo y glosario oficial completo.
 - Requisitos y proceso para obtener la licencia, con links directos a las leyes 18.290, 21.797, 20.580 y 20.770 (bcn.cl) y a ChileAtiende.
 
-“Nunca permitas que el mundo te haga olvidar lo increíble que eres.” — Para **Charlotte Valenzuela**.
+Dedicada con admiración a **Charlotte Valenzuela**.
 
 Desarrollada por **Johanna Torres** · johanna.ttorres@gmail.com · [LinkedIn](https://www.linkedin.com/in/johannattorres/)
 

@@ -2,6 +2,16 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v7 (versión principal)
+Archivo: `versiones/RutaB_2026-11-07_v7.html`. La anterior queda en `versiones/RutaB_2026-11-07_v6.html`.
+- Vuelve la dedicatoria de admiración, ahora como botón "💌 Para Charlotte" en "Sobre esta plataforma", que despliega el texto. Se quita el recuadro rosado.
+- Se elimina la sección "Por tema": se practica desde cada módulo.
+- Las 4 leyes quedan juntas en un solo recuadro blanco, con sus links.
+- La burbuja del marciano queda siempre a la derecha.
+- Glosario con mejor contraste: letra en círculo de color y cada palabra con un fondo pastel.
+- Los títulos de sección dejan de ser texto blanco: ahora son etiquetas amarillas.
+- Se quita "Ejemplo de app…" del encabezado y la palabra "ejemplo" de Créditos.
+
 ## 2026-11-07 · v6 (versión principal)
 Archivo: `versiones/RutaB_2026-11-07_v6.html`. La anterior queda en `versiones/RutaB_2026-11-07_v5.html`.
 - Se elimina toda referencia al Automóvil Club.
