@@ -77,15 +77,90 @@ input[type=range]{accent-color:#7b62d6}
 @media(max-width:520px){.badges{display:none}}
 @media(max-width:520px){header.top h1{font-size:17px!important}.top small{font-size:11px}.vol input{width:60px!important}}
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style id="cute">
+:root{--sol:#FFE08A;--durazno:#FFCBA4;--lila:#C9B6F0;--lila-d:#A98FE0;--cielo:#A9DCF2;--limon:#C2E89A;--menta:#A8E6D4;--rosa:#FFC4D6;--verde:#A5DD8A;--crema:#FFFCF5;--tinta:#2E2435;
+ --bg:#C9B6F0;--ink:#2E2435;--line:#2E2435;--lav:#C9B6F0;--mint:#A8E6D4;--pink:#FFC4D6;--sky:#A9DCF2;--sun:#FFE08A;--coral:#FFCBA4;--muted:#5d5170}
+body{font-family:'Baloo 2',system-ui,sans-serif;font-weight:600;background:var(--lila);font-size:17px}
+h1,h2,h3,.big,.timer,.nm,.sec,.ev .t,.hs b,.prob b,.stat b{font-family:'Chewy',cursive!important;font-weight:400;letter-spacing:.3px}
+header.top{background:var(--lila);border-bottom:0}
+header.top h1{color:#fff;text-shadow:3px 3px 0 var(--tinta);font-size:24px!important}
+.top small{color:var(--tinta);font-weight:700}
+.logo{border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta);font-family:'Chewy';color:var(--lila-d);background:var(--sol)}
+.bdg{border:3px solid var(--tinta);box-shadow:2px 2px 0 var(--tinta);background:var(--sol)}
+nav.tabs{background:var(--lila);border-bottom:0;backdrop-filter:none}
+nav.tabs button{border:3px solid var(--tinta);box-shadow:2px 2px 0 var(--tinta);font-weight:800}
+nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
+.card,.hero,.comp,.ev,.dedi,.viewer{border:4px solid var(--tinta)!important;box-shadow:6px 6px 0 var(--tinta);border-radius:24px}
+.card,.comp,.ev{background:#fff}
+.hero{background:var(--crema)}
+.hs,.prob{border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta)}
+.hs:nth-child(1){background:var(--sol)}.hs:nth-child(2){background:var(--menta)}.hs:nth-child(3){background:var(--rosa)}.hs:nth-child(4){background:var(--cielo)}
+.hs b{color:var(--tinta)}.prob b{color:var(--lila-d)}
+.sec{color:#fff;text-shadow:3px 3px 0 var(--tinta);font-size:24px}
+.comp .ic{border:3px solid var(--tinta)}
+.ev{border-left-width:4px!important}.ev.c1{background:var(--cielo)}.ev.c2{background:var(--sol)}.ev.c3{background:var(--menta)}.ev.c4{background:var(--rosa)}
+.ev .d,.ev .mt{color:var(--tinta)}
+.btn,.spk,.bookbtn{border:3px solid var(--tinta)!important;border-radius:100px;box-shadow:4px 4px 0 var(--tinta)!important;font-weight:800;color:var(--tinta)}
+.btn{background:var(--lila-d);color:#fff;font-family:'Chewy';font-size:19px;font-weight:400;padding:9px 20px}
+.btn.y{background:var(--sol);color:var(--tinta)}.btn.m{background:var(--menta);color:var(--tinta)}.btn.p{background:var(--rosa);color:var(--tinta)}.btn.o{background:#fff;color:var(--tinta)}
+.btn:active,.spk:active,.opt:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--tinta)!important}
+.opt{border:3px solid var(--tinta);border-radius:18px;box-shadow:4px 4px 0 var(--tinta);background:#fff;font-weight:700}
+.opt.ok{background:var(--verde);border-color:var(--tinta);animation:pop .4s}.opt.bad{background:var(--rosa);border-color:var(--tinta);animation:shake .4s}
+@keyframes pop{40%{transform:scale(1.04)}}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.exp{border:3px dashed var(--tinta);border-radius:16px;background:var(--crema)}
+.pill{background:var(--sol);color:var(--tinta);border:2px solid var(--tinta)}.pill.d{background:var(--durazno)}
+.bar{background:#fff;border:2px solid var(--tinta);height:14px}.bar i{background:var(--verde)}
+.dedi{background:var(--rosa);font-family:'Chewy';font-size:20px;font-weight:400}
+.big{color:var(--lila-d);text-shadow:3px 3px 0 var(--tinta)}
+.mascota{display:flex;align-items:center;gap:12px;margin-bottom:12px;cursor:pointer}
+.robot{font-size:62px;line-height:1;animation:idle 3s ease-in-out infinite;filter:drop-shadow(0 5px 0 rgba(0,0,0,.12))}
+.robot.talk{animation:talk .35s ease-in-out infinite}
+@keyframes idle{50%{transform:translateY(-8px)}}@keyframes talk{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.08) rotate(4deg)}}
+.bubble{flex:1;background:var(--menta);border:3px solid var(--tinta);border-radius:18px;padding:10px 12px;font-size:16px;position:relative;font-weight:700}
+.bubble::before{content:'';position:absolute;left:-13px;top:50%;transform:translateY(-50%);border-top:10px solid transparent;border-bottom:10px solid transparent;border-right:13px solid var(--tinta)}
+.hearts{font-size:26px}
+
+.shead{background:#fff;border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:14px 16px;margin:12px 0}
+.shead .tg{display:inline-block;background:var(--sol);border:2px solid var(--tinta);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:800}
+.shead h2{margin:6px 0 2px}.shead p{margin:0;color:var(--muted);font-size:15px}
+.mlist{display:grid;gap:10px}
+.mitem{display:flex;gap:12px;align-items:center;background:#fff;border:3px solid var(--tinta);border-radius:20px;box-shadow:4px 4px 0 var(--tinta);padding:12px;cursor:pointer}
+.mitem .ic{width:48px;height:48px;border-radius:14px;border:3px solid var(--tinta);display:grid;place-items:center;font-size:24px;flex-shrink:0}
+.mitem b{display:block;font-size:16px}.mitem small{color:var(--muted);font-size:13px;display:block;line-height:1.3}
+.mhdr{border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:16px;margin:12px 0;background:var(--sol)}
+.mhdr .mic{font-size:40px}.mhdr .mtag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.mhdr h2{margin:4px 0}.mhdr .mmeta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:800;margin-top:6px}
+.blk{border:3px solid var(--tinta);border-radius:18px;padding:12px 14px;margin:10px 0;background:#fff}
+.blk .bl{font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.blk.obj{background:var(--menta)}.blk.tem{background:var(--cielo)}.blk.sab{background:#fff}.blk.ley{background:var(--durazno)}
+.blk ul{margin:.2em 0 0;padding-left:1.2em}.blk li{margin:.3em 0}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;min-height:110px;background:#fff;border:3px solid var(--tinta);border-radius:20px;box-shadow:4px 4px 0 var(--tinta);padding:12px;font-family:inherit;font-weight:800;font-size:15px;color:var(--tinta)}
+.tbtn .e{font-size:30px}.tbtn .n{font-size:12px;background:var(--sol);border:2px solid var(--tinta);border-radius:999px;padding:1px 8px}
+.tbtn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--tinta)}
+.dedi2{background:var(--rosa);border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:16px;margin:12px 0;text-align:center}
+.dedi2 h3{margin:0 0 6px}.dedi2 p{margin:.3em 0}
+.steps{counter-reset:st;list-style:none;padding:0;margin:0}.steps li{counter-increment:st;position:relative;padding:8px 0 8px 44px;border-bottom:2px dashed #e4dcf3}
+.steps li::before{content:counter(st);position:absolute;left:0;top:6px;width:32px;height:32px;border-radius:50%;background:var(--sol);border:3px solid var(--tinta);display:grid;place-items:center;font-family:'Chewy';font-size:18px}
+main.wrap{padding-bottom:130px}
+#alien{position:fixed;right:16px;bottom:18px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:6px;cursor:pointer}
+#alien .a{width:66px;height:66px;border-radius:50%;background:var(--limon);border:4px solid var(--tinta);box-shadow:4px 4px 0 var(--tinta);display:grid;place-items:center;font-size:36px;animation:flot 3s ease-in-out infinite}
+#alien .t{background:#fff;border:3px solid var(--tinta);border-radius:16px;padding:4px 10px;font-size:13px;font-weight:800;box-shadow:2px 2px 0 var(--tinta)}
+@keyframes flot{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+#amodal{position:fixed;inset:0;background:rgba(46,36,53,.45);z-index:40;display:none;align-items:flex-end;justify-content:center;padding:12px}
+#amodal.on{display:flex}#amodal .box{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:#fff;border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:16px}
+</style>
 </head>
 <body>
 <header class="top">
-  <div class="logo">B</div>
-  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Libro para la Conducción en Chile — CONASET, edición febrero 2026 · para Charlotte 💜</small></div>
-  <div class="badges"><span class="bdg">⚡ <b id="xpd">0</b> XP</span><span class="bdg">🔥 <b id="rcd">0</b> días</span></div><div class="vol" title="Volumen de la voz">🔈<input id="vol" type="range" min="0.1" max="1" step="0.1" style="width:80px"></div>
+  <div class="logo">🐱</div>
+  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Ejemplo de app para la licencia de vehículo Clase B · Información: Libro para la Conducción en Chile (CONASET), edición febrero 2026</small></div>
 </header>
 <nav class="tabs" id="tabs"></nav>
 <main class="wrap" id="app"></main>
+<div id="alien" title="Pregunta sorpresa"><div class="t">¡Pregunta sorpresa!</div><div class="a">👽</div></div>
+<div id="amodal"><div class="box" id="abox"></div></div>
 
 <script>
 const TEMAS={sin:'Siniestros y física',veh:'El vehículo y seguridad',per:'La persona en el tránsito',vul:'Usuarios vulnerables y niños',cir:'Normas de circulación',est:'Estacionamiento',esp:'Circunstancias especiales',lic:'Proceso de licencia'};
@@ -174,14 +249,14 @@ const Q=[
 {t:'est',q:'Estacionas de noche en una vía pública sin alumbrado. ¿Qué debes hacer?',o:['Apagar todas las luces para ahorrar batería','Encender las luces de estacionamiento y estacionar al lado derecho en el sentido del tránsito','Dejar las luces altas encendidas','Estacionar en cualquier lado de la calzada'],a:1,e:'En una vía sin alumbrado enciende las luces de estacionamiento (puedes sumar la luz interior) y estaciona siempre al lado derecho en el sentido del tránsito.',p:112},
 ];
 const MODULOS=[
- {id:'sin',ic:'⚠️',tit:'1. Siniestros y física de la conducción',p:'pp. 6–25',pts:['Se dice "siniestro", no "accidente": son evitables.','Falla humana presente en más del 90% de los siniestros.','30→50 km/h: la probabilidad de muerte del peatón se multiplica por 8. A 30 km/h sobrevive el 90%; a 45 km/h o más, menos del 50%.','Tiempo normal de reacción: 1 segundo (36 km/h = 10 m; 72 km/h = 20 m).','Distancia de frenado: al duplicar la velocidad, se multiplica por 4; al triplicarla, por 9.','Detención en seco: ~25 m a 50 km/h; ~80 m a 100 km/h.']},
- {id:'veh',ic:'🚗',tit:'2. El vehículo y elementos de seguridad',p:'pp. 11–32',pts:['Neumáticos: surcos de al menos 3 mm aconsejables; bajo 1,6 mm empeora mucho el agarre en mojado.','Choque a 50 km/h sin cinturón = caer desde un 4.º piso. Sin cinturón se duplica la probabilidad de morir.','Nada de toallas ni cojines en el asiento (efecto submarino).','Apoya cabezas a la altura de las orejas.','Al cargar combustible: motor apagado, sin cigarro, sin celular.','Luces delanteras: altas/bajas, 2 de estacionamiento, 2 destellantes de viraje.']},
- {id:'per',ic:'🧠',tit:'3. La persona: alcohol, drogas, sueño',p:'pp. 37–66',pts:['0,31–0,79 g/l = bajo la influencia → multas y suspensión.','0,8 g/l o más = estado de ebriedad → multas, cancelación y cárcel.','Ley Tolerancia Cero (2012); Ley Emilia (2014): cárcel efectiva mínima 1 año si ebrio causas lesiones gravísimas o muerte.','0,3–0,5 g/l: riesgo ×2; 0,5–0,8 g/l: riesgo ×5. El alcohol reduce la visión periférica.','Negarse sin justificación al test tras un siniestro también se sanciona.','Viajes largos: descanso de 20–30 min cada 2 horas o 200 km.']},
- {id:'vul',ic:'🧒',tit:'4. Usuarios vulnerables y niños',p:'pp. 68–76',pts:['Ciclistas: al menos 1,5 m de distancia lateral. Prohibido circular, detenerse o estacionar en ciclovías.','Menores de 12 años: asiento trasero (salvo cabina simple).','SRI obligatorio hasta 8 años inclusive o ≤135 cm y 33 kg.','SRI a contramarcha el mayor tiempo posible (mínimo hasta los 2 años).','Etiqueta de certificación: amarilla con letras negras.','Niños actúan con seguridad en el tránsito recién entre los 9 y 12 años.']},
- {id:'cir',ic:'🚦',tit:'5. Normas de circulación',p:'pp. 77–103',pts:['Roja intermitente = ceda el paso. Amarilla intermitente = peligro, velocidad reducida.','Con verde no avances si no hay 10 m libres después del cruce. Al virar, cede a peatones y ciclistas.','Cruce sin señales: preferencia al que viene por tu derecha. Al virar pierdes la preferencia.','Rotonda: cedes a quienes ya circulan; señalizas a la derecha tras la salida anterior a la tuya.','Señaliza al menos 30 m antes de virar. Espejo – señal – maniobra.','Velocidades: urbana 50; rural 1 pista/sentido 100; 2+ pistas 120; buses/camiones/escolares 90.','Adelanta siempre por la izquierda; no a menos de 200 m de puente, túnel o cruce ferroviario. Sin U a menos de 200 m de curva, cima, puente o túnel.']},
- {id:'est',ic:'🅿️',tit:'6. Estacionamiento y detención',p:'pp. 104–105',pts:['Paralelo a no más de 30 cm de la cuneta; 60 cm de otros vehículos.','Subida: ruedas hacia la calzada. Bajada: hacia la cuneta.','Grifo: 5 m. PARE / Ceda el Paso / advertencias / bomberos / hospitales: 10 m. Puertas de colegios, iglesias, hoteles: 3 m (horas de afluencia).','Línea amarilla continua en la solera: no estacionar.','En semáforo, distancia correcta = ves los neumáticos traseros del de adelante.']},
- {id:'esp',ic:'🌧️',tit:'7. Circunstancias especiales y electromovilidad',p:'pp. 108–150',pts:['Aquaplaning: capa de agua entre neumático y calzada; reduce la velocidad.','Autopista: detenerse solo por emergencia o si lo pide Carabineros.','Falla en autopista: berma, luces de advertencia, salir por la derecha, chaleco reflectante. No poner triángulo en la calzada de la autopista.','Vehículo eléctrico: siempre portar el cable de viaje y planificar la carga.']},
- {id:'lic',ic:'📝',tit:'8. El examen y el proceso',p:'p. 169 + CONASET/MTT',pts:['Examen teórico Clase B (Nexteo): 35 preguntas, 38 puntos; se aprueba con 33. Tres preguntas valen doble.','Las preguntas de doble puntaje se vinculan a alcohol, velocidad, cinturón y sistemas de retención infantil.','Tiempo máximo: 45 minutos.','Dos oportunidades por examen; repetición dentro de 25 días hábiles.']}
+ {id:'sin',desc:'Por qué ocurren los siniestros de tránsito y cómo la velocidad cambia todo: reacción, frenado y energía del choque.',obj:'Comprender que los siniestros son evitables y calcular cómo la velocidad aumenta el tiempo de reacción, la distancia de frenado y la gravedad de un impacto.',tem:['Siniestro, no accidente', 'Falla humana', 'Velocidad y peatones', 'Tiempo de reacción', 'Distancia de frenado'],pg:5,ic:'⚠️',tit:'1. Siniestros y física de la conducción',p:'pp. 6–25',pts:['Se dice "siniestro", no "accidente": son evitables.','Falla humana presente en más del 90% de los siniestros.','30→50 km/h: la probabilidad de muerte del peatón se multiplica por 8. A 30 km/h sobrevive el 90%; a 45 km/h o más, menos del 50%.','Tiempo normal de reacción: 1 segundo (36 km/h = 10 m; 72 km/h = 20 m).','Distancia de frenado: al duplicar la velocidad, se multiplica por 4; al triplicarla, por 9.','Detención en seco: ~25 m a 50 km/h; ~80 m a 100 km/h.']},
+ {id:'veh',desc:'Cómo revisar tu auto y usar bien sus elementos de seguridad: neumáticos, cinturón, asientos, luces y carga de combustible.',obj:'Reconocer los elementos de seguridad del vehículo y usarlos correctamente para protegerte a ti y a tus pasajeros.',tem:['Neumáticos', 'Cinturón de seguridad', 'Asientos y apoya cabezas', 'Combustible', 'Luces'],pg:10,ic:'🐱',tit:'2. El vehículo y elementos de seguridad',p:'pp. 11–32',pts:['Neumáticos: surcos de al menos 3 mm aconsejables; bajo 1,6 mm empeora mucho el agarre en mojado.','Choque a 50 km/h sin cinturón = caer desde un 4.º piso. Sin cinturón se duplica la probabilidad de morir.','Nada de toallas ni cojines en el asiento (efecto submarino).','Apoya cabezas a la altura de las orejas.','Al cargar combustible: motor apagado, sin cigarro, sin celular.','Luces delanteras: altas/bajas, 2 de estacionamiento, 2 destellantes de viraje.']},
+ {id:'per',desc:'Cómo el alcohol, las drogas, el cansancio y el sueño afectan a quien conduce, y qué dice la ley.',obj:'Identificar los límites de alcohol de la Ley de Tránsito, sus sanciones (Tolerancia Cero y Ley Emilia) y cómo prevenir la fatiga al volante.',tem:['Alcohol: límites y sanciones', 'Ley Tolerancia Cero y Ley Emilia', 'Efectos en la visión y el riesgo', 'Fatiga y descansos'],pg:36,ic:'🧠',tit:'3. La persona: alcohol, drogas, sueño',p:'pp. 37–66',pts:['0,31–0,79 g/l = bajo la influencia → multas y suspensión.','0,8 g/l o más = estado de ebriedad → multas, cancelación y cárcel.','Ley Tolerancia Cero (2012); Ley Emilia (2014): cárcel efectiva mínima 1 año si ebrio causas lesiones gravísimas o muerte.','0,3–0,5 g/l: riesgo ×2; 0,5–0,8 g/l: riesgo ×5. El alcohol reduce la visión periférica.','Negarse sin justificación al test tras un siniestro también se sanciona.','Viajes largos: descanso de 20–30 min cada 2 horas o 200 km.']},
+ {id:'vul',desc:'Peatones, ciclistas y niños: quienes tienen más riesgo en la vía y cómo protegerlos.',obj:'Aplicar las reglas de convivencia con usuarios vulnerables y transportar correctamente a niñas y niños con su sistema de retención infantil (SRI).',tem:['Ciclistas y ciclovías', 'Niños en el asiento trasero', 'Sillas para niños (SRI)', 'Certificación del SRI'],pg:67,ic:'🧒',tit:'4. Usuarios vulnerables y niños',p:'pp. 68–76',pts:['Ciclistas: al menos 1,5 m de distancia lateral. Prohibido circular, detenerse o estacionar en ciclovías.','Menores de 12 años: asiento trasero (salvo cabina simple).','SRI obligatorio hasta 8 años inclusive o ≤135 cm y 33 kg.','SRI a contramarcha el mayor tiempo posible (mínimo hasta los 2 años).','Etiqueta de certificación: amarilla con letras negras.','Niños actúan con seguridad en el tránsito recién entre los 9 y 12 años.']},
+ {id:'cir',desc:'Las reglas para moverte por la vía: semáforos, preferencias, rotondas, velocidades y adelantamientos.',obj:'Aplicar las normas de circulación de la Ley de Tránsito para decidir quién pasa primero, a qué velocidad ir y cuándo adelantar o virar.',tem:['Semáforos', 'Derecho preferente de paso', 'Rotondas', 'Señalizar y virar', 'Velocidades máximas', 'Adelantar y virar en U'],pg:76,ic:'🚦',tit:'5. Normas de circulación',p:'pp. 77–103',pts:['Roja intermitente = ceda el paso. Amarilla intermitente = peligro, velocidad reducida.','Con verde no avances si no hay 10 m libres después del cruce. Al virar, cede a peatones y ciclistas.','Cruce sin señales: preferencia al que viene por tu derecha. Al virar pierdes la preferencia.','Rotonda: cedes a quienes ya circulan; señalizas a la derecha tras la salida anterior a la tuya.','Señaliza al menos 30 m antes de virar. Espejo – señal – maniobra.','Velocidades: urbana 50; rural 1 pista/sentido 100; 2+ pistas 120; buses/camiones/escolares 90.','Adelanta siempre por la izquierda; no a menos de 200 m de puente, túnel o cruce ferroviario. Sin U a menos de 200 m de curva, cima, puente o túnel.']},
+ {id:'est',desc:'Dónde y cómo estacionar o detenerte sin poner en riesgo a nadie.',obj:'Estacionar respetando las distancias y prohibiciones que establece la Ley de Tránsito.',tem:['Estacionar en paralelo', 'Pendientes', 'Distancias prohibidas', 'Líneas amarillas'],pg:104,ic:'🅿️',tit:'6. Estacionamiento y detención',p:'pp. 104–105',pts:['Paralelo a no más de 30 cm de la cuneta; 60 cm de otros vehículos.','Subida: ruedas hacia la calzada. Bajada: hacia la cuneta.','Grifo: 5 m. PARE / Ceda el Paso / advertencias / bomberos / hospitales: 10 m. Puertas de colegios, iglesias, hoteles: 3 m (horas de afluencia).','Línea amarilla continua en la solera: no estacionar.','En semáforo, distancia correcta = ves los neumáticos traseros del de adelante.']},
+ {id:'esp',desc:'Lluvia, autopistas, fallas del vehículo y autos eléctricos: qué hacer cuando las condiciones cambian.',obj:'Adaptar la conducción a circunstancias especiales y actuar con seguridad ante una falla o emergencia.',tem:['Lluvia y aquaplaning', 'Autopistas', 'Fallas y emergencias', 'Electromovilidad'],pg:108,ic:'🌧️',tit:'7. Circunstancias especiales y electromovilidad',p:'pp. 108–150',pts:['Aquaplaning: capa de agua entre neumático y calzada; reduce la velocidad.','Autopista: detenerse solo por emergencia o si lo pide Carabineros.','Falla en autopista: berma, luces de advertencia, salir por la derecha, chaleco reflectante. No poner triángulo en la calzada de la autopista.','Vehículo eléctrico: siempre portar el cable de viaje y planificar la carga.']},
+ {id:'lic',desc:'Cómo es el examen teórico y el proceso para obtener la licencia Clase B.',obj:'Conocer el formato del examen teórico y las reglas del proceso para llegar preparada el día de la prueba.',tem:['Formato del examen', 'Preguntas de doble puntaje', 'Tiempo máximo', 'Oportunidades'],pg:167,ic:'📝',tit:'8. El examen y el proceso',p:'p. 169 + CONASET/MTT',pts:['Examen teórico Clase B (Nexteo): 35 preguntas, 38 puntos; se aprueba con 33. Tres preguntas valen doble.','Las preguntas de doble puntaje se vinculan a alcohol, velocidad, cinturón y sistemas de retención infantil.','Tiempo máximo: 45 minutos.','Dos oportunidades por examen; repetición dentro de 25 días hábiles.']}
 ];
 const GLOS=[['Siniestro de tránsito','Término que reemplaza a "accidente": los siniestros son evitables.'],['SRI','Sistema de Retención Infantil: silla o alzador certificado según peso, talla y desarrollo.'],['ISOFIX / LATCH','Sistemas de anclaje del SRI al vehículo.'],['Efecto submarino','Deslizamiento del cuerpo por debajo de la banda abdominal del cinturón en un choque.'],['Distancia de reacción','Metros recorridos mientras reaccionas (≈1 segundo).'],['Distancia de frenado','Metros desde que pisas el freno hasta detenerte; crece con el cuadrado de la velocidad.'],['Aquaplaning','Pérdida de adherencia por una capa de agua entre neumático y calzada.'],['Ceder el paso','Que quien tiene preferencia no cambie su trayectoria ni su velocidad por tu maniobra.'],['Sobrepaso','Ponerse delante de otro vehículo sin invadir la pista contraria (no es adelantamiento legal).'],['Nexteo','Plataforma digital del examen teórico en las Direcciones de Tránsito.'],['Bajo la influencia del alcohol','0,31 a 0,79 gramos por mil de alcohol en la sangre.'],['Estado de ebriedad','0,8 o más gramos por mil de alcohol en la sangre.']];
 
@@ -207,7 +282,7 @@ if(!Array.isArray(S.dias))S.dias=[]; if(!S.dias.includes(hoy())){S.dias.push(hoy
 function racha(){const set=new Set(S.dias);let n=0;const d=new Date();while(true){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');if(set.has(k)){n++;d.setDate(d.getDate()-1);}else break;}return n;}
 setInterval(()=>{if(document.visibilityState==='visible'){S.mins=(S.mins||0)+1;save();hdr();}},60000);
 function hdr(){const a=$('#xpd'),b=$('#rcd');if(a)a.textContent=S.xp||0;if(b)b.textContent=racha();}
-$('#vol').value=S.vol; $('#vol').oninput=e=>{S.vol=+e.target.value;save();};
+
 
 // ---- Voz (misma configuración que RutaSEC: es-CL, velocidad 0.9, tono 1.05, primera voz en español) + volumen
 let curBtn=null;
@@ -227,7 +302,7 @@ function speak(text,btn){
 }
 
 // ============ NAV ============
-const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Módulos'],['practicar','✏️ Por tema'],['simulacro','⏱️ Simulacro'],['trivia','🔥 Trivia'],['reforzar','💪 Para reforzar'],['glosario','📚 Glosario'],['fuentes','🔎 Fuentes']];
+const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Módulos'],['practicar','✏️ Por tema'],['reforzar','💪 Para reforzar'],['licencia','📋 Requisitos'],['glosario','📚 Glosario'],['fuentes','🌐 Créditos']];
 let cur='inicio', timerId=null;
 function nav(){ $('#tabs').innerHTML=VIEWS.map(([k,l])=>`<button data-v="${k}" class="${cur===k?'on':''}">${l}</button>`).join(''); document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v)); }
 function go(v,arg){ if(timerId){clearInterval(timerId);timerId=null;} try{speechSynthesis.cancel()}catch(e){} curBtn=null; cur=v; try{history.replaceState(null,'','#'+v)}catch(e){} nav(); (R[v]||R.inicio)(arg); window.scrollTo(0,0); }
@@ -243,7 +318,7 @@ R.libro=(arg)=>{
  const render=()=>{
   const qs=Q.map((q,i)=>i).filter(i=>HL[i]&&HL[i].p===libroPag);
   const cap=CAPS.filter(c=>c[0]<=libroPag).pop();
-  app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">📖 ${esc(cap[1])}</h2><span class="pill">Página ${libroPag} de ${NPAG}</span></div>
+  app.innerHTML=shead('Libro','📖 Libro oficial CONASET','El libro completo, página por página. Las preguntas que salen de cada página aparecen arriba y se destacan en amarillo.')+`<div class="card"><div class="row" style="justify-content:space-between"><h2 style="margin:0">${esc(cap[1])}</h2><span class="pill">Página ${libroPag} de ${NPAG}</span></div>
   <div class="row" style="margin-top:8px"><button class="btn o" id="pv">◀</button><input type="number" id="pg" min="1" max="${NPAG}" value="${libroPag}" style="width:84px"><button class="btn o" id="nx">▶</button>
   <select id="cap" style="font-family:inherit;padding:9px;border:2px solid var(--line);border-radius:12px;max-width:100%">${CAPS.map(c=>`<option value="${c[0]}" ${c===cap?'selected':''}>${esc(c[1])} (p. ${c[0]})</option>`).join('')}</select></div>
   ${qs.length?`<p style="margin:10px 0 4px"><b>Preguntas que salen de esta página</b> (toca una para destacarla):</p><div class="chips">${qs.map(i=>`<span class="chip ${libroQ===i?'on':''}" data-hq="${i}">${esc(Q[i].q.slice(0,60))}${Q[i].q.length>60?'…':''}</span>`).join('')}</div>`:'<p class="src" style="margin-top:8px">Ninguna pregunta del banco sale de esta página.</p>'}
@@ -266,29 +341,22 @@ function compData(){return Object.entries(TEMAS).map(([k,v],n)=>{const ids=Q.map
 function ultimoExamen(){const e=S.ev||{};const f=e.fin||e.inter||e.diag;return f?f.pct+'%':'—';}
 function probab(){const c=compData();const avg=c.reduce((a,x)=>a+x.pct,0)/c.length;const e=S.ev||{};const best=Math.max(e.fin?e.fin.pct:0,...S.intentos.map(x=>Math.round(x.pts/38*100)),0);return Math.min(97,Math.round(avg*0.55+best*0.45));}
 function resumenVoz(){const c=compData();const listas=c.filter(x=>x.ok).length;const debil=c.slice().sort((a,b)=>a.pct-b.pct).slice(0,2);
- return `Llevas ${S.xp||0} puntos de experiencia y ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
+ return `Llevas ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
  c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. ¡Vamos que se puede!`;}
+function shead(tag,tit,desc){return `<div class="shead"><span class="tg">${tag}</span><h2>${tit}</h2><p>${desc}</p></div>`;}
 R.inicio=()=>{
- const c=compData(), listas=c.filter(x=>x.ok).length, e=S.ev||{};
- const est=k=>e[k]?`✅ ${e[k].pct}% · ${e[k].f}`:'No realizado';
- app.innerHTML=`<div class="hero"><div class="hi">Bienvenida a tu preparación para la licencia</div><div class="nm">Ruta B · Clase B 🚗</div>
-  <div class="hstats"><div class="hs"><b>${listas}/${c.length}</b><span>Competencias listas</span></div><div class="hs"><b>${Math.round((S.mins||0)/6)/10}h</b><span>Tiempo estudiado</span></div><div class="hs"><b>${racha()}</b><span>Racha (días)</span></div><div class="hs"><b>${ultimoExamen()}</b><span>Último examen</span></div></div>
-  <div class="prob"><div><b style="font-size:14px;color:var(--ink);font-family:Nunito">Probabilidad estimada de aprobar</b><div class="src">Según tus competencias y tus exámenes</div></div><b>${probab()}%</b></div>
-  <div class="row" style="margin-top:10px"><button class="spk" id="voz">🔊 Escuchar mi progreso</button><span class="pill">⚡ ${S.xp||0} XP</span></div></div>
- <div class="dedi">💌 Dedicado con todo el cariño a <b>Charlotte</b> &lt;3</div>
+ const c=compData(), listas=c.filter(x=>x.ok).length;
+ app.innerHTML=`<div class="hero"><div class="hi">Bienvenida a tu preparación para la licencia</div><div class="nm">Ruta B · Clase B 🐱</div>
+  <div class="hstats"><div class="hs"><b>${listas}/${c.length}</b><span>Competencias listas</span></div><div class="hs"><b>${Math.round((S.mins||0)/6)/10}h</b><span>Tiempo estudiado</span></div><div class="hs"><b>${Object.keys(S.vistos).length}/${Q.length}</b><span>Preguntas vistas</span></div><div class="hs"><b>${ultimoExamen()}</b><span>Último examen</span></div></div>
+  <div class="prob"><div><b style="font-size:14px;color:var(--ink);font-family:'Baloo 2'">Probabilidad estimada de aprobar</b><div class="src">Según tus competencias y tus exámenes</div></div><b>${probab()}%</b></div>
+  <div class="row" style="margin-top:10px"><button class="spk" id="voz">🔊 Escuchar mi progreso</button></div></div>
+ <div class="dedi2"><h3>💌 Dedicatoria</h3><p>Para <b>Charlotte Valenzuela</b>, con toda mi admiración.</p><p>Por tu valentía para aprender cosas nuevas, por tu constancia y por esa forma tuya de no rendirte nunca. Esta ruta es para que llegues lejos, segura y libre: cada pregunta que respondas es un kilómetro más hacia tu meta.</p><p>Con cariño, Johanna 🐱</p></div>
  <div class="sec">Tu progreso por competencia</div>
  ${c.map(x=>`<div class="comp" data-c="${x.k}"><div class="ic" style="background:${x.col}">${x.ic}</div><div class="inf"><b>${esc(x.v)}</b><small>${x.dom} de ${x.ids.length} preguntas dominadas${x.leido?' · módulo leído ✅':''}</small><div class="bar"><i style="width:${x.pct}%"></i></div></div><div class="st">${x.ok?'✅ Lista':x.pct+'%'}</div></div>`).join('')}
- <div class="sec">Evaluaciones</div>
- <div class="ev c1" data-ev="diag"><div class="t">🩺 Diagnóstico inicial</div><div class="d">Descubre qué sabes y qué te falta antes de empezar. Te sugiere por dónde partir.</div><div class="mt"><span>15 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('diag')}</span></div></div>
- <div class="ev c2" data-ev="inter"><div class="t">📊 Evaluación intermedia</div><div class="d">Mide tu avance después de estudiar los módulos, con explicación en cada respuesta.</div><div class="mt"><span>25 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('inter')}</span></div></div>
- <div class="ev c3" data-ev="fin"><div class="t">🏆 Evaluación final (simulacro oficial)</div><div class="d">Igual que el examen real: 35 preguntas, 3 de doble puntaje, apruebas con 33 de 38.</div><div class="mt"><span>35 preguntas</span><span>·</span><span>45 minutos</span><span>·</span><span>${est('fin')}</span></div></div>
- <div class="ev c4" data-ev="trivia"><div class="t">🔥 Trivia</div><div class="d">80 preguntas seguidas y 5 vidas. ¿Llegas al final?</div><div class="mt"><span>80 preguntas</span><span>·</span><span>5 vidas</span><span>·</span><span>Récord: ${S.racha||0}</span></div></div>
- ${S.intentos.length?`<div class="card"><h3>Últimos simulacros</h3><table>${S.intentos.slice(-5).reverse().map(x=>`<tr><td>${x.f}</td><td>${x.pts}/38</td><td>${x.pts>=33?'✅ Aprobado':'💪 Aún no'}</td></tr>`).join('')}</table></div>`:''}
- <p class="src">Ganas 10 XP por respuesta correcta, 20 por módulo leído y 50 por evaluación terminada. Una competencia queda lista con el 80% de sus preguntas dominadas. Tu avance se guarda en este navegador.</p>`;
+ <div class="row" style="margin:14px 0"><button class="btn" onclick="go('estudiar')">🧠 Ir a los módulos</button><button class="btn y" onclick="go('reforzar')">💪 Reforzar y evaluaciones</button><button class="btn o" onclick="go('licencia')">📋 Requisitos</button></div>
+ <p class="src">Una competencia queda lista cuando dominas el 80% de sus preguntas. Tu avance se guarda en este navegador.</p>`;
  $('#voz').onclick=ev=>speak(resumenVoz(),ev.currentTarget);
- app.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const k=d.dataset.c;cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===k),'Competencia: '+TEMAS[k]);});
- app.querySelectorAll('[data-ev]').forEach(d=>d.onclick=()=>{const k=d.dataset.ev; if(k==='fin'){cur='simulacro';nav();startSim();} else if(k==='trivia') go('trivia'); else evaluacion(k);});
- hdr();
+ app.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>go('estudiar',d.dataset.c));
 };
 function evaluacion(tipo){
  const N=tipo==='diag'?15:25, conFb=tipo==='inter', titulo=tipo==='diag'?'🩺 Diagnóstico inicial':'📊 Evaluación intermedia';
@@ -299,7 +367,7 @@ function evaluacion(tipo){
   S.ev=S.ev||{}; S.ev[tipo]={pct,f:new Date().toLocaleDateString('es-CL')}; S.xp=(S.xp||0)+50; save(); hdr();
   const bt=temas.map(t=>{const q=ids.filter(i=>Q[i].t===t);const b=q.filter(i=>res[i]).length;return {t,q:q.length,b,p:q.length?Math.round(b/q.length*100):0};}).filter(x=>x.q);
   const fuertes=bt.filter(x=>x.p>=80), reforzar=bt.filter(x=>x.p<80).sort((a,b)=>a.p-b.p);
-  app.innerHTML=`<div class="card"><h2>${titulo}</h2><div class="big">${pct}%</div><p class="muted">${ok} de ${ids.length} correctas · +50 XP</p>
+  app.innerHTML=`<div class="card"><h2>${titulo}</h2><div class="big">${pct}%</div><p class="muted">${ok} de ${ids.length} correctas</p>
   <div class="row"><button class="btn" onclick="go('inicio')">🏠 Volver al inicio</button><button class="btn o" onclick="go('reforzar')">💪 Reforzar lo que falta</button></div></div>
   <div class="card"><h3>Por competencia</h3><table>${bt.map(x=>`<tr><td>${esc(TEMAS[x.t])}</td><td>${x.b}/${x.q}</td><td>${x.p>=80?'✅ Fuerte':'💪 Reforzar'}</td></tr>`).join('')}</table></div>
   <div class="card"><h3>🧭 Tu ruta sugerida</h3>${reforzar.length?`<p>Estudia en este orden:</p><ol>${reforzar.map(x=>`<li><b>${esc(TEMAS[x.t])}</b> (${x.p}%) — lee el módulo y practica el tema.</li>`).join('')}</ol>`:'<p>¡Todo fuerte! Pasa directo a la evaluación final. 🏆</p>'}${fuertes.length?`<p class="muted">Ya dominas: ${fuertes.map(x=>esc(TEMAS[x.t])).join(', ')}.</p>`:''}</div>`;
@@ -314,15 +382,31 @@ function evaluacion(tipo){
    $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'🤔 Casi. La correcta está en verde.'}</b> ${esc(q.e)} <span class="src">— Libro, p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">Siguiente →</button></div>`;$('#nx').onclick=()=>{k++;step();};});
  }; step();
 }
-R.estudiar=()=>{
- app.innerHTML=`<p class="muted">Lo clave de cada capítulo. Toca 🔊 para escucharlo.</p>`+MODULOS.map(m=>`<div class="card mod"><h3><span>${m.ic} ${m.tit}</span><button class="spk" data-m="${m.id}">🔊 Escuchar</button></h3><span class="src">${m.p}</span><ul>${m.pts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
- <div class="row" style="margin-top:10px"><button class="btn o" data-ok="${m.id}">${S.mods[m.id]?'✅ Leído':'Marcar leído'}</button><button class="btn" data-pr="${m.id}">Practicar</button></div></div>`).join('');
- app.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=MODULOS.find(x=>x.id===b.dataset.m); speak(m.tit+'. '+m.pts.join('. '),b);});
- app.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{if(!S.mods[b.dataset.ok]){S.xp=(S.xp||0)+20;}S.mods[b.dataset.ok]=1;save();hdr();b.textContent='✅ Leído';});
- app.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===b.dataset.pr),'Tema: '+TEMAS[b.dataset.pr]);});
+R.estudiar=(arg)=>{
+ if(arg&&MODULOS.find(m=>m.id===arg)) return modulo(arg);
+ app.innerHTML=shead('Módulos','🧠 Módulos de estudio','Los 8 módulos del Libro para la Conducción en Chile. Cada uno tiene su objetivo, los puntos a tratar y lo que debes saber para el examen.')+
+ `<div class="mlist">${MODULOS.map((m,n)=>`<div class="mitem" data-mod="${m.id}"><div class="ic" style="background:${COLS[n%COLS.length]}">${m.ic}</div><div style="flex:1"><b>${esc(m.tit)}</b><small>${esc(m.desc)}</small><small style="margin-top:4px;font-weight:800">${m.tem.length} puntos · ${esc(m.p)}${S.mods[m.id]?' · ✅ leído':''}</small></div><div style="font-size:22px">›</div></div>`).join('')}</div>`;
+ app.querySelectorAll('[data-mod]').forEach(d=>d.onclick=()=>modulo(d.dataset.mod));
 };
+function modulo(id){
+ const n=MODULOS.findIndex(x=>x.id===id), m=MODULOS[n], nq=Q.filter(q=>q.t===id).length;
+ app.innerHTML=`<button class="btn o" id="bk">← Volver a los módulos</button>
+ <div class="mhdr" style="background:${COLS[n%COLS.length]}"><div class="mic">${m.ic}</div><div class="mtag">Módulo ${n+1} de ${MODULOS.length}</div><h2>${esc(m.tit.replace(/^\d+\.\s*/,''))}</h2><div>${esc(m.desc)}</div><div class="mmeta"><span>📄 ${esc(m.p)}</span><span>·</span><span>${m.tem.length} puntos</span><span>·</span><span>${nq} preguntas</span></div></div>
+ <div class="blk obj"><div class="bl">🎯 Objetivo del módulo</div>${esc(m.obj)}</div>
+ <div class="blk tem"><div class="bl">🗂️ Puntos a tratar</div><ul>${m.tem.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>
+ <div class="blk sab"><div class="bl">📖 Debes saber</div><ul>${m.pts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+ <div class="row"><button class="spk" id="spm">🔊 Escuchar módulo</button><button class="bookbtn" id="lib">📖 Abrir en el libro (p. ${m.pg})</button></div>
+ <div class="row" style="margin-top:12px"><button class="btn m" id="ok">${S.mods[id]?'✅ Leído':'Marcar como leído'}</button><button class="btn" id="pr">✏️ Practicar este módulo</button></div>`;
+ window.scrollTo(0,0);
+ $('#bk').onclick=()=>R.estudiar();
+ $('#spm').onclick=e=>speak(m.tit+'. Objetivo: '+m.obj+'. Debes saber: '+m.pts.join('. '),e.currentTarget);
+ $('#lib').onclick=()=>go('libro',{p:m.pg,q:null});
+ $('#ok').onclick=e=>{S.mods[id]=1;save();e.currentTarget.textContent='✅ Leído';};
+ $('#pr').onclick=()=>{cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===id),'Módulo: '+TEMAS[id]);};
+}
 R.practicar=()=>{
- app.innerHTML=`<div class="card"><h2>Practicar por tema</h2><p class="muted">Respuesta inmediata, explicación y el lugar exacto del libro.</p>${Object.entries(TEMAS).map(([k,v])=>`<button class="opt" data-t="${k}">${v} <span class="pill">${Q.filter(q=>q.t===k).length}</span></button>`).join('')}<button class="opt" data-t="all">🎲 Todas al azar <span class="pill">${Q.length}</span></button></div>`;
+ app.innerHTML=shead('Por tema','✏️ Practicar por tema','Elige un tema. Tienes respuesta inmediata, la explicación y el lugar exacto del libro en que se basa cada pregunta.')+
+ `<div class="tgrid">${Object.entries(TEMAS).map(([k,v])=>{const m=MODULOS.find(x=>x.id===k)||{ic:'📘'};return `<button class="tbtn" data-t="${k}"><span class="e">${m.ic}</span>${esc(v)}<span class="n">${Q.filter(q=>q.t===k).length} preguntas</span></button>`;}).join('')}<button class="tbtn" data-t="all"><span class="e">🎲</span>Todas al azar<span class="n">${Q.length} preguntas</span></button></div>`;
  app.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{const t=b.dataset.t; quiz(Q.map((q,i)=>i).filter(i=>t==='all'||Q[i].t===t), t==='all'?'Todas':TEMAS[t]);});
 };
 function quiz(ids,titulo){
@@ -359,7 +443,7 @@ function startSim(){
   ids.forEach(i=>{const good=ans[i]===Q[i].a; if(good) pts+=dobSet.has(i)?2:1; mark(i,good);});
   S.intentos.push({f:new Date().toLocaleDateString('es-CL'),pts}); S.ev=S.ev||{}; S.ev.fin={pct:Math.round(pts/38*100),f:new Date().toLocaleDateString('es-CL')}; S.xp=(S.xp||0)+50; save(); hdr();
   const wrong=ids.filter(i=>ans[i]!==Q[i].a);
-  app.innerHTML=`<div class="card"><h2>${pts>=33?'🎉 ¡Aprobado!':'💪 Aún no'}</h2><div class="big">${pts}/38</div><p class="muted">Necesitas 33. ${pts>=33?'¡Sigue así para llegar con margen!':'Te faltaron '+(33-pts)+' puntos.'}</p><div class="row"><button class="btn y" onclick="go('simulacro')">Otro simulacro</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>
+  app.innerHTML=`<div class="card"><h2>${pts>=33?'🎉 ¡Aprobado!':'💪 Aún no'}</h2><div class="big">${pts}/38</div><p class="muted">Necesitas 33. ${pts>=33?'¡Sigue así para llegar con margen!':'Te faltaron '+(33-pts)+' puntos.'}</p><div class="row"><button class="btn y" onclick="startSim()">Otro simulacro</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>
   ${wrong.length?`<div class="card"><h3>Revisión (${wrong.length})</h3>${wrong.map(i=>`<div style="margin:12px 0"><b>${esc(Q[i].q)}</b>${dobSet.has(i)?' <span class="pill d">×2</span>':''}<div class="muted">Tu respuesta: ${ans[i]===undefined?'en blanco':esc(Q[i].o[ans[i]])}</div><div class="exp"><b>Correcta:</b> ${esc(Q[i].o[Q[i].a])}. ${esc(Q[i].e)}</div><div style="margin-top:6px">${bookBtn(i)}</div></div>`).join('')}</div>`:''}`;
   wireBook(app); window.scrollTo(0,0);};
  timerId=setInterval(()=>{left--; tick(); if(left<=0) finish();},1000); render();
@@ -368,11 +452,11 @@ R.trivia=()=>{
  const VID=5, TOT=80; let vidas=VID, pts=0, n=0, pool=shuffle(Q.map((q,i)=>i)).slice(0,TOT);
  app.innerHTML=`<div class="card" style="text-align:center"><h2>🔥 Trivia</h2><p><b>${TOT} preguntas</b> y <b>${VID} vidas</b> 💖. Cada error te quita una vida. ¿Llegas a la 80?</p><p class="muted">Tu récord: ${S.racha||0} correctas</p><button class="btn y" id="ini">¡Empezar!</button></div>`;
  const end=()=>{const nuevo=pts>(S.racha||0); if(nuevo){S.racha=pts;} save(); hdr();
-  app.innerHTML=`<div class="card" style="text-align:center"><h2>${n>=TOT&&vidas>0?'🏆 ¡Llegaste al final!':'Fin de la trivia'}</h2><div class="big">${pts}</div><p class="muted">correctas de ${n} · ${nuevo?'🎉 ¡Nuevo récord!':'récord '+S.racha}</p><div class="row" style="justify-content:center"><button class="btn y" onclick="go('trivia')">🔁 Otra vez</button><button class="btn o" onclick="go('reforzar')">💪 Reforzar lo que falta</button></div></div>`;};
+  app.innerHTML=`<div class="card" style="text-align:center"><h2>${n>=TOT&&vidas>0?'🏆 ¡Llegaste al final!':'Fin de la trivia'}</h2><div class="big">${pts}</div><p class="muted">correctas de ${n} · ${nuevo?'🎉 ¡Nuevo récord!':'récord '+S.racha}</p><div class="row" style="justify-content:center"><button class="btn y" onclick="R.trivia()">🔁 Otra vez</button><button class="btn o" onclick="go('reforzar')">💪 Reforzar lo que falta</button></div></div>`;};
  const step=()=>{ if(vidas<=0||n>=pool.length) return end();
   const i=pool[n],q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
   app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="hearts">${'💖'.repeat(vidas)}${'🤍'.repeat(VID-vidas)}</span><span class="pill">Pregunta ${n+1}/${TOT} · ✅ ${pts}</span></div><div class="bar" style="margin:8px 0"><i style="width:${Math.round(n/TOT*100)}%"></i></div><div class="card"><h3>${esc(q.q)}</h3>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="fb"></div></div>`;
-  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j, good=j===q.a; mark(i,good); n++; if(good) pts++; else vidas--; hdr();
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j, good=j===q.a; mark(i,good); n++; if(good) pts++; else vidas--; hdr(); const hh=app.querySelector('.hearts'); if(hh) hh.textContent='💖'.repeat(Math.max(vidas,0))+'🤍'.repeat(VID-Math.max(vidas,0));
    app.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q.a) x.classList.add('ok'); else if(x===b) x.classList.add('bad');});
    $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'💔 Perdiste una vida.'}</b> ${esc(q.e)} <span class="src">p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">${vidas<=0||n>=pool.length?'Ver resultado':'Seguir →'}</button>${bookBtn(i)}</div>`; $('#nx').onclick=step; wireBook(app);});
  };
@@ -380,18 +464,69 @@ R.trivia=()=>{
 };
 
 R.reforzar=()=>{
- const ids=Object.keys(S.malas).map(Number).filter(i=>Q[i]);
- if(!ids.length){app.innerHTML=`<div class="card"><h2>¡Todo al día! 🎉</h2><p class="muted">Las preguntas que aún te cuesten aparecen aquí hasta que las respondas bien.</p></div>`;return;}
- app.innerHTML=`<div class="card"><h2>💪 Para reforzar (${ids.length})</h2><p class="muted">Estas preguntas todavía te cuestan. Con un repaso más quedan listas.</p><button class="btn y" id="rp">Repasar ahora</button></div>`+ids.map(i=>`<div class="card"><b>${esc(Q[i].q)}</b><div class="exp">${esc(Q[i].o[Q[i].a])} — ${esc(Q[i].e)}</div><div style="margin-top:8px">${bookBtn(i)}</div></div>`).join('');
- $('#rp').onclick=()=>quiz(ids,'Repaso de errores'); wireBook(app);
+ const ids=Object.keys(S.malas).map(Number).filter(i=>Q[i]), e=S.ev||{};
+ const est=k=>e[k]?`✅ ${e[k].pct}% · ${e[k].f}`:'No realizado';
+ app.innerHTML=shead('Para reforzar','💪 Para reforzar','Primero repasa lo que todavía te cuesta. Después mide tu avance con las evaluaciones y la trivia.')+
+ `<div class="card" style="text-align:center"><h3>${ids.length?`Tienes ${ids.length} preguntas por reforzar`:'¡Todo al día! 🎉'}</h3><p class="muted">${ids.length?'Con un repaso más quedan listas.':'Las preguntas que te cuesten aparecerán aquí hasta que las respondas bien.'}</p>${ids.length?'<button class="btn y" id="rp">💪 Reforzar ahora</button>':''}</div>
+ ${ids.length?`<div class="sec">Los puntos a reforzar</div>`+ids.map(i=>`<div class="card"><span class="pill">${esc(TEMAS[Q[i].t])}</span><div style="margin-top:6px"><b>${esc(Q[i].q)}</b></div><div class="exp">${esc(Q[i].o[Q[i].a])} — ${esc(Q[i].e)}</div><div style="margin-top:8px">${bookBtn(i)}</div></div>`).join(''):''}
+ <div class="sec">Pruebas</div>
+ <div class="ev c1" data-ev="diag"><div class="t">🩺 Diagnóstico inicial</div><div class="d">Descubre qué sabes y qué te falta antes de empezar. Te sugiere por dónde partir.</div><div class="mt"><span>15 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('diag')}</span></div></div>
+ <div class="ev c2" data-ev="inter"><div class="t">📊 Evaluación intermedia</div><div class="d">Mide tu avance después de estudiar los módulos, con explicación en cada respuesta.</div><div class="mt"><span>25 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('inter')}</span></div></div>
+ <div class="ev c3" data-ev="fin"><div class="t">🏆 Evaluación final (simulacro oficial)</div><div class="d">Igual que el examen real: 35 preguntas, 3 de doble puntaje, apruebas con 33 de 38.</div><div class="mt"><span>35 preguntas</span><span>·</span><span>45 minutos</span><span>·</span><span>${est('fin')}</span></div></div>
+ <div class="ev c4" data-ev="trivia"><div class="t">🔥 Trivia</div><div class="d">80 preguntas seguidas y 5 vidas. ¿Llegas al final?</div><div class="mt"><span>80 preguntas</span><span>·</span><span>5 vidas</span><span>·</span><span>Récord: ${S.racha||0}</span></div></div>`;
+ const b=$('#rp'); if(b) b.onclick=()=>quiz(ids,'Reforzar');
+ wireBook(app);
+ app.querySelectorAll('[data-ev]').forEach(d=>d.onclick=()=>{const k=d.dataset.ev; if(k==='fin'){startSim();} else if(k==='trivia') R.trivia(); else evaluacion(k);});
 };
-R.glosario=()=>{app.innerHTML=`<div class="card"><h2>📚 Glosario</h2><table>${GLOS.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}</table><div class="row" style="margin-top:10px"><button class="btn" onclick="go('libro',{p:161,q:null})">Ver el glosario oficial del libro</button></div></div>`;};
-R.fuentes=()=>{app.innerHTML=`<div class="card"><h2>🔎 Fuentes</h2>
-<p><b>Libro:</b> "Libro para la Conducción en Chile — Automovilistas, Licencia Clase B", CONASET (MTT), edición <b>febrero 2026</b>. Las páginas que ves en 📖 Libro son de ese documento. Cada pregunta marca el texto exacto en que se basa.</p>
-<p><b>Examen:</b> 35 preguntas, 3 de doble puntaje, 38 puntos, aprobación con 33 y banco de más de 1.000 preguntas (CONASET/MTT). 45 minutos y temas de doble puntaje, según PracticaTest.</p>
-<ul><li>Descarga oficial gratuita: <a href="https://mejoresconductores.conaset.cl">mejoresconductores.conaset.cl</a></li><li><a href="https://energia.gob.cl/noticias/nacional/nuevo-libro-del-conductor-con-enfasis-en-electromovilidad-y-seguridad-infantil">Gobierno de Chile: nuevo Libro del Conductor y Nexteo</a></li><li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b">PracticaTest: puntaje del examen Clase B</a></li></ul>
-<p>💌 RutaB está dedicada a <b>Charlotte</b> &lt;3</p><p class="src">RutaB es material de estudio independiente, no una app oficial de CONASET.</p></div>`;};
+R.glosario=()=>{app.innerHTML=shead('Glosario','📚 Glosario','Las palabras clave del libro explicadas en simple.')+`<div class="card"><table>${GLOS.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}</table><div class="row" style="margin-top:10px"><button class="btn" onclick="go('libro',{p:161,q:null})">Ver el glosario oficial del libro</button></div></div>`;};
+R.licencia=()=>{
+ app.innerHTML=shead('Requisitos','📋 Proceso y requisitos para la licencia Clase B','Lo que pide la ley para obtener tu primera licencia no profesional Clase B, paso a paso.')+
+ `<div class="blk ley"><div class="bl">⚖️ Base legal</div>La licencia de conducir se rige por la <b>Ley de Tránsito N° 18.290</b>, cuyo texto refundido, coordinado y sistematizado está en el <b>DFL N° 1 de 2007</b> (Ministerios de Transportes y Telecomunicaciones y de Justicia). Así como RutaSEC se basa en el DS N° 66, RutaB se basa en esta ley y en el libro oficial de CONASET.<div style="margin-top:6px"><a href="https://www.bcn.cl/leychile/navegar?i=1007469" target="_blank" rel="noopener">Ley de Tránsito en bcn.cl ↗</a></div></div>
+ <div class="blk obj"><div class="bl">🎯 ¿Qué permite la Clase B?</div>Conducir vehículos motorizados de tres o más ruedas para el transporte particular: hasta 9 asientos sin contar a quien conduce, vehículos de carga de hasta 3.500 kg y un remolque más liviano que el vehículo, siempre que el conjunto no supere los 3.500 kg.</div>
+ <div class="blk tem"><div class="bl">✅ Requisitos</div><ul><li>Tener <b>18 años</b> como mínimo.</li><li>Haber <b>egresado de enseñanza básica</b>.</li><li><b>Con 17 años</b>, excepcionalmente: aprobar un curso en una escuela de conductores, con autorización expresa de tus padres, apoderados o representante legal, y conducir siempre con una persona en el asiento delantero que tenga licencia Clase B hace más de 5 años. Esta exigencia termina sola al cumplir 18. Si conduces sin esa persona, se te considera conductora sin licencia.</li></ul></div>
+ <div class="blk sab"><div class="bl">📄 Documentos (pueden variar según tu municipalidad)</div><ul><li>Cédula de identidad vigente.</li><li>Certificado de antecedentes.</li><li>Hoja de vida del conductor.</li><li>Certificado de estudios.</li><li>Certificado de residencia.</li></ul></div>
+ <div class="card"><h3>🧭 El proceso paso a paso</h3><ol class="steps">
+ <li>Pide hora en la <b>Dirección de Tránsito de la municipalidad</b> donde vives.</li>
+ <li><b>Examen médico</b>: parte física y psicológica (visión, audición, reacción y coordinación).</li>
+ <li><b>Evaluación de idoneidad moral</b>: se revisan tus antecedentes.</li>
+ <li><b>Examen teórico</b>: 35 preguntas, 38 puntos, apruebas con 33, en 45 minutos. Se basa en el Libro para la Conducción en Chile.</li>
+ <li><b>Examen práctico</b>: conduces acompañada por un examinador.</li>
+ <li>Si apruebas todo, recibes tu licencia (también existe la licencia digital, que se activa con ClaveÚnica).</li></ol></div>
+ <div class="blk ley"><div class="bl">🔁 Si repruebas</div><ul><li>Tienes <b>2 oportunidades por examen</b>. Si repruebas la primera, debes repetirlo dentro de <b>25 días hábiles</b>.</li><li>Si repruebas otra vez o no te presentas, se termina el proceso y se deniega la licencia. Puedes empezar uno nuevo después de <b>30 días hábiles</b>; si se vuelve a denegar, debes esperar <b>6 meses</b>.</li><li>El costo lo fija cada municipalidad.</li></ul></div>
+ <div class="blk tem"><div class="bl">🆕 Cambios recientes en la ley</div><ul><li><b>Ley Jacinta (N° 21.797)</b>, publicada el 7 de febrero de 2026: modifica la Ley de Tránsito y agrega una <b>declaración jurada de salud</b> al obtener o renovar la licencia. Empieza a aplicarse cuando se publique su reglamento; mientras tanto, el trámite sigue igual.</li><li><b>Ley Tolerancia Cero (N° 20.580, 2012)</b> y <b>Ley Emilia (N° 20.770, 2014)</b>: sanciones por conducir con alcohol (las ves en el módulo 3).</li></ul></div>
+ <div class="card"><h3>🚦 Escuelas de conductores</h3><p>A los 18 años la escuela no es obligatoria, pero ayuda mucho para el examen práctico. A los 17 es obligatoria.</p><p>El <b>Automóvil Club de Chile</b> tiene su escuela de conductores con el <b>Curso Licencia B</b> en Santiago, Rancagua, Viña del Mar, La Serena, Calama y Antofagasta, y también toma exámenes psicotécnicos. En su sitio no publican un texto propio de estudio: el examen teórico se basa en el libro oficial de CONASET, que es el que usa RutaB.</p><div class="row"><a class="btn o" href="https://automovilclub.cl/personas/cursos/cursos-de-conduccion/curso-licencia-b/" target="_blank" rel="noopener">Curso Licencia B ↗</a><a class="btn o" href="https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b" target="_blank" rel="noopener">Ficha ChileAtiende ↗</a></div></div>
+ <p class="src">Fuente: ChileAtiende, ficha "Licencia de conducir no profesional (clase B)" (actualizada el 31 de marzo de 2026), y Ley de Tránsito (bcn.cl). Revisa siempre los requisitos de tu municipalidad antes de ir.</p>`;
+};
+R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía','Las fuentes oficiales en que se basa RutaB y quién la hizo.')+
+`<div class="blk ley"><div class="bl">📜 Normativa oficial</div><ul>
+<li><b>Ley de Tránsito N° 18.290</b>: texto refundido en el DFL N° 1 de 2007 (MTT y Justicia). <a href="https://www.bcn.cl/leychile/navegar?i=1007469" target="_blank" rel="noopener">bcn.cl ↗</a></li>
+<li><b>Ley Jacinta N° 21.797</b> (2026): declaración jurada de salud para la licencia.</li>
+<li><b>Ley Tolerancia Cero N° 20.580</b> (2012) y <b>Ley Emilia N° 20.770</b> (2014).</li></ul></div>
+<div class="blk tem"><div class="bl">🚦 CONASET y Ministerio de Transportes</div><ul>
+<li><b>Libro para la Conducción en Chile — Automovilistas, Licencia Clase B</b>, CONASET, edición febrero 2026. Las páginas que ves en 📖 Libro son de ese documento. Descarga gratuita en <a href="https://mejoresconductores.conaset.cl" target="_blank" rel="noopener">mejoresconductores.conaset.cl ↗</a></li>
+<li><a href="https://energia.gob.cl/noticias/nacional/nuevo-libro-del-conductor-con-enfasis-en-electromovilidad-y-seguridad-infantil" target="_blank" rel="noopener">Gobierno de Chile: nuevo Libro del Conductor y examen Nexteo ↗</a></li></ul></div>
+<div class="blk sab"><div class="bl">🏛️ Trámites y escuelas</div><ul>
+<li><a href="https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b" target="_blank" rel="noopener">ChileAtiende: licencia de conducir no profesional Clase B ↗</a></li>
+<li><a href="https://automovilclub.cl/personas/cursos/cursos-de-conduccion/curso-licencia-b/" target="_blank" rel="noopener">Automóvil Club de Chile: Curso Licencia B ↗</a></li>
+<li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b" target="_blank" rel="noopener">PracticaTest: formato y puntaje del examen teórico ↗</a></li></ul></div>
+<div class="card"><h3>✨ Sobre esta plataforma</h3><p><b>RutaB · Licencia Clase B</b> es un ejemplo de app de estudio para el examen teórico de la licencia Clase B. Funciona en el navegador y guarda tu avance en tu dispositivo.</p><p class="muted">Es material de estudio independiente: no es una app oficial de CONASET ni reemplaza a una escuela de conductores. Revisa siempre las fuentes oficiales.</p>
+<div style="border-top:3px dashed #e4dcf3;margin-top:10px;padding-top:10px"><div class="bl" style="font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Desarrolladora</div><div style="font-size:18px;font-weight:800">Johanna Torres</div><div class="muted">Instructora y diseñadora de aprendizaje</div>
+<div class="row" style="margin-top:8px"><a class="btn o" href="mailto:johanna.ttorres@gmail.com">📧 johanna.ttorres@gmail.com</a><a class="btn o" href="https://www.linkedin.com/in/johannattorres/" target="_blank" rel="noopener">💼 LinkedIn</a></div></div></div>
+<div class="dedi2"><p>💌 Dedicada con admiración a <b>Charlotte Valenzuela</b> 🐱</p></div>`;};
 
+// ===== Marciano: pregunta sorpresa
+(function(){const md=$('#amodal'),bx=$('#abox');
+ const pregunta=()=>{const i=Math.floor(Math.random()*Q.length),q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
+  bx.innerHTML=`<div class="row" style="justify-content:space-between"><span style="font-size:40px">👽</span><button class="btn o" id="ax">✕</button></div><h3>¡Pregunta sorpresa!</h3><span class="pill">${esc(TEMAS[q.t])}</span><p style="font-weight:800;margin-top:8px">${esc(q.q)}</p>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="afb"></div>`;
+  $('#ax').onclick=()=>md.classList.remove('on');
+  bx.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j,good=j===q.a;mark(i,good);
+   bx.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q.a)x.classList.add('ok');else if(x===b)x.classList.add('bad');});
+   $('#afb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien! El marciano está impresionado.':'🤔 Casi. La correcta está en verde.'}</b> ${esc(q.e)} <span class="src">p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="an">👽 Otra</button><button class="btn o" id="ac">Cerrar</button></div>`;
+   $('#an').onclick=pregunta;$('#ac').onclick=()=>md.classList.remove('on');});
+ };
+ $('#alien').onclick=()=>{md.classList.add('on');pregunta();};
+ md.onclick=e=>{if(e.target===md)md.classList.remove('on');};
+})();
 const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();
 </script>
 </body>

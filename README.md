@@ -1,16 +1,21 @@
-# RutaB · Licencia Clase B (Chile)
+# RutaB · Licencia Clase B (Chile) 🐱
 
-App web para estudiar el examen teórico de la licencia de conducir **Clase B**, basada en el
-*Libro para la Conducción en Chile — Automovilistas* de CONASET (edición febrero 2026).
+Ejemplo de app para estudiar el examen teórico de la licencia de conducir **Clase B**, basada en la
+**Ley de Tránsito N° 18.290** (DFL N° 1 de 2007) y en el *Libro para la Conducción en Chile — Automovilistas*
+de CONASET (edición febrero 2026).
 
-- 79 preguntas con explicación y la página exacta del libro donde está la respuesta, destacada en amarillo.
-- Lector del libro completo (170 páginas), con índice por capítulo.
-- Simulacro con el formato oficial: 35 preguntas, 3 de doble puntaje, 38 puntos, aprobación con 33, 45 minutos.
-- Práctica por tema, trivia con vidas, repaso de errores, glosario y lectura en voz alta.
+App: https://yquegano.github.io/RutaB/
 
-Todo funciona en un solo `index.html` sin dependencias; las páginas del libro están en `libro/`.
-El avance se guarda en el navegador (localStorage).
+- 8 módulos con objetivo, puntos a tratar y lo que debes saber.
+- 82 preguntas con explicación y la página exacta del libro, destacada en amarillo.
+- Libro completo (170 páginas), práctica por tema y sección "Para reforzar".
+- Diagnóstico inicial, evaluación intermedia, evaluación final (formato real: 35 preguntas, 45 min) y trivia de 80 preguntas con 5 vidas.
+- Pregunta sorpresa del marciano 👽.
+- Requisitos y proceso para obtener la licencia (fuente: ChileAtiende).
 
-**Fuente oficial:** https://mejoresconductores.conaset.cl — RutaB es material de estudio independiente, no una app oficial de CONASET.
+Dedicada con admiración a **Charlotte Valenzuela**.
 
-Hecho por Johanna Torres (yquegano).
+Desarrollada por **Johanna Torres** · johanna.ttorres@gmail.com · [LinkedIn](https://www.linkedin.com/in/johannattorres/)
+
+Material de estudio independiente: no es una app oficial de CONASET.
+Historial de cambios en `CHANGELOG.md`; versiones anteriores en `versiones/`.

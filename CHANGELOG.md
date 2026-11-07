@@ -2,6 +2,19 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v5 (versión principal)
+Archivo: `versiones/RutaB_2026-11-07_v5.html`. La anterior principal queda en `versiones/RutaB_2026-11-07_v3.html`.
+- Estilo cute (El Sobrinito). El auto y la hoja se reemplazan por la carita de gato 🐱. Se elimina la mascota Hojita y su texto.
+- Encabezado: "Ejemplo de app para la licencia de vehículo Clase B" y la edición de la información. Se quitan el volumen, los días y los XP.
+- Dedicatoria de admiración a Charlotte Valenzuela.
+- Módulos estilo RutaSEC: cada módulo muestra nombre, descripción, objetivo, puntos a tratar, lo que debes saber, la página del libro y un botón para practicar.
+- Cada sección tiene título y descripción.
+- "Por tema": botones centrados.
+- "Para reforzar": primero el botón de reforzar, luego los puntos y al final las pruebas (diagnóstico, intermedia, final y trivia).
+- Nueva sección "Requisitos": base legal (Ley de Tránsito N° 18.290 / DFL N° 1 de 2007), requisitos, documentos, proceso, reprobación, Ley Jacinta N° 21.797 y escuelas (Automóvil Club).
+- "Créditos y bibliografía" al estilo RutaSEC, con normativa, fuentes, desarrolladora y contacto (correo y LinkedIn).
+- Marciano flotante 👽 con una pregunta sorpresa al azar de la trivia.
+
 ## 2026-11-07 · v4b cute (vista previa)
 Archivo: `versiones/RutaB_2026-11-07_v4b-cute-hojita-vistaprevia.html`
 - La mascota Ruedita 🚗 se cambia por Hojita 🌿, con mensajes de naturaleza y un globo de diálogo verde menta.
