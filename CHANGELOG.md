@@ -2,6 +2,18 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v6 (versión principal)
+Archivo: `versiones/RutaB_2026-11-07_v6.html`. La anterior queda en `versiones/RutaB_2026-11-07_v5.html`.
+- Se elimina toda referencia al Automóvil Club.
+- Dedicatoria nueva, dentro de "Sobre esta plataforma": "Nunca permitas que el mundo te haga olvidar lo increíble que eres." Para Charlotte Valenzuela. Se quita la tarjeta de dedicatoria del inicio.
+- Desarrolladora: "Desarrolladora de herramientas educativas y apps web" (igual que el CV). Se quita "instructora".
+- Links directos a las leyes en bcn.cl, con explicación de qué trata cada una: 18.290 (y su texto vigente, DFL 1), 21.797, 20.580 y 20.770.
+- Requisitos: sin mención a RutaSEC, centrado en la base legal. Cada documento tiene su link oficial (ChileAtiende y Registro Civil).
+- Glosario completo: las 44 palabras del glosario oficial del libro más las de la app (71 en total), con buscador y voz.
+- Módulos: "El contenido completo", con todas las páginas del libro de cada módulo, desplegables, con imagen, texto y voz.
+- Encabezados más delgados, sin la etiqueta amarilla repetida.
+- El marciano se transforma en humo 💨 cada 20 segundos y reaparece.
+
 ## 2026-11-07 · v5 (versión principal)
 Archivo: `versiones/RutaB_2026-11-07_v5.html`. La anterior principal queda en `versiones/RutaB_2026-11-07_v3.html`.
 - Estilo cute (El Sobrinito). El auto y la hoja se reemplazan por la carita de gato 🐱. Se elimina la mascota Hojita y su texto.
