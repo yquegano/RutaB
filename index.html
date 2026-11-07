@@ -142,6 +142,7 @@ nav.tabs button.on{background:var(--sol);border-color:var(--tinta)}
 .pgd{background:#fff;border:3px solid var(--tinta);border-radius:16px;box-shadow:3px 3px 0 var(--tinta);padding:10px 12px;margin:8px 0}.pgd summary{cursor:pointer;font-size:15px}
 .gidx{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.gidx a{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sol);border:2px solid var(--tinta);color:var(--tinta);text-decoration:none;font-family:'Chewy';font-size:18px;box-shadow:2px 2px 0 var(--tinta)}
 .gdet{margin:10px 0;scroll-margin-top:70px}.gdet summary{display:inline-flex;gap:8px;align-items:center;cursor:pointer;list-style:none;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);border-radius:999px;box-shadow:4px 4px 0 var(--tinta);padding:6px 18px;font-family:'Chewy';font-size:22px}.gdet summary::-webkit-details-marker{display:none}.gdet summary span{font-family:'Baloo 2';font-size:13px;background:#fff;color:var(--tinta);border-radius:999px;padding:0 8px}
+.gblk{display:inline-block;width:auto}.gblk.on{display:block}.gblk .gbody{display:none}.gblk.on .gbody{display:block}.gletter{cursor:pointer;margin:6px 6px 6px 0!important}.gblk.on .gletter{background:var(--sol);color:var(--tinta)}
 .gletter{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--lila-d);color:#fff;border:3px solid var(--tinta);box-shadow:3px 3px 0 var(--tinta);font-family:'Chewy';font-size:24px;margin:14px 0 6px}
 .gitem{border:2px solid var(--tinta);border-radius:14px;padding:10px 12px;margin:8px 0;color:var(--tinta)}
 .leyes p{margin:0 0 10px;line-height:1.45}
@@ -304,7 +305,7 @@ const MUJERES=/(paulina|m[oó]nica|helena|laura|sabina|elvira|dalia|catalina|isa
 const esHombre=v=>HOMBRES.test(v.name)&&!MUJERES.test(v.name);
 let VOZ=null;
 function vozHombre(){ if(VOZ) return VOZ; const vs=speechSynthesis.getVoices().filter(v=>/^es/i.test(v.lang)); if(!vs.length) return null;
- const sc=v=>(esHombre(v)?20:0)-(MUJERES.test(v.name)?10:0)+(/natural|neural|online|premium|enhanced|mejorada/i.test(v.name)?6:0)+(/es[-_]CL/i.test(v.lang)?3:/es[-_](419|MX|US|AR|CO)/i.test(v.lang)?2:0);
+ const sc=v=>(esHombre(v)?30:0)-(MUJERES.test(v.name)?15:0)+(/natural|neural|online|premium|enhanced|mejorada|siri/i.test(v.name)?20:0)+(v.localService===false?4:0)+(/es[-_](CL|419|MX|US)/i.test(v.lang)?2:0)-(/compact|espeak|robot/i.test(v.name)?20:0);
  VOZ=vs.slice().sort((a,b)=>sc(b)-sc(a))[0]; return VOZ;}
 try{speechSynthesis.onvoiceschanged=()=>{VOZ=null;};}catch(e){}
 function speak(text,btn){
@@ -313,8 +314,8 @@ function speak(text,btn){
   if(speechSynthesis.speaking) speechSynthesis.cancel();
   if(curBtn){curBtn.classList.remove('playing'); curBtn.innerHTML=curBtn.dataset.lbl||'🔊'; curBtn=null;}
   if(was||!text) return;
-  const u=new SpeechSynthesisUtterance(text); u.lang='es-CL'; u.rate=0.92; u.volume=S.vol;
-  const go=()=>{const v=vozHombre(); if(v){u.voice=v;u.lang=v.lang;} u.pitch=(v&&esHombre(v))?0.92:0.72;
+  const u=new SpeechSynthesisUtterance(text); u.lang='es-CL'; u.rate=0.95; u.volume=S.vol;
+  const go=()=>{const v=vozHombre(); if(v){u.voice=v;u.lang=v.lang;} u.pitch=(v&&esHombre(v))?1:0.9;
    u.onend=u.onerror=()=>{ if(btn&&curBtn===btn){btn.classList.remove('playing');btn.innerHTML=btn.dataset.lbl||'🔊';curBtn=null;} };
    if(btn){btn.dataset.lbl=btn.dataset.lbl||btn.innerHTML; btn.innerHTML='⏹ Detener'; btn.classList.add('playing'); curBtn=btn;}
    speechSynthesis.speak(u);};
@@ -362,8 +363,8 @@ function compData(){return Object.entries(TEMAS).map(([k,v],n)=>{const ids=Q.map
 function ultimoExamen(){const e=S.ev||{};const f=e.fin||e.inter||e.diag;return f?f.pct+'%':'—';}
 function probab(){const c=compData();const avg=c.reduce((a,x)=>a+x.pct,0)/c.length;const e=S.ev||{};const best=Math.max(e.fin?e.fin.pct:0,...S.intentos.map(x=>Math.round(x.pts/38*100)),0);return Math.min(97,Math.round(avg*0.55+best*0.45));}
 function resumenVoz(){const c=compData();const listas=c.filter(x=>x.ok).length;const debil=c.slice().sort((a,b)=>a.pct-b.pct).slice(0,2);
- return `Hola, preciosa. Vamos a ver cómo vas. Llevas ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
- c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. Sigue así, que lo estás haciendo increíble. Aquí estoy contigo.`;}
+ return `Llevas ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
+ c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. ¡Vamos que se puede!`;}
 const LEYES=[
  {n:'18.290',t:'Ley de Tránsito',d:'La ley principal: regula quién puede conducir, las licencias, las normas de circulación, las infracciones y las sanciones. Su texto vigente está refundido en el DFL N° 1 de 2007.',u:'https://www.bcn.cl/leychile/navegar?idLey=18290',u2:'https://www.bcn.cl/leychile/navegar?i=1007469'},
  {n:'21.797',t:'Ley Jacinta (2026)',d:'Modifica la Ley de Tránsito para hacer efectiva la exigencia de contar con aptitudes para conducir. Agrega una declaración jurada de salud al obtener o renovar la licencia.',u:'https://www.bcn.cl/leychile/navegar?idLey=21797'},
@@ -512,16 +513,16 @@ R.reforzar=()=>{
  app.querySelectorAll('[data-ev]').forEach(d=>d.onclick=()=>{const k=d.dataset.ev; if(k==='fin'){startSim();} else if(k==='trivia') R.trivia(); else evaluacion(k);});
 };
 R.glosario=()=>{
- app.innerHTML=shead('Glosario','📚 Glosario',`${GLOS.length} palabras del libro y de la app. Toca una letra para abrirla, o busca la palabra.`)+
+ app.innerHTML=shead('Glosario','📚 Glosario',`Todas las palabras del glosario oficial del libro y las de la app: ${GLOS.length} en total. Toca una letra para ver sus palabras.`)+
  `<div class="card"><input type="text" id="gq" placeholder="🔍 Buscar una palabra…" style="width:100%"><div id="gl" style="margin-top:10px"></div></div>`;
  const norm=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
  const GCOL=['#fff7d6','#e3f6ef','#e6f2fc','#fde8ef','#efe9fc','#fdeee3'];
  const draw=()=>{const q=norm($('#gq').value.trim());const G={};let gi=0;
-  GLOS.filter(([a,b])=>!q||norm(a+' '+b).includes(q)).forEach(([a,b])=>{const L=norm(a)[0].toUpperCase();(G[L]=G[L]||[]).push([a,b]);});
+  GLOS.filter(([x,y])=>!q||norm(x+' '+y).includes(q)).forEach(([x,y])=>{const L=norm(x)[0].toUpperCase();(G[L]=G[L]||[]).push([x,y]);});
   const Ls=Object.keys(G).sort();
-  $('#gl').innerHTML=Ls.length?`<div class="gidx">${Ls.map(L=>`<a href="#" data-gl="${L}">${L}</a>`).join('')}</div>`+Ls.map(L=>`<details class="gdet" id="gd-${L}" ${q?'open':''}><summary>${L} <span>${G[L].length}</span></summary>${G[L].map(([a,b])=>{gi++;return `<div class="gitem" style="background:${GCOL[gi%GCOL.length]}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b style="font-size:17px">${esc(a)}</b><button class="spk" data-sp="${esc(a)}: ${esc(b)}">🔊</button></div><div>${esc(b)}</div></div>`;}).join('')}</details>`).join(''):'<p class="muted">No encontré esa palabra.</p>';
+  $('#gl').innerHTML=Ls.length?Ls.map(L=>`<div class="gblk ${q?'on':''}"><button class="gletter" data-gt>${L}</button><div class="gbody">${G[L].map(([x,y])=>{gi++;return `<div class="gitem" style="background:${GCOL[gi%GCOL.length]}"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b style="font-size:17px">${esc(x)}</b><button class="spk" data-sp="${esc(x)}: ${esc(y)}">🔊</button></div><div>${esc(y)}</div></div>`;}).join('')}</div></div>`).join(''):'<p class="muted">No encontré esa palabra.</p>';
   $('#gl').querySelectorAll('[data-sp]').forEach(x=>x.onclick=e=>speak(x.dataset.sp,e.currentTarget));
-  $('#gl').querySelectorAll('[data-gl]').forEach(a=>a.onclick=e=>{e.preventDefault();const d=$('#gd-'+a.dataset.gl);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});});};
+  $('#gl').querySelectorAll('[data-gt]').forEach(x=>x.onclick=()=>x.parentNode.classList.toggle('on'));};
 $('#gq').oninput=draw; draw();
 };
 R.licencia=()=>{
@@ -557,7 +558,7 @@ R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía',
 <li><a href="https://www.chileatiende.gob.cl/fichas/24065-licencia-de-conducir-no-profesional-clase-b" target="_blank" rel="noopener">ChileAtiende: licencia de conducir no profesional Clase B ↗</a></li>
 <li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b" target="_blank" rel="noopener">PracticaTest: formato y puntaje del examen teórico ↗</a></li></ul></div>
 <div class="card"><h3>✨ Sobre esta plataforma</h3><p><b>RutaB · Licencia Clase B</b> es una app de estudio para el examen teórico de la licencia Clase B. Funciona en el navegador y guarda tu avance en tu dispositivo.</p><p class="muted">Es material de estudio independiente: no es una app oficial de CONASET ni reemplaza a una escuela de conductores. Revisa siempre las fuentes oficiales.</p>
-<details class="dedbtn"><summary>💌 Para Charlotte</summary><div class="dedtx"><p>Para <b>Charlotte Valenzuela</b>, con toda mi admiración.</p><p>Por tu valentía para aprender cosas nuevas, por tu constancia y por esa forma tuya de no rendirte nunca. Esta ruta es para que llegues lejos, segura y libre: cada pregunta que respondas es un kilómetro más hacia tu meta.</p><p>Con cariño, Johanna 🐱</p></div></details>
+<details class="dedbtn"><summary>💌 Para Charlotte</summary><div class="dedtx"><p>Para <b>Charlotte Valenzuela</b>, con toda mi admiración.</p><p>Por tu valentía para aprender cosas nuevas, por tu constancia y por esa forma tuya de no rendirte nunca. Esta ruta es para que llegues lejos, segura y libre: cada pregunta que respondas es un kilómetro más hacia tu meta.</p><p>Con cariño, Johanna</p></div></details>
 <div style="border-top:3px dashed #e4dcf3;margin-top:10px;padding-top:10px"><div class="bl" style="font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)">Desarrolladora</div><div style="font-size:18px;font-weight:800">Johanna Torres</div><div class="muted">Desarrolladora de herramientas educativas y apps web</div>
 <div class="row" style="margin-top:8px"><a class="btn o" href="mailto:johanna.ttorres@gmail.com">📧 johanna.ttorres@gmail.com</a><a class="btn o" href="https://www.linkedin.com/in/johannattorres/" target="_blank" rel="noopener">💼 LinkedIn</a></div></div></div>`;};
 

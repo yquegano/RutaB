@@ -2,6 +2,13 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
+## 2026-11-07 · v9 (versión principal)
+Archivo: `versiones/RutaB_2026-11-07_v9.html`. La anterior queda en `versiones/RutaB_2026-11-07_v8.html`.
+- Glosario: vuelve el diseño anterior (letras en círculo y palabras con fondo pastel). Ahora cada letra se despliega al tocarla.
+- Créditos: se quita el gato de la dedicatoria.
+- El resumen hablado vuelve a ser neutro (sin "Hola, preciosa…").
+- Voz: busca una voz masculina neutra y natural. Prioriza las voces naturales, neuronales o mejoradas y descarta las robóticas. Tono normal (sin bajar artificialmente la voz).
+
 ## 2026-11-07 · v8 (versión principal)
 Archivo: `versiones/RutaB_2026-11-07_v8.html`. La anterior queda en `versiones/RutaB_2026-11-07_v7.html`.
 - Voz masculina y cálida: elige automáticamente la mejor voz de hombre en español del dispositivo, prefiriendo las naturales o neuronales y las de Chile, más pausada. Si el dispositivo no tiene voz masculina, usa un tono más grave.
