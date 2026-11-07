@@ -60,14 +60,29 @@ input[type=text],input[type=number]{font-family:inherit;font-size:15px;padding:9
 .player{display:flex;justify-content:space-between;padding:8px 10px;border-radius:12px;background:#faf7ff;margin:4px 0;font-weight:700}
 .vol{display:flex;align-items:center;gap:8px;font-size:13px}
 input[type=range]{accent-color:#7b62d6}
+.badges{display:flex;gap:6px}.bdg{background:#fff;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:800;white-space:nowrap}
+.hero{background:var(--lav);border-radius:22px;padding:18px;margin:12px 0}
+.hero .hi{font-size:13px;color:#4d4363}.hero .nm{font-family:Fredoka;font-size:24px;font-weight:600;margin:2px 0 12px}
+.hstats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hs{background:#fff;border-radius:14px;padding:10px 12px}.hs b{display:block;font-family:Fredoka;font-size:24px;line-height:1.1;color:#6d58c4}.hs span{font-size:12px;color:var(--muted)}
+.prob{background:#fff;border-radius:14px;padding:10px 12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}.prob b{font-family:Fredoka;font-size:28px;color:#2e9e6b}
+.dedi{background:var(--pink);border-radius:16px;padding:10px 14px;margin:12px 0;text-align:center;font-weight:800}
+.sec{font-family:Fredoka;font-size:18px;margin:18px 0 8px}
+.comp{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.comp .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.comp .inf{flex:1;min-width:0}.comp .inf b{display:block;font-size:15px}.comp .inf small{color:var(--muted);font-size:12px}
+.comp .bar{margin-top:5px;height:8px}.comp .st{font-size:12px;font-weight:800;white-space:nowrap}
+.ev{background:#fff;border:2px solid var(--line);border-radius:18px;padding:14px 16px;margin:10px 0;cursor:pointer}
+.ev .t{font-family:Fredoka;font-size:17px}.ev .d{font-size:13px;color:var(--muted)}.ev .mt{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:12px;font-weight:800;color:#6d58c4}
+.ev.c1{border-left:8px solid var(--sky)}.ev.c2{border-left:8px solid var(--sun)}.ev.c3{border-left:8px solid var(--mint)}.ev.c4{border-left:8px solid var(--pink)}
+@media(max-width:520px){.badges{display:none}}
 @media(max-width:520px){header.top h1{font-size:17px!important}.top small{font-size:11px}.vol input{width:60px!important}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="logo">B</div>
-  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Libro para la Conducción en Chile — CONASET, edición febrero 2026</small></div>
-  <div class="vol" title="Volumen de la voz">🔈<input id="vol" type="range" min="0.1" max="1" step="0.1" style="width:80px"></div>
+  <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Libro para la Conducción en Chile — CONASET, edición febrero 2026 · para Charlotte 💜</small></div>
+  <div class="badges"><span class="bdg">⚡ <b id="xpd">0</b> XP</span><span class="bdg">🔥 <b id="rcd">0</b> días</span></div><div class="vol" title="Volumen de la voz">🔈<input id="vol" type="range" min="0.1" max="1" step="0.1" style="width:80px"></div>
 </header>
 <nav class="tabs" id="tabs"></nav>
 <main class="wrap" id="app"></main>
@@ -153,7 +168,10 @@ const Q=[
 {t:'esp',q:'En un vehículo eléctrico (no híbrido sin recarga exterior), ¿qué debes portar siempre?',o:['Un bidón de bencina','El cable de viaje para cargar','Cadenas para nieve','Un segundo cargador de celular'],a:1,e:'Siempre portar el cable de viaje y planificar el viaje según la autonomía.',p:148},
 {t:'esp',q:'Al conducir de noche con una falla, ¿qué debes hacer con anticipación?',o:['Apagar todas las luces','Instalar el triángulo para casos de emergencia y, si funciona, encender las intermitentes','Seguir conduciendo','Dejar el vehículo en la pista'],a:1,e:'Estaciona a la derecha, instala el triángulo con anticipación y enciende intermitentes si el sistema eléctrico funciona.',p:112},
 {t:'lic',q:'Si repruebas el examen teórico, ¿en qué plazo puedes repetirlo dentro del mismo proceso?',o:['Al día siguiente sin límite','En un plazo no superior a 25 días hábiles desde la primera reprobación','Después de 6 meses','No se puede repetir'],a:1,e:'Hay dos oportunidades por examen; la repetición debe ser dentro de 25 días hábiles.',p:169},
-{t:'lic',q:'¿Cuántas oportunidades tienes por cada examen (teórico y práctico) en un proceso?',o:['Una','Dos','Tres','Ilimitadas'],a:1,e:'El proceso da dos oportunidades por cada examen teórico y práctico.',p:169}
+{t:'lic',q:'¿Cuántas oportunidades tienes por cada examen (teórico y práctico) en un proceso?',o:['Una','Dos','Tres','Ilimitadas'],a:1,e:'El proceso da dos oportunidades por cada examen teórico y práctico.',p:169},
+{t:'cir',q:'En carretera, ¿qué regla te ayuda a saber si vas a una distancia adecuada del vehículo de adelante?',o:['La regla de los tres segundos','La regla de los diez metros','Ir siempre a 50 km/h','Mirar solo el espejo retrovisor'],a:0,e:'Fija un punto (por ejemplo, un árbol). Cuando el vehículo de adelante lo pase, cuenta mil uno, mil dos, mil tres. Si llegas al punto antes de terminar, vas demasiado cerca.',p:88},
+{t:'esp',q:'Si bajas del vehículo por una emergencia en la vía, ¿cómo debe ser el chaleco de alta visibilidad?',o:['Rojo, sin bandas','Amarillo, con bandas retrorreflectantes de al menos 50 mm de ancho','De cualquier color claro','Negro con letras blancas'],a:1,e:'Siempre debes usar chaleco de alta visibilidad: amarillo y con bandas de material retrorreflectante de un ancho no inferior a 50 milímetros.',p:106},
+{t:'est',q:'Estacionas de noche en una vía pública sin alumbrado. ¿Qué debes hacer?',o:['Apagar todas las luces para ahorrar batería','Encender las luces de estacionamiento y estacionar al lado derecho en el sentido del tránsito','Dejar las luces altas encendidas','Estacionar en cualquier lado de la calzada'],a:1,e:'En una vía sin alumbrado enciende las luces de estacionamiento (puedes sumar la luz interior) y estaciona siempre al lado derecho en el sentido del tránsito.',p:112},
 ];
 const MODULOS=[
  {id:'sin',ic:'⚠️',tit:'1. Siniestros y física de la conducción',p:'pp. 6–25',pts:['Se dice "siniestro", no "accidente": son evitables.','Falla humana presente en más del 90% de los siniestros.','30→50 km/h: la probabilidad de muerte del peatón se multiplica por 8. A 30 km/h sobrevive el 90%; a 45 km/h o más, menos del 50%.','Tiempo normal de reacción: 1 segundo (36 km/h = 10 m; 72 km/h = 20 m).','Distancia de frenado: al duplicar la velocidad, se multiplica por 4; al triplicarla, por 9.','Detención en seco: ~25 m a 50 km/h; ~80 m a 100 km/h.']},
@@ -168,21 +186,27 @@ const MODULOS=[
 const GLOS=[['Siniestro de tránsito','Término que reemplaza a "accidente": los siniestros son evitables.'],['SRI','Sistema de Retención Infantil: silla o alzador certificado según peso, talla y desarrollo.'],['ISOFIX / LATCH','Sistemas de anclaje del SRI al vehículo.'],['Efecto submarino','Deslizamiento del cuerpo por debajo de la banda abdominal del cinturón en un choque.'],['Distancia de reacción','Metros recorridos mientras reaccionas (≈1 segundo).'],['Distancia de frenado','Metros desde que pisas el freno hasta detenerte; crece con el cuadrado de la velocidad.'],['Aquaplaning','Pérdida de adherencia por una capa de agua entre neumático y calzada.'],['Ceder el paso','Que quien tiene preferencia no cambie su trayectoria ni su velocidad por tu maniobra.'],['Sobrepaso','Ponerse delante de otro vehículo sin invadir la pista contraria (no es adelantamiento legal).'],['Nexteo','Plataforma digital del examen teórico en las Direcciones de Tránsito.'],['Bajo la influencia del alcohol','0,31 a 0,79 gramos por mil de alcohol en la sangre.'],['Estado de ebriedad','0,8 o más gramos por mil de alcohol en la sangre.']];
 
 
-const HL={"0": {"p": 8, "r": [[0.2, 0.5954, 0.1789, 0.0215]]}, "1": {"p": 8, "r": [[0.258, 0.6415, 0.1983, 0.0215], [0.1071, 0.6592, 0.0789, 0.0215]]}, "2": {"p": 8, "r": [[0.6513, 0.62, 0.2457, 0.0215]]}, "3": {"p": 23, "r": [[0.4674, 0.8062, 0.3894, 0.0215]]}, "4": {"p": 23, "r": [[0.4898, 0.8239, 0.2506, 0.0215]]}, "5": {"p": 24, "r": [[0.3133, 0.3685, 0.0944, 0.0215], [0.0787, 0.3862, 0.2883, 0.0215]]}, "6": {"p": 96, "r": [[0.4962, 0.3231, 0.3033, 0.0215]]}, "7": {"p": 121, "r": [[0.0787, 0.3996, 0.2415, 0.0215]]}, "8": {"p": 18, "r": [[0.5192, 0.2456, 0.3479, 0.0215]]}, "9": {"p": 26, "r": [[0.8759, 0.6289, 0.0453, 0.0215], [0.6258, 0.6466, 0.2954, 0.0215]]}, "10": {"p": 28, "r": [[0.7704, 0.6936, 0.1506, 0.0215], [0.0787, 0.7113, 0.2028, 0.0215]]}, "11": {"p": 28, "r": [[0.5353, 0.2033, 0.2882, 0.0215]]}, "12": {"p": 30, "r": [[0.7152, 0.6019, 0.1806, 0.0215]]}, "13": {"p": 13, "r": [[0.1258, 0.3209, 0.2361, 0.0215]]}, "14": {"p": 20, "r": [[0.2639, 0.2733, 0.1248, 0.0215], [0.109, 0.291, 0.2449, 0.0215]]}, "15": {"p": 50, "r": [[0.4101, 0.2953, 0.2145, 0.0215]]}, "16": {"p": 50, "r": [[0.4101, 0.3617, 0.2032, 0.0215]]}, "17": {"p": 50, "r": [[0.7542, 0.1639, 0.1667, 0.0215]]}, "18": {"p": 51, "r": [[0.385, 0.1006, 0.2125, 0.0215]]}, "19": {"p": 50, "r": [[0.6745, 0.4937, 0.2466, 0.022]]}, "20": {"p": 51, "r": [[0.8505, 0.6632, 0.0704, 0.0215], [0.0787, 0.6809, 0.1961, 0.0215]]}, "21": {"p": 51, "r": [[0.1507, 0.2812, 0.2321, 0.0215]]}, "22": {"p": 66, "r": [[0.2697, 0.7401, 0.2057, 0.0215], [0.1072, 0.7578, 0.1998, 0.0215]]}, "23": {"p": 62, "r": [[0.092, 0.4647, 0.2655, 0.0215]]}, "24": {"p": 71, "r": [[0.2945, 0.7767, 0.3362, 0.0215]]}, "25": {"p": 72, "r": [[0.6746, 0.7033, 0.2464, 0.022], [0.0994, 0.7213, 0.2494, 0.022]]}, "26": {"p": 73, "r": [[0.2096, 0.5074, 0.3805, 0.0215]]}, "27": {"p": 73, "r": [[0.1679, 0.6135, 0.18, 0.0215]]}, "28": {"p": 75, "r": [[0.1659, 0.121, 0.2272, 0.0215]]}, "29": {"p": 75, "r": [[0.7829, 0.3508, 0.1382, 0.0215], [0.0787, 0.3685, 0.2223, 0.0215]]}, "30": {"p": 75, "r": [[0.1411, 0.7631, 0.1612, 0.0179], [0.1071, 0.7782, 0.0876, 0.0179]]}, "31": {"p": 70, "r": [[0.4879, 0.56, 0.2402, 0.0215]]}, "32": {"p": 68, "r": [[0.3272, 0.7897, 0.1482, 0.0215], [0.1072, 0.8074, 0.2962, 0.0215]]}, "33": {"p": 78, "r": [[0.2761, 0.6155, 0.3389, 0.0215]]}, "34": {"p": 78, "r": [[0.2761, 0.8077, 0.362, 0.0215]]}, "35": {"p": 78, "r": [[0.8023, 0.412, 0.0919, 0.0215], [0.2707, 0.4297, 0.1751, 0.0215]]}, "36": {"p": 78, "r": [[0.5147, 0.4967, 0.3016, 0.0215]]}, "37": {"p": 79, "r": [[0.5285, 0.1422, 0.3713, 0.0215], [0.2761, 0.1599, 0.1095, 0.0215]]}, "38": {"p": 84, "r": [[0.3518, 0.7802, 0.1488, 0.0215]]}, "39": {"p": 84, "r": [[0.0908, 0.8155, 0.3574, 0.0215]]}, "40": {"p": 84, "r": [[0.7118, 0.8757, 0.2089, 0.0215], [0.0785, 0.8934, 0.2619, 0.0215]]}, "41": {"p": 94, "r": [[0.3372, 0.7661, 0.3132, 0.0215], [0.0787, 0.7838, 0.1286, 0.0215]]}, "42": {"p": 85, "r": [[0.7398, 0.1033, 0.1811, 0.0215], [0.0787, 0.121, 0.3851, 0.0215]]}, "43": {"p": 85, "r": [[0.8998, 0.1884, 0.0213, 0.0215], [0.0787, 0.206, 0.6083, 0.0215]]}, "44": {"p": 85, "r": [[0.4087, 0.3441, 0.1742, 0.0215]]}, "45": {"p": 85, "r": [[0.4329, 0.5576, 0.2832, 0.0215]]}, "46": {"p": 86, "r": [[0.6663, 0.4639, 0.197, 0.0215]]}, "47": {"p": 86, "r": [[0.4349, 0.1917, 0.2837, 0.0215]]}, "48": {"p": 86, "r": [[0.1119, 0.8004, 0.1307, 0.0215], [0.1119, 0.818, 0.1879, 0.0215], [0.1119, 0.8357, 0.1603, 0.0215]]}, "49": {"p": 86, "r": [[0.6846, 0.8004, 0.178, 0.0215], [0.6846, 0.8181, 0.2002, 0.0215], [0.6846, 0.8357, 0.2067, 0.0215]]}, "50": {"p": 88, "r": [[0.3556, 0.121, 0.2452, 0.0215]]}, "51": {"p": 94, "r": [[0.1295, 0.4161, 0.4051, 0.0215]]}, "52": {"p": 96, "r": [[0.2883, 0.5247, 0.5461, 0.0215]]}, "53": {"p": 96, "r": [[0.6616, 0.56, 0.2597, 0.0215], [0.0787, 0.5777, 0.2948, 0.0215]]}, "54": {"p": 96, "r": [[0.7608, 0.5777, 0.1605, 0.0215], [0.0787, 0.5954, 0.0944, 0.0215]]}, "55": {"p": 96, "r": [[0.7277, 0.5954, 0.1929, 0.0215], [0.0787, 0.6131, 0.0904, 0.0215]]}, "56": {"p": 96, "r": [[0.0787, 0.7014, 0.552, 0.0215]]}, "57": {"p": 103, "r": [[0.0787, 0.1282, 0.5324, 0.0215]]}, "58": {"p": 103, "r": [[0.2143, 0.2662, 0.3517, 0.0215]]}, "59": {"p": 103, "r": [[0.0787, 0.5209, 0.4313, 0.0215]]}, "60": {"p": 102, "r": [[0.0922, 0.8528, 0.2144, 0.0215]]}, "61": {"p": 102, "r": [[0.2768, 0.5241, 0.5463, 0.0206]]}, "62": {"p": 99, "r": [[0.189, 0.2684, 0.4559, 0.0215]]}, "63": {"p": 104, "r": [[0.0787, 0.3087, 0.2829, 0.0215]]}, "64": {"p": 104, "r": [[0.8477, 0.3087, 0.0734, 0.0215], [0.0787, 0.3264, 0.2142, 0.0215]]}, "65": {"p": 104, "r": [[0.1388, 0.4817, 0.3264, 0.0215]]}, "66": {"p": 105, "r": [[0.0922, 0.8291, 0.3869, 0.0215]]}, "67": {"p": 105, "r": [[0.0922, 0.8539, 0.3352, 0.0215]]}, "68": {"p": 105, "r": [[0.0921, 0.7866, 0.3816, 0.0215]]}, "69": {"p": 105, "r": [[0.0922, 0.7369, 0.2949, 0.0215]]}, "70": {"p": 105, "r": [[0.4061, 0.6624, 0.3119, 0.022]]}, "71": {"p": 104, "r": [[0.0922, 0.7464, 0.1036, 0.0215]]}, "72": {"p": 117, "r": [[0.0941, 0.8171, 0.3162, 0.0215]]}, "73": {"p": 118, "r": [[0.6381, 0.2485, 0.2829, 0.0215], [0.0787, 0.2662, 0.0586, 0.0215]]}, "74": {"p": 117, "r": [[0.0787, 0.4593, 0.2647, 0.0215]]}, "75": {"p": 148, "r": [[0.0943, 0.6746, 0.2576, 0.0215]]}, "76": {"p": 112, "r": [[0.3455, 0.2696, 0.3095, 0.0215]]}, "77": {"p": 169, "r": [[0.3018, 0.5844, 0.2781, 0.0215]]}, "78": {"p": 169, "r": [[0.6969, 0.4889, 0.2242, 0.0215], [0.0787, 0.5065, 0.0631, 0.0215]]}};
+const HL={"0": {"p": 8, "r": [[0.2, 0.5954, 0.1789, 0.0215]]}, "1": {"p": 8, "r": [[0.258, 0.6415, 0.1983, 0.0215], [0.1071, 0.6592, 0.0789, 0.0215]]}, "2": {"p": 8, "r": [[0.6513, 0.62, 0.2457, 0.0215]]}, "3": {"p": 23, "r": [[0.4674, 0.8062, 0.3894, 0.0215]]}, "4": {"p": 23, "r": [[0.4898, 0.8239, 0.2506, 0.0215]]}, "5": {"p": 24, "r": [[0.3133, 0.3685, 0.0944, 0.0215], [0.0787, 0.3862, 0.2883, 0.0215]]}, "6": {"p": 96, "r": [[0.4962, 0.3231, 0.3033, 0.0215]]}, "7": {"p": 121, "r": [[0.0787, 0.3996, 0.2415, 0.0215]]}, "8": {"p": 18, "r": [[0.5192, 0.2456, 0.3479, 0.0215]]}, "9": {"p": 26, "r": [[0.8759, 0.6289, 0.0453, 0.0215], [0.6258, 0.6466, 0.2954, 0.0215]]}, "10": {"p": 28, "r": [[0.7704, 0.6936, 0.1506, 0.0215], [0.0787, 0.7113, 0.2028, 0.0215]]}, "11": {"p": 28, "r": [[0.5353, 0.2033, 0.2882, 0.0215]]}, "12": {"p": 30, "r": [[0.7152, 0.6019, 0.1806, 0.0215]]}, "13": {"p": 13, "r": [[0.1258, 0.3209, 0.2361, 0.0215]]}, "14": {"p": 20, "r": [[0.2639, 0.2733, 0.1248, 0.0215], [0.109, 0.291, 0.2449, 0.0215]]}, "15": {"p": 50, "r": [[0.4101, 0.2953, 0.2145, 0.0215]]}, "16": {"p": 50, "r": [[0.4101, 0.3617, 0.2032, 0.0215]]}, "17": {"p": 50, "r": [[0.7542, 0.1639, 0.1667, 0.0215]]}, "18": {"p": 51, "r": [[0.385, 0.1006, 0.2125, 0.0215]]}, "19": {"p": 50, "r": [[0.6745, 0.4937, 0.2466, 0.022]]}, "20": {"p": 51, "r": [[0.8505, 0.6632, 0.0704, 0.0215], [0.0787, 0.6809, 0.1961, 0.0215]]}, "21": {"p": 51, "r": [[0.1507, 0.2812, 0.2321, 0.0215]]}, "22": {"p": 66, "r": [[0.2697, 0.7401, 0.2057, 0.0215], [0.1072, 0.7578, 0.1998, 0.0215]]}, "23": {"p": 62, "r": [[0.092, 0.4647, 0.2655, 0.0215]]}, "24": {"p": 71, "r": [[0.2945, 0.7767, 0.3362, 0.0215]]}, "25": {"p": 72, "r": [[0.6746, 0.7033, 0.2464, 0.022], [0.0994, 0.7213, 0.2494, 0.022]]}, "26": {"p": 73, "r": [[0.2096, 0.5074, 0.3805, 0.0215]]}, "27": {"p": 73, "r": [[0.1679, 0.6135, 0.18, 0.0215]]}, "28": {"p": 75, "r": [[0.1659, 0.121, 0.2272, 0.0215]]}, "29": {"p": 75, "r": [[0.7829, 0.3508, 0.1382, 0.0215], [0.0787, 0.3685, 0.2223, 0.0215]]}, "30": {"p": 75, "r": [[0.1411, 0.7631, 0.1612, 0.0179], [0.1071, 0.7782, 0.0876, 0.0179]]}, "31": {"p": 70, "r": [[0.4879, 0.56, 0.2402, 0.0215]]}, "32": {"p": 68, "r": [[0.3272, 0.7897, 0.1482, 0.0215], [0.1072, 0.8074, 0.2962, 0.0215]]}, "33": {"p": 78, "r": [[0.2761, 0.6155, 0.3389, 0.0215]]}, "34": {"p": 78, "r": [[0.2761, 0.8077, 0.362, 0.0215]]}, "35": {"p": 78, "r": [[0.8023, 0.412, 0.0919, 0.0215], [0.2707, 0.4297, 0.1751, 0.0215]]}, "36": {"p": 78, "r": [[0.5147, 0.4967, 0.3016, 0.0215]]}, "37": {"p": 79, "r": [[0.5285, 0.1422, 0.3713, 0.0215], [0.2761, 0.1599, 0.1095, 0.0215]]}, "38": {"p": 84, "r": [[0.3518, 0.7802, 0.1488, 0.0215]]}, "39": {"p": 84, "r": [[0.0908, 0.8155, 0.3574, 0.0215]]}, "40": {"p": 84, "r": [[0.7118, 0.8757, 0.2089, 0.0215], [0.0785, 0.8934, 0.2619, 0.0215]]}, "41": {"p": 94, "r": [[0.3372, 0.7661, 0.3132, 0.0215], [0.0787, 0.7838, 0.1286, 0.0215]]}, "42": {"p": 85, "r": [[0.7398, 0.1033, 0.1811, 0.0215], [0.0787, 0.121, 0.3851, 0.0215]]}, "43": {"p": 85, "r": [[0.8998, 0.1884, 0.0213, 0.0215], [0.0787, 0.206, 0.6083, 0.0215]]}, "44": {"p": 85, "r": [[0.4087, 0.3441, 0.1742, 0.0215]]}, "45": {"p": 85, "r": [[0.4329, 0.5576, 0.2832, 0.0215]]}, "46": {"p": 86, "r": [[0.6663, 0.4639, 0.197, 0.0215]]}, "47": {"p": 86, "r": [[0.4349, 0.1917, 0.2837, 0.0215]]}, "48": {"p": 86, "r": [[0.1119, 0.8004, 0.1307, 0.0215], [0.1119, 0.818, 0.1879, 0.0215], [0.1119, 0.8357, 0.1603, 0.0215]]}, "49": {"p": 86, "r": [[0.6846, 0.8004, 0.178, 0.0215], [0.6846, 0.8181, 0.2002, 0.0215], [0.6846, 0.8357, 0.2067, 0.0215]]}, "50": {"p": 88, "r": [[0.3556, 0.121, 0.2452, 0.0215]]}, "51": {"p": 94, "r": [[0.1295, 0.4161, 0.4051, 0.0215]]}, "52": {"p": 96, "r": [[0.2883, 0.5247, 0.5461, 0.0215]]}, "53": {"p": 96, "r": [[0.6616, 0.56, 0.2597, 0.0215], [0.0787, 0.5777, 0.2948, 0.0215]]}, "54": {"p": 96, "r": [[0.7608, 0.5777, 0.1605, 0.0215], [0.0787, 0.5954, 0.0944, 0.0215]]}, "55": {"p": 96, "r": [[0.7277, 0.5954, 0.1929, 0.0215], [0.0787, 0.6131, 0.0904, 0.0215]]}, "56": {"p": 96, "r": [[0.0787, 0.7014, 0.552, 0.0215]]}, "57": {"p": 103, "r": [[0.0787, 0.1282, 0.5324, 0.0215]]}, "58": {"p": 103, "r": [[0.2143, 0.2662, 0.3517, 0.0215]]}, "59": {"p": 103, "r": [[0.0787, 0.5209, 0.4313, 0.0215]]}, "60": {"p": 102, "r": [[0.0922, 0.8528, 0.2144, 0.0215]]}, "61": {"p": 102, "r": [[0.2768, 0.5241, 0.5463, 0.0206]]}, "62": {"p": 99, "r": [[0.189, 0.2684, 0.4559, 0.0215]]}, "63": {"p": 104, "r": [[0.0787, 0.3087, 0.2829, 0.0215]]}, "64": {"p": 104, "r": [[0.8477, 0.3087, 0.0734, 0.0215], [0.0787, 0.3264, 0.2142, 0.0215]]}, "65": {"p": 104, "r": [[0.1388, 0.4817, 0.3264, 0.0215]]}, "66": {"p": 105, "r": [[0.0922, 0.8291, 0.3869, 0.0215]]}, "67": {"p": 105, "r": [[0.0922, 0.8539, 0.3352, 0.0215]]}, "68": {"p": 105, "r": [[0.0921, 0.7866, 0.3816, 0.0215]]}, "69": {"p": 105, "r": [[0.0922, 0.7369, 0.2949, 0.0215]]}, "70": {"p": 105, "r": [[0.4061, 0.6624, 0.3119, 0.022]]}, "71": {"p": 104, "r": [[0.0922, 0.7464, 0.1036, 0.0215]]}, "72": {"p": 117, "r": [[0.0941, 0.8171, 0.3162, 0.0215]]}, "73": {"p": 118, "r": [[0.6381, 0.2485, 0.2829, 0.0215], [0.0787, 0.2662, 0.0586, 0.0215]]}, "74": {"p": 117, "r": [[0.0787, 0.4593, 0.2647, 0.0215]]}, "75": {"p": 148, "r": [[0.0943, 0.6746, 0.2576, 0.0215]]}, "76": {"p": 112, "r": [[0.3455, 0.2696, 0.3095, 0.0215]]}, "77": {"p": 169, "r": [[0.3018, 0.5844, 0.2781, 0.0215]]}, "78": {"p": 169, "r": [[0.6969, 0.4889, 0.2242, 0.0215], [0.0787, 0.5065, 0.0631, 0.0215]]}, "79": {"p": 88, "r": [[0.3556, 0.121, 0.2452, 0.0215]]}, "80": {"p": 106, "r": [[0.649, 0.5706, 0.272, 0.0215]]}, "81": {"p": 112, "r": [[0.0787, 0.2166, 0.4263, 0.0215]]}};
 const CAPS=[[1,'Portada e índice'],[5,'1 · Los siniestros de tránsito'],[10,'2 · Los principios de la conducción'],[32,'3 · Convivencia vial'],[36,'4 · La persona en el tránsito'],[67,'5 · Usuarios vulnerables'],[76,'6 · Normas de circulación'],[108,'7 · Circunstancias especiales'],[126,'8 · Conducción eficiente'],[135,'9 · Informaciones importantes'],[149,'Anexo 1 · Señales de tránsito'],[161,'Anexo 2 · Glosario'],[167,'Anexo 3 · Proceso de licencia']];
 const NPAG=170;
 Q.forEach((q,i)=>{ if(HL[i]) q.p=HL[i].p; });
 
 // ============ ESTADO ============
 const LS='rutaB.v1';
-let S={vistos:{},buenas:{},malas:{},mods:{},intentos:[],racha:0,vol:0.7,nombre:''};
+let S={vistos:{},buenas:{},malas:{},mods:{},intentos:[],racha:0,vol:0.7,nombre:'',xp:0,mins:0,dias:[],ev:{}};
 try{const r=localStorage.getItem(LS); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
 function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
 const $=s=>document.querySelector(s);
 const app=$('#app');
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a}
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function mark(i,ok){S.vistos[i]=1; if(ok){S.buenas[i]=(S.buenas[i]||0)+1; delete S.malas[i];} else {S.malas[i]=(S.malas[i]||0)+1;} save();}
+function mark(i,ok){S.vistos[i]=1; if(ok){S.buenas[i]=(S.buenas[i]||0)+1; delete S.malas[i]; S.xp=(S.xp||0)+10;} else {S.malas[i]=(S.malas[i]||0)+1;} save();}
+// tiempo estudiado y racha de días
+const hoy=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
+if(!Array.isArray(S.dias))S.dias=[]; if(!S.dias.includes(hoy())){S.dias.push(hoy());save();}
+function racha(){const set=new Set(S.dias);let n=0;const d=new Date();while(true){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');if(set.has(k)){n++;d.setDate(d.getDate()-1);}else break;}return n;}
+setInterval(()=>{if(document.visibilityState==='visible'){S.mins=(S.mins||0)+1;save();hdr();}},60000);
+function hdr(){const a=$('#xpd'),b=$('#rcd');if(a)a.textContent=S.xp||0;if(b)b.textContent=racha();}
 $('#vol').value=S.vol; $('#vol').oninput=e=>{S.vol=+e.target.value;save();};
 
 // ---- Voz (misma configuración que RutaSEC: es-CL, velocidad 0.9, tono 1.05, primera voz en español) + volumen
@@ -203,7 +227,7 @@ function speak(text,btn){
 }
 
 // ============ NAV ============
-const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Resúmenes'],['practicar','✏️ Por tema'],['simulacro','⏱️ Simulacro'],['trivia','🔥 Trivia'],['errores','🔁 Errores'],['glosario','📚 Glosario'],['fuentes','🔎 Fuentes']];
+const VIEWS=[['inicio','🏠 Inicio'],['libro','📖 Libro'],['estudiar','🧠 Módulos'],['practicar','✏️ Por tema'],['simulacro','⏱️ Simulacro'],['trivia','🔥 Trivia'],['reforzar','💪 Para reforzar'],['glosario','📚 Glosario'],['fuentes','🔎 Fuentes']];
 let cur='inicio', timerId=null;
 function nav(){ $('#tabs').innerHTML=VIEWS.map(([k,l])=>`<button data-v="${k}" class="${cur===k?'on':''}">${l}</button>`).join(''); document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v)); }
 function go(v,arg){ if(timerId){clearInterval(timerId);timerId=null;} try{speechSynthesis.cancel()}catch(e){} curBtn=null; cur=v; try{history.replaceState(null,'','#'+v)}catch(e){} nav(); (R[v]||R.inicio)(arg); window.scrollTo(0,0); }
@@ -237,21 +261,64 @@ R.libro=(arg)=>{
 };
 
 // ============ VISTAS ============
+const COLS=['var(--pink)','var(--sky)','var(--mint)','var(--sun)','var(--lav)','var(--coral)','#d8e8c4','#f3d4f0'];
+function compData(){return Object.entries(TEMAS).map(([k,v],n)=>{const ids=Q.map((q,i)=>i).filter(i=>Q[i].t===k);const dom=ids.filter(i=>S.buenas[i]&&!S.malas[i]).length;const pct=Math.round(dom/ids.length*100);const m=MODULOS.find(x=>x.id===k)||{ic:'📘'};return {k,v,ic:m.ic,ids,dom,pct,leido:!!S.mods[k],col:COLS[n%COLS.length],ok:pct>=80};});}
+function ultimoExamen(){const e=S.ev||{};const f=e.fin||e.inter||e.diag;return f?f.pct+'%':'—';}
+function probab(){const c=compData();const avg=c.reduce((a,x)=>a+x.pct,0)/c.length;const e=S.ev||{};const best=Math.max(e.fin?e.fin.pct:0,...S.intentos.map(x=>Math.round(x.pts/38*100)),0);return Math.min(97,Math.round(avg*0.55+best*0.45));}
+function resumenVoz(){const c=compData();const listas=c.filter(x=>x.ok).length;const debil=c.slice().sort((a,b)=>a.pct-b.pct).slice(0,2);
+ return `Llevas ${S.xp||0} puntos de experiencia y ${listas} de ${c.length} competencias listas. Tu probabilidad estimada de aprobar es ${probab()} por ciento. `+
+ c.map(x=>`${x.v}: ${x.pct} por ciento`).join('. ')+`. Te conviene reforzar ${debil.map(x=>x.v).join(' y ')}. ¡Vamos que se puede!`;}
 R.inicio=()=>{
- const dom=Object.keys(S.buenas).length, err=Object.keys(S.malas).length, best=S.intentos.reduce((m,x)=>Math.max(m,x.pts),0), last=S.intentos.slice(-5).reverse();
- app.innerHTML=`<div class="card"><h2>¡Hola! Vamos por tu licencia 🚗💨</h2>
-  <p class="muted">Formato real del examen: <b>35 preguntas · 38 puntos · apruebas con 33 · 45 minutos</b>. Las <span class="pill d">×2</span> valen doble (alcohol, velocidad, cinturón y sillas para niños).</p>
-  <div class="grid"><div class="stat s1"><b>${Q.length}</b><span>preguntas</span></div><div class="stat s2"><b>${dom}</b><span>dominadas</span></div><div class="stat s3"><b>${err}</b><span>por repasar</span></div><div class="stat s4"><b>${best||'—'}</b><span>mejor simulacro</span></div></div>
-  <p style="margin:14px 0 6px;font-weight:800">Avance</p><div class="bar"><i style="width:${Math.round(dom/Q.length*100)}%"></i></div></div>
- <div class="row"><button class="btn y" onclick="go('simulacro')">⏱️ Simulacro</button><button class="btn" onclick="go('libro')">📖 Leer el libro</button><button class="btn m" onclick="go('trivia')">🔥 Trivia</button></div>
- ${last.length?`<div class="card"><h3>Últimos simulacros</h3><table>${last.map(x=>`<tr><td>${x.f}</td><td>${x.pts}/38</td><td>${x.pts>=33?'✅ Aprobado':'❌ Reprobado'}</td></tr>`).join('')}</table></div>`:''}
- <p class="src">Tu avance se guarda en este navegador.</p>`;
+ const c=compData(), listas=c.filter(x=>x.ok).length, e=S.ev||{};
+ const est=k=>e[k]?`✅ ${e[k].pct}% · ${e[k].f}`:'No realizado';
+ app.innerHTML=`<div class="hero"><div class="hi">Bienvenida a tu preparación para la licencia</div><div class="nm">Ruta B · Clase B 🚗</div>
+  <div class="hstats"><div class="hs"><b>${listas}/${c.length}</b><span>Competencias listas</span></div><div class="hs"><b>${Math.round((S.mins||0)/6)/10}h</b><span>Tiempo estudiado</span></div><div class="hs"><b>${racha()}</b><span>Racha (días)</span></div><div class="hs"><b>${ultimoExamen()}</b><span>Último examen</span></div></div>
+  <div class="prob"><div><b style="font-size:14px;color:var(--ink);font-family:Nunito">Probabilidad estimada de aprobar</b><div class="src">Según tus competencias y tus exámenes</div></div><b>${probab()}%</b></div>
+  <div class="row" style="margin-top:10px"><button class="spk" id="voz">🔊 Escuchar mi progreso</button><span class="pill">⚡ ${S.xp||0} XP</span></div></div>
+ <div class="dedi">💌 Dedicado con todo el cariño a <b>Charlotte</b> &lt;3</div>
+ <div class="sec">Tu progreso por competencia</div>
+ ${c.map(x=>`<div class="comp" data-c="${x.k}"><div class="ic" style="background:${x.col}">${x.ic}</div><div class="inf"><b>${esc(x.v)}</b><small>${x.dom} de ${x.ids.length} preguntas dominadas${x.leido?' · módulo leído ✅':''}</small><div class="bar"><i style="width:${x.pct}%"></i></div></div><div class="st">${x.ok?'✅ Lista':x.pct+'%'}</div></div>`).join('')}
+ <div class="sec">Evaluaciones</div>
+ <div class="ev c1" data-ev="diag"><div class="t">🩺 Diagnóstico inicial</div><div class="d">Descubre qué sabes y qué te falta antes de empezar. Te sugiere por dónde partir.</div><div class="mt"><span>15 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('diag')}</span></div></div>
+ <div class="ev c2" data-ev="inter"><div class="t">📊 Evaluación intermedia</div><div class="d">Mide tu avance después de estudiar los módulos, con explicación en cada respuesta.</div><div class="mt"><span>25 preguntas</span><span>·</span><span>Sin tiempo</span><span>·</span><span>${est('inter')}</span></div></div>
+ <div class="ev c3" data-ev="fin"><div class="t">🏆 Evaluación final (simulacro oficial)</div><div class="d">Igual que el examen real: 35 preguntas, 3 de doble puntaje, apruebas con 33 de 38.</div><div class="mt"><span>35 preguntas</span><span>·</span><span>45 minutos</span><span>·</span><span>${est('fin')}</span></div></div>
+ <div class="ev c4" data-ev="trivia"><div class="t">🔥 Trivia</div><div class="d">80 preguntas seguidas y 5 vidas. ¿Llegas al final?</div><div class="mt"><span>80 preguntas</span><span>·</span><span>5 vidas</span><span>·</span><span>Récord: ${S.racha||0}</span></div></div>
+ ${S.intentos.length?`<div class="card"><h3>Últimos simulacros</h3><table>${S.intentos.slice(-5).reverse().map(x=>`<tr><td>${x.f}</td><td>${x.pts}/38</td><td>${x.pts>=33?'✅ Aprobado':'💪 Aún no'}</td></tr>`).join('')}</table></div>`:''}
+ <p class="src">Ganas 10 XP por respuesta correcta, 20 por módulo leído y 50 por evaluación terminada. Una competencia queda lista con el 80% de sus preguntas dominadas. Tu avance se guarda en este navegador.</p>`;
+ $('#voz').onclick=ev=>speak(resumenVoz(),ev.currentTarget);
+ app.querySelectorAll('[data-c]').forEach(d=>d.onclick=()=>{const k=d.dataset.c;cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===k),'Competencia: '+TEMAS[k]);});
+ app.querySelectorAll('[data-ev]').forEach(d=>d.onclick=()=>{const k=d.dataset.ev; if(k==='fin'){cur='simulacro';nav();startSim();} else if(k==='trivia') go('trivia'); else evaluacion(k);});
+ hdr();
 };
+function evaluacion(tipo){
+ const N=tipo==='diag'?15:25, conFb=tipo==='inter', titulo=tipo==='diag'?'🩺 Diagnóstico inicial':'📊 Evaluación intermedia';
+ const temas=Object.keys(TEMAS); let ids=[]; const porTema={}; temas.forEach(t=>porTema[t]=shuffle(Q.map((q,i)=>i).filter(i=>Q[i].t===t)));
+ while(ids.length<N){let add=false;for(const t of temas){if(ids.length>=N)break;const x=porTema[t].pop();if(x!==undefined){ids.push(x);add=true;}}if(!add)break;}
+ ids=shuffle(ids); let k=0; const res={};
+ const fin=()=>{const ok=ids.filter(i=>res[i]).length, pct=Math.round(ok/ids.length*100);
+  S.ev=S.ev||{}; S.ev[tipo]={pct,f:new Date().toLocaleDateString('es-CL')}; S.xp=(S.xp||0)+50; save(); hdr();
+  const bt=temas.map(t=>{const q=ids.filter(i=>Q[i].t===t);const b=q.filter(i=>res[i]).length;return {t,q:q.length,b,p:q.length?Math.round(b/q.length*100):0};}).filter(x=>x.q);
+  const fuertes=bt.filter(x=>x.p>=80), reforzar=bt.filter(x=>x.p<80).sort((a,b)=>a.p-b.p);
+  app.innerHTML=`<div class="card"><h2>${titulo}</h2><div class="big">${pct}%</div><p class="muted">${ok} de ${ids.length} correctas · +50 XP</p>
+  <div class="row"><button class="btn" onclick="go('inicio')">🏠 Volver al inicio</button><button class="btn o" onclick="go('reforzar')">💪 Reforzar lo que falta</button></div></div>
+  <div class="card"><h3>Por competencia</h3><table>${bt.map(x=>`<tr><td>${esc(TEMAS[x.t])}</td><td>${x.b}/${x.q}</td><td>${x.p>=80?'✅ Fuerte':'💪 Reforzar'}</td></tr>`).join('')}</table></div>
+  <div class="card"><h3>🧭 Tu ruta sugerida</h3>${reforzar.length?`<p>Estudia en este orden:</p><ol>${reforzar.map(x=>`<li><b>${esc(TEMAS[x.t])}</b> (${x.p}%) — lee el módulo y practica el tema.</li>`).join('')}</ol>`:'<p>¡Todo fuerte! Pasa directo a la evaluación final. 🏆</p>'}${fuertes.length?`<p class="muted">Ya dominas: ${fuertes.map(x=>esc(TEMAS[x.t])).join(', ')}.</p>`:''}</div>`;
+  window.scrollTo(0,0);};
+ const step=()=>{ if(k>=ids.length) return fin();
+  const i=ids[k],q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
+  app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">${titulo} · ${k+1}/${ids.length}</span><button class="spk" id="spk">🔊 Escuchar</button></div><div class="bar" style="margin:8px 0"><i style="width:${Math.round(k/ids.length*100)}%"></i></div><h3>${esc(q.q)}</h3>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="fb"></div></div>`;
+  $('#spk').onclick=e=>speak(q.q+'. '+ord.map(j=>q.o[j]).join('. '),e.currentTarget);
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j,good=j===q.a;res[i]=good;mark(i,good);
+   if(!conFb){k++;step();return;}
+   app.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(+x.dataset.j===q.a)x.classList.add('ok');else if(x===b)x.classList.add('bad');});
+   $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'🤔 Casi. La correcta está en verde.'}</b> ${esc(q.e)} <span class="src">— Libro, p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">Siguiente →</button></div>`;$('#nx').onclick=()=>{k++;step();};});
+ }; step();
+}
 R.estudiar=()=>{
  app.innerHTML=`<p class="muted">Lo clave de cada capítulo. Toca 🔊 para escucharlo.</p>`+MODULOS.map(m=>`<div class="card mod"><h3><span>${m.ic} ${m.tit}</span><button class="spk" data-m="${m.id}">🔊 Escuchar</button></h3><span class="src">${m.p}</span><ul>${m.pts.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
  <div class="row" style="margin-top:10px"><button class="btn o" data-ok="${m.id}">${S.mods[m.id]?'✅ Leído':'Marcar leído'}</button><button class="btn" data-pr="${m.id}">Practicar</button></div></div>`).join('');
  app.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{const m=MODULOS.find(x=>x.id===b.dataset.m); speak(m.tit+'. '+m.pts.join('. '),b);});
- app.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{S.mods[b.dataset.ok]=1;save();b.textContent='✅ Leído';});
+ app.querySelectorAll('[data-ok]').forEach(b=>b.onclick=()=>{if(!S.mods[b.dataset.ok]){S.xp=(S.xp||0)+20;}S.mods[b.dataset.ok]=1;save();hdr();b.textContent='✅ Leído';});
  app.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{cur='practicar';nav();quiz(Q.map((q,i)=>i).filter(i=>Q[i].t===b.dataset.pr),'Tema: '+TEMAS[b.dataset.pr]);});
 };
 R.practicar=()=>{
@@ -261,14 +328,14 @@ R.practicar=()=>{
 function quiz(ids,titulo){
  ids=shuffle(ids); let k=0, ok=0;
  const step=()=>{
-  if(k>=ids.length){app.innerHTML=`<div class="card"><h2>${esc(titulo)}</h2><div class="big">${ok}/${ids.length}</div><p class="muted">correctas</p><div class="row"><button class="btn" onclick="go('practicar')">Otro tema</button><button class="btn o" onclick="go('errores')">Repasar errores</button></div></div>`;return;}
+  if(k>=ids.length){app.innerHTML=`<div class="card"><h2>${esc(titulo)}</h2><div class="big">${ok}/${ids.length}</div><p class="muted">correctas</p><div class="row"><button class="btn" onclick="go('practicar')">Otro tema</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>`;return;}
   const i=ids[k],q=Q[i]; const ord=shuffle(q.o.map((t,j)=>j));
   app.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">${k+1}/${ids.length} · ${TEMAS[q.t]}</span><span>${q.d?'<span class="pill d">×2</span> ':''}<button class="spk" id="spk">🔊 Escuchar</button></span></div><h3 style="margin-top:10px">${esc(q.q)}</h3><div id="opts">${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}</div><div id="fb"></div></div>`;
   $('#spk').onclick=e=>speak(q.q+'. '+ord.map(j=>q.o[j]).join('. '),e.currentTarget);
   app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
    const j=+b.dataset.j, good=j===q.a; if(good) ok++; mark(i,good);
    app.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q.a) x.classList.add('ok'); else if(x===b) x.classList.add('bad');});
-   $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'❌ No era esa.'}</b> ${esc(q.e)} <span class="src">— Libro, p. ${q.p}</span></div><div class="row" style="margin-top:12px"><button class="btn" id="nx">Siguiente →</button><button class="spk" id="spe">🔊 Explicación</button>${bookBtn(i)}</div>`;
+   $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'🤔 Casi. La correcta está en verde.'}</b> ${esc(q.e)} <span class="src">— Libro, p. ${q.p}</span></div><div class="row" style="margin-top:12px"><button class="btn" id="nx">Siguiente →</button><button class="spk" id="spe">🔊 Explicación</button>${bookBtn(i)}</div>`;
    $('#nx').onclick=()=>{k++;step();}; $('#spe').onclick=e=>speak(q.e,e.currentTarget); wireBook(app);
   });
  }; step();
@@ -290,29 +357,32 @@ function startSim(){
   $('#pv').onclick=()=>{k--;render()}; $('#nx').onclick=()=>{if(k<34){k++;render()}}; $('#fin').onclick=finish;};
  const finish=()=>{clearInterval(timerId); timerId=null; let pts=0;
   ids.forEach(i=>{const good=ans[i]===Q[i].a; if(good) pts+=dobSet.has(i)?2:1; mark(i,good);});
-  S.intentos.push({f:new Date().toLocaleDateString('es-CL'),pts}); save();
+  S.intentos.push({f:new Date().toLocaleDateString('es-CL'),pts}); S.ev=S.ev||{}; S.ev.fin={pct:Math.round(pts/38*100),f:new Date().toLocaleDateString('es-CL')}; S.xp=(S.xp||0)+50; save(); hdr();
   const wrong=ids.filter(i=>ans[i]!==Q[i].a);
-  app.innerHTML=`<div class="card"><h2>${pts>=33?'🎉 ¡Aprobado!':'💪 Aún no'}</h2><div class="big">${pts}/38</div><p class="muted">Necesitas 33. ${pts>=33?'¡Sigue así para llegar con margen!':'Te faltaron '+(33-pts)+' puntos.'}</p><div class="row"><button class="btn y" onclick="go('simulacro')">Otro simulacro</button><button class="btn o" onclick="go('errores')">Repasar errores</button></div></div>
+  app.innerHTML=`<div class="card"><h2>${pts>=33?'🎉 ¡Aprobado!':'💪 Aún no'}</h2><div class="big">${pts}/38</div><p class="muted">Necesitas 33. ${pts>=33?'¡Sigue así para llegar con margen!':'Te faltaron '+(33-pts)+' puntos.'}</p><div class="row"><button class="btn y" onclick="go('simulacro')">Otro simulacro</button><button class="btn o" onclick="go('reforzar')">Reforzar lo que falta</button></div></div>
   ${wrong.length?`<div class="card"><h3>Revisión (${wrong.length})</h3>${wrong.map(i=>`<div style="margin:12px 0"><b>${esc(Q[i].q)}</b>${dobSet.has(i)?' <span class="pill d">×2</span>':''}<div class="muted">Tu respuesta: ${ans[i]===undefined?'en blanco':esc(Q[i].o[ans[i]])}</div><div class="exp"><b>Correcta:</b> ${esc(Q[i].o[Q[i].a])}. ${esc(Q[i].e)}</div><div style="margin-top:6px">${bookBtn(i)}</div></div>`).join('')}</div>`:''}`;
   wireBook(app); window.scrollTo(0,0);};
  timerId=setInterval(()=>{left--; tick(); if(left<=0) finish();},1000); render();
 }
 R.trivia=()=>{
- let vidas=3, pts=0, pool=shuffle(Q.map((q,i)=>i));
- const step=()=>{
-  if(vidas<=0||!pool.length){ if(pts>(S.racha||0)){S.racha=pts;save();} app.innerHTML=`<div class="card"><h2>Fin de la trivia</h2><div class="big">${pts}</div><p class="muted">seguidas · récord ${S.racha}</p><div class="row"><button class="btn y" onclick="go('trivia')">🔁 Otra vez</button></div></div>`;return;}
-  const i=pool.pop(),q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
-  app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="hearts">${'💖'.repeat(vidas)}${'🤍'.repeat(3-vidas)}</span><span class="pill">🔥 ${pts} · récord ${S.racha||0}</span></div><div class="card"><h3>${esc(q.q)}</h3>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="fb"></div></div>`;
-  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j, good=j===q.a; mark(i,good); if(good) pts++; else vidas--;
+ const VID=5, TOT=80; let vidas=VID, pts=0, n=0, pool=shuffle(Q.map((q,i)=>i)).slice(0,TOT);
+ app.innerHTML=`<div class="card" style="text-align:center"><h2>🔥 Trivia</h2><p><b>${TOT} preguntas</b> y <b>${VID} vidas</b> 💖. Cada error te quita una vida. ¿Llegas a la 80?</p><p class="muted">Tu récord: ${S.racha||0} correctas</p><button class="btn y" id="ini">¡Empezar!</button></div>`;
+ const end=()=>{const nuevo=pts>(S.racha||0); if(nuevo){S.racha=pts;} save(); hdr();
+  app.innerHTML=`<div class="card" style="text-align:center"><h2>${n>=TOT&&vidas>0?'🏆 ¡Llegaste al final!':'Fin de la trivia'}</h2><div class="big">${pts}</div><p class="muted">correctas de ${n} · ${nuevo?'🎉 ¡Nuevo récord!':'récord '+S.racha}</p><div class="row" style="justify-content:center"><button class="btn y" onclick="go('trivia')">🔁 Otra vez</button><button class="btn o" onclick="go('reforzar')">💪 Reforzar lo que falta</button></div></div>`;};
+ const step=()=>{ if(vidas<=0||n>=pool.length) return end();
+  const i=pool[n],q=Q[i],ord=shuffle(q.o.map((t,j)=>j));
+  app.innerHTML=`<div class="row" style="justify-content:space-between"><span class="hearts">${'💖'.repeat(vidas)}${'🤍'.repeat(VID-vidas)}</span><span class="pill">Pregunta ${n+1}/${TOT} · ✅ ${pts}</span></div><div class="bar" style="margin:8px 0"><i style="width:${Math.round(n/TOT*100)}%"></i></div><div class="card"><h3>${esc(q.q)}</h3>${ord.map(j=>`<button class="opt" data-j="${j}">${esc(q.o[j])}</button>`).join('')}<div id="fb"></div></div>`;
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const j=+b.dataset.j, good=j===q.a; mark(i,good); n++; if(good) pts++; else vidas--; hdr();
    app.querySelectorAll('.opt').forEach(x=>{x.disabled=true; if(+x.dataset.j===q.a) x.classList.add('ok'); else if(x===b) x.classList.add('bad');});
-   $('#fb').innerHTML=`<div class="exp">${esc(q.e)} <span class="src">p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">Seguir →</button>${bookBtn(i)}</div>`; $('#nx').onclick=step; wireBook(app);});
- }; step();
+   $('#fb').innerHTML=`<div class="exp"><b>${good?'✅ ¡Bien!':'💔 Perdiste una vida.'}</b> ${esc(q.e)} <span class="src">p. ${q.p}</span></div><div class="row" style="margin-top:10px"><button class="btn" id="nx">${vidas<=0||n>=pool.length?'Ver resultado':'Seguir →'}</button>${bookBtn(i)}</div>`; $('#nx').onclick=step; wireBook(app);});
+ };
+ $('#ini').onclick=step;
 };
 
-R.errores=()=>{
+R.reforzar=()=>{
  const ids=Object.keys(S.malas).map(Number).filter(i=>Q[i]);
- if(!ids.length){app.innerHTML=`<div class="card"><h2>Sin errores pendientes 🎉</h2><p class="muted">Lo que falles aparece aquí hasta que lo respondas bien.</p></div>`;return;}
- app.innerHTML=`<div class="card"><h2>Mis errores (${ids.length})</h2><button class="btn y" id="rp">Repasar ahora</button></div>`+ids.map(i=>`<div class="card"><b>${esc(Q[i].q)}</b><div class="exp">${esc(Q[i].o[Q[i].a])} — ${esc(Q[i].e)}</div><div style="margin-top:8px">${bookBtn(i)}</div></div>`).join('');
+ if(!ids.length){app.innerHTML=`<div class="card"><h2>¡Todo al día! 🎉</h2><p class="muted">Las preguntas que aún te cuesten aparecen aquí hasta que las respondas bien.</p></div>`;return;}
+ app.innerHTML=`<div class="card"><h2>💪 Para reforzar (${ids.length})</h2><p class="muted">Estas preguntas todavía te cuestan. Con un repaso más quedan listas.</p><button class="btn y" id="rp">Repasar ahora</button></div>`+ids.map(i=>`<div class="card"><b>${esc(Q[i].q)}</b><div class="exp">${esc(Q[i].o[Q[i].a])} — ${esc(Q[i].e)}</div><div style="margin-top:8px">${bookBtn(i)}</div></div>`).join('');
  $('#rp').onclick=()=>quiz(ids,'Repaso de errores'); wireBook(app);
 };
 R.glosario=()=>{app.innerHTML=`<div class="card"><h2>📚 Glosario</h2><table>${GLOS.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}</table><div class="row" style="margin-top:10px"><button class="btn" onclick="go('libro',{p:161,q:null})">Ver el glosario oficial del libro</button></div></div>`;};
@@ -320,9 +390,9 @@ R.fuentes=()=>{app.innerHTML=`<div class="card"><h2>🔎 Fuentes</h2>
 <p><b>Libro:</b> "Libro para la Conducción en Chile — Automovilistas, Licencia Clase B", CONASET (MTT), edición <b>febrero 2026</b>. Las páginas que ves en 📖 Libro son de ese documento. Cada pregunta marca el texto exacto en que se basa.</p>
 <p><b>Examen:</b> 35 preguntas, 3 de doble puntaje, 38 puntos, aprobación con 33 y banco de más de 1.000 preguntas (CONASET/MTT). 45 minutos y temas de doble puntaje, según PracticaTest.</p>
 <ul><li>Descarga oficial gratuita: <a href="https://mejoresconductores.conaset.cl">mejoresconductores.conaset.cl</a></li><li><a href="https://energia.gob.cl/noticias/nacional/nuevo-libro-del-conductor-con-enfasis-en-electromovilidad-y-seguridad-infantil">Gobierno de Chile: nuevo Libro del Conductor y Nexteo</a></li><li><a href="https://practicatest.cl/blog/licencias-de-conducir/cuantos-errores-examen-teorico-clase-b">PracticaTest: puntaje del examen Clase B</a></li></ul>
-<p class="src">RutaB es material de estudio independiente, no una app oficial de CONASET.</p></div>`;};
+<p>💌 RutaB está dedicada a <b>Charlotte</b> &lt;3</p><p class="src">RutaB es material de estudio independiente, no una app oficial de CONASET.</p></div>`;};
 
-const h=location.hash.slice(1); go(R[h]?h:'inicio');
+const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();
 </script>
 </body>
 </html>
