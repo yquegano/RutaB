@@ -1,0 +1,20 @@
+{
+  "id": "/RutaB/",
+  "name": "RutaB · Licencia Clase B",
+  "short_name": "RutaB",
+  "description": "Estudia gratis para el examen teórico de la licencia de conducir Clase B en Chile, con el libro oficial de CONASET, pruebas y trivia.",
+  "lang": "es-CL",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#C9B6F0",
+  "theme_color": "#C9B6F0",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

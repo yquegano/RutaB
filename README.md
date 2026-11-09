@@ -14,6 +14,10 @@ App: https://yquegano.github.io/RutaB/
 - Contenido completo del libro dentro de cada módulo y glosario oficial completo.
 - Requisitos y proceso para obtener la licencia, con links directos a las leyes 18.290, 21.797, 20.580 y 20.770 (bcn.cl) y a ChileAtiende.
 
+## Instalar como app
+
+Abre el link en el celular y toca **📲 App** (arriba a la derecha). En Android aparece el botón *Instalar*; en iPhone, desde Safari: Compartir → *Agregar a inicio*. Desde ahí mismo puedes guardar el libro para estudiar sin internet.
+
 Dedicada con admiración a **Charlotte Valenzuela**.
 
 Desarrollada por **Johanna Torres** · johanna.ttorres@gmail.com · [LinkedIn](https://www.linkedin.com/in/johannattorres/)

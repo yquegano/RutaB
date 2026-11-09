@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RutaB — Licencia Clase B Chile</title>
+<meta name="description" content="Estudia gratis para el examen teórico de la licencia de conducir Clase B en Chile, con el libro oficial de CONASET.">
+<meta name="theme-color" content="#C9B6F0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RutaB">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fbf7f2;--card:#ffffff;--ink:#2f2a3d;--muted:#766f86;--line:#ece4f3;--pink:#f7b8cf;--coral:#f9c6a8;--mint:#b6e8d3;--sky:#b9dcf7;--sun:#fde7a3;--lav:#cfc2f5;--ok:#2e9e6b;--bad:#d9546a;--r:18px}
@@ -161,11 +170,26 @@ main.wrap{padding-bottom:130px}
 #amodal{position:fixed;inset:0;background:rgba(46,36,53,.45);z-index:40;display:none;align-items:flex-end;justify-content:center;padding:12px}
 #amodal.on{display:flex}#amodal .box{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:#fff;border:4px solid var(--tinta);border-radius:24px;box-shadow:6px 6px 0 var(--tinta);padding:16px}
 </style>
+<style id="app-install">
+#instBtn{flex-shrink:0;border:3px solid var(--tinta,#2E2435);box-shadow:2px 2px 0 var(--tinta,#2E2435);background:var(--sol,#FFE08A);color:var(--tinta,#2E2435);border-radius:14px;padding:6px 12px;font-weight:800;font-size:15px;min-height:40px}
+#instModal{position:fixed;inset:0;background:rgba(46,36,53,.45);z-index:45;display:none;align-items:flex-end;justify-content:center;padding:12px}
+#instModal.on{display:flex}
+#instModal .box{width:100%;max-width:520px;max-height:88vh;overflow:auto;background:#fff;border:4px solid var(--tinta,#2E2435);border-radius:24px;box-shadow:6px 6px 0 var(--tinta,#2E2435);padding:18px}
+#instModal h2{margin:0 0 6px}
+#instModal .sec2{border-top:2px dashed #e3d9f5;margin-top:14px;padding-top:12px}
+#instModal ol{margin:6px 0 0 20px;padding:0}
+#instModal button.big2{border:3px solid var(--tinta,#2E2435);box-shadow:2px 2px 0 var(--tinta,#2E2435);background:var(--menta,#A8E6D4);border-radius:14px;padding:10px 14px;font-weight:800;width:100%;margin-top:8px;min-height:46px}
+#instModal .cerrar{background:#fff}
+#instModal .bar2{height:12px;border:2px solid var(--tinta,#2E2435);border-radius:99px;overflow:hidden;margin-top:8px;background:#fff}
+#instModal .bar2 i{display:block;height:100%;width:0;background:var(--verde,#A5DD8A)}
+@media(max-width:520px){#instBtn{padding:6px 9px;font-size:14px}}
+</style>
 </head>
 <body>
 <header class="top">
   <div class="logo">🐱</div>
   <div style="flex:1"><h1 style="font-size:20px;margin:0">RutaB · Licencia Clase B</h1><small>Información: Libro para la Conducción en Chile (CONASET), edición febrero 2026</small></div>
+  <button type="button" id="instBtn" aria-haspopup="dialog">📲 App</button>
 </header>
 <nav class="tabs" id="tabs"></nav>
 <main class="wrap" id="app"></main>
@@ -578,6 +602,62 @@ R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía',
  md.onclick=e=>{if(e.target===md)md.classList.remove('on');};
 })();
 const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();
+</script>
+<div id="instModal" role="dialog" aria-modal="true" aria-labelledby="instTitle"><div class="box" id="instBox"></div></div>
+<script>
+/* RutaB como app (v10, 2026-11-09): instalar en el celular y estudiar sin internet. */
+(function(){
+  var deferred=null, LIBRO='rutab-libro-v1', PAGS=170;
+  var standalone=function(){return (window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true};
+  var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;var b=document.getElementById('instBtn');if(b)b.textContent='📲 Instalar'});
+  window.addEventListener('appinstalled',function(){deferred=null;pintar('¡Listo! RutaB quedó instalada en tu pantalla de inicio. 🐱')});
+  var modal=document.getElementById('instModal'), box=document.getElementById('instBox');
+  function guardado(){try{return localStorage.getItem('rutab_libro_ok')==='1'}catch(e){return false}}
+  function pintar(msg){
+    var inst;
+    if(standalone()) inst='<p>✅ Ya estás usando RutaB como app.</p>';
+    else if(deferred) inst='<p>Instálala y ábrela desde tu pantalla de inicio, como cualquier app.</p><button type="button" class="big2" id="doInst">📲 Instalar RutaB</button>';
+    else if(ios) inst='<p>En iPhone o iPad, desde <b>Safari</b>:</p><ol><li>Toca el botón <b>Compartir</b> (el cuadrado con la flecha hacia arriba).</li><li>Elige <b>“Agregar a inicio”</b>.</li><li>Toca <b>Agregar</b>. RutaB aparece con el gatito en tu pantalla.</li></ol>';
+    else inst='<p>Abre el menú del navegador (⋮ arriba a la derecha) y elige <b>“Instalar app”</b> o <b>“Agregar a la pantalla principal”</b>.</p>';
+    var off=guardado()?'<p>✅ El libro completo ya está guardado en este equipo.</p><button type="button" class="big2" id="doLibro">🔄 Volver a guardarlo</button>':'<p>Guarda las 170 páginas del libro para estudiar sin internet (unos 19 MB). Hazlo con wifi.</p><button type="button" class="big2" id="doLibro">📥 Guardar el libro</button>';
+    box.innerHTML='<h2 id="instTitle">RutaB en tu celular</h2>'+(msg?'<p><b>'+msg+'</b></p>':'')+inst+
+      '<div class="sec2"><h3 style="margin:0 0 4px">Estudiar sin internet</h3>'+off+'<div class="bar2" id="libBar" hidden><i></i></div><p id="libTxt" style="margin:6px 0 0"></p></div>'+
+      '<button type="button" class="big2 cerrar" id="instClose">Cerrar</button>';
+  }
+  function abrir(){pintar('');modal.classList.add('on');var c=document.getElementById('instClose');if(c)c.focus()}
+  function cerrar(){modal.classList.remove('on');var b=document.getElementById('instBtn');if(b)b.focus()}
+  document.getElementById('instBtn').addEventListener('click',abrir);
+  modal.addEventListener('click',function(e){if(e.target===modal)cerrar()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('on'))cerrar()});
+  box.addEventListener('click',function(e){
+    var t=e.target.closest('button'); if(!t) return;
+    if(t.id==='instClose') cerrar();
+    if(t.id==='doInst'&&deferred){deferred.prompt();deferred.userChoice.then(function(){deferred=null;pintar('')})}
+    if(t.id==='doLibro') guardarLibro(t);
+  });
+  function guardarLibro(btn){
+    var bar=document.getElementById('libBar'), txt=document.getElementById('libTxt');
+    if(!('caches' in window)){txt.textContent='Este navegador no permite guardar el libro.';return}
+    btn.disabled=true; bar.hidden=false; var ok=0, fail=0, i=0, hechos=0;
+    caches.open(LIBRO).then(function(c){
+      function sig(){
+        if(i>=PAGS) return;
+        var n=++i, url='libro/p-'+String(n).padStart(3,'0')+'.jpg';
+        return fetch(url,{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return c.put(url,r).then(function(){ok++})}).catch(function(){fail++}).then(function(){
+          hechos++; bar.firstChild.style.width=Math.round(hechos/PAGS*100)+'%'; txt.textContent='Guardando… '+hechos+' de '+PAGS+' páginas';
+          return sig();
+        });
+      }
+      return Promise.all([sig(),sig(),sig(),sig()]);
+    }).then(function(){
+      btn.disabled=false;
+      if(fail===0){try{localStorage.setItem('rutab_libro_ok','1')}catch(e){} txt.textContent='✅ Listo: '+ok+' páginas guardadas. Ya puedes estudiar sin internet.';}
+      else txt.textContent='Se guardaron '+ok+' páginas y faltaron '+fail+'. Revisa la conexión y vuelve a intentarlo.';
+    });
+  }
+})();
 </script>
 </body>
 </html>

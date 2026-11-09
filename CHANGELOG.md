@@ -2,7 +2,14 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
-## 2026-11-07 · v9 (versión principal)
+## 2026-11-09 · v10 app (versión principal)
+Archivo: `versiones/RutaB_2026-11-09_v10-app.html`. La anterior queda en `versiones/RutaB_2026-11-07_v9.html` (idéntica a la que estaba publicada).
+- RutaB se puede instalar como app en el celular (Android, iPhone) y en el computador: botón "📲 App" arriba a la derecha.
+- Funciona sin internet: la app queda guardada y el botón "Guardar el libro" descarga las 170 páginas (unos 19 MB) para estudiar sin conexión.
+- Archivos nuevos: `manifest.webmanifest` (nombre, colores e íconos de la app), `sw.js` (lo que permite usarla sin internet) e `icons/` (gatito sobre fondo lila, en todos los tamaños).
+- Es el primer paso para publicarla en Google Play. El contenido, las preguntas y el diseño no cambian.
+
+## 2026-11-07 · v9
 Archivo: `versiones/RutaB_2026-11-07_v9.html`. La anterior queda en `versiones/RutaB_2026-11-07_v8.html`.
 - Glosario: vuelve el diseño anterior (letras en círculo y palabras con fondo pastel). Ahora cada letra se despliega al tocarla.
 - Créditos: se quita el gato de la dedicatoria.
