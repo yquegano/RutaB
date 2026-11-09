@@ -22,8 +22,6 @@ Gratis: el libro completo, los módulos 1 y 2, el diagnóstico, el glosario y lo
 
 Abre el link en el celular y toca **📲 App** (arriba a la derecha). En Android aparece el botón *Instalar*; en iPhone, desde Safari: Compartir → *Agregar a inicio*. Desde ahí mismo puedes guardar el libro para estudiar sin internet.
 
-Dedicada con admiración a **Charlotte Valenzuela**.
-
 Desarrollada por **Johanna Torres** · johanna.ttorres@gmail.com · [LinkedIn](https://www.linkedin.com/in/johannattorres/)
 
 Material de estudio independiente: no es una app oficial de CONASET.

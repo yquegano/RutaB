@@ -2,7 +2,13 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
-## 2026-11-09 · v11 gratis y Pro (versión principal)
+## 2026-11-09 · v12 sin dedicatoria (versión principal)
+Archivo: `versiones/RutaB_2026-11-09_v12-sin-dedicatoria.html`. La anterior queda en `versiones/RutaB_2026-11-09_v11-gratis-y-pro.html`.
+- Créditos: se quita el botón "💌 Para Charlotte" con la dedicatoria (y su estilo). También se quita la línea de dedicatoria del README.
+- `sw.js` pasa a la versión v12 para que todos reciban la actualización.
+- Nada más cambia: contenido, preguntas, versión gratis y Pro quedan iguales.
+
+## 2026-11-09 · v11 gratis y Pro
 Archivo: `versiones/RutaB_2026-11-09_v11-gratis-y-pro.html`. La anterior queda en `versiones/RutaB_2026-11-09_v10-app.html`.
 - **Gratis:** libro completo, módulos 1 y 2 (Siniestros y Vehículo), diagnóstico inicial, glosario, requisitos y créditos.
 - **RutaB Pro** ($4.990, pago único): los 8 módulos con todo su contenido y práctica, evaluación intermedia, examen final con formato real (35 preguntas en 45 minutos) y trivia de 80 preguntas.

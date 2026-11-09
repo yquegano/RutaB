@@ -1,8 +1,8 @@
-/* RutaB · service worker (v11, 2026-11-09)
+/* RutaB · service worker (v12, 2026-11-09)
    - La app abre sin internet (index.html, íconos y manifest quedan guardados).
    - Las páginas del libro se guardan a medida que se ven, o todas juntas con
      el botón "Guardar el libro" (caché aparte, no se borra al actualizar). */
-const CORE = 'rutab-core-v11';
+const CORE = 'rutab-core-v12';
 const LIBRO = 'rutab-libro-v1';
 const FONTS = 'rutab-fonts-v1';
 const CORE_FILES = ['./', './index.html', './manifest.webmanifest',
