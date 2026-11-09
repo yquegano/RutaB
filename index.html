@@ -603,6 +603,80 @@ R.fuentes=()=>{app.innerHTML=shead('Créditos','🌐 Créditos y bibliografía',
 })();
 const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); go(R[h0]?h0:'inicio'); hdr();
 </script>
+<script>
+/* RutaB gratis y Pro (v11, 2026-11-09).
+   Gratis: libro completo, módulos 1 y 2, diagnóstico, glosario, requisitos y créditos.
+   Pro (código de activación): los 8 módulos, práctica de todas las preguntas, evaluación intermedia, examen final y trivia.
+   Los códigos no están en este archivo: solo su huella (hash). */
+(function(){
+ var PRO={key:'rutab_pro',salt:'rutab-pro-2026:',precio:'$4.990',compra:'',correo:'johanna.ttorres@gmail.com',hashes:["580fb183f496db1dbd54", "6675d9f98a9bc632e048", "fbc61740954a1acf9935", "8bc1ed489eaf02c271f6", "0cac5c14211af7b9f16e", "8646c24a10190ffbed87", "fb825d58bad6e7cd5ad0", "33ee8aec37818c63c37b", "4e06d7fad9d4fb62627b", "601bf6a355e7833b955a", "30b36e0e991f301fb2ee", "b4a7fc0f33a513266182", "868306d7f90f50635f3b", "e96640fbafafac060f2d", "086b66d349a8acc0e1fd", "7ef3bc2bdcf03950432f", "43515f5580b440d428c0", "4ed176eb0eb624432f72", "d60b7b3f51a9bbd57271", "4773c655cfd7240cbacd", "ad1166a1a29f01d69b97", "d9d22fe792588c88450a", "bff2230a7a2e9e266843", "61f2bc7cf4054179b4d0", "c70061cae9ae64ec520d", "c251ec1e269f533077c6", "7c153e7c255fb3ff6375", "8975a23c9f9104c9b3ed", "fe286df0dfef898fa1c9", "bebf6190579ad84ef1b2", "8174da63e192c60a2e68", "eb8061d28cfd2ea73b0f", "f6cc3949cf816faceb49", "5c07ed4c76a1adab7bc4", "e6e17c78d88bf54c56da", "e1495cafeb8c5cfc344f", "c91345f40bc9662fdf70", "8213cd7a399d7d3838b2", "4fce51b75456ae6cc6ea", "53c898fbf55d863b765d", "6cc49ecbb27b6bad05b8", "51a50e4d1df19f31ef6d", "ee406d69c12dd06ac7cc", "e8072f93b4e608ed2aaf", "a84316c59113fab820b2", "3e8410e2b52a68b31a1d", "d6b8e0ae6d8a3d3fdc73", "fd34aa1133d4415d2ef4", "25ae8782152bb4af3595", "e268b89362967f925c68", "e83b5d8b94a78d1f2d14", "21817799e845714bb952", "09bd8f9883206ebf5164", "027d37eb555535a2b8b1", "ec9e35fca1ca3615a0cf", "ca62f3c3adf1a21cdc54", "0ca5b0b48c75895a3454", "8362be19e2b8c62d0093", "cb21350034e892c595ae", "514b98ca2e6d522e4f73", "f012b47c9877ba34bd04", "818392cca11dcd682453", "a8c3217efa8e7a1bd956", "26c6110031f08a77c97e", "b631b198de93cf719514", "76b624b120c7ed76b8ca", "f0bd0e243173017bbe63", "6ddec26ea0c4269b7b0f", "a74c810fee4a96e61585", "6b749aa1f5df51a4f8eb", "005156c7c2db1708b231", "3552f33d0e02c6d6dc59", "19546fc08f1123d6a505", "abe15129238d21ee0322", "d467a03cb70de7341f89", "8016d0a501594dd799e1", "edb8bf20da6ab2195c09", "99af67615f020a796290", "043ce34e6c2a92699c22", "2d047c11aeb296808a5a", "c6fecddba26a796e6cd4", "749c1e45ba7b1525a977", "8c8835d494ab17311429", "d3a96077eb603726323d", "e3570f616dc1834863ce", "643309f32931e3a0a7ab", "364ee843e4bc821cb969", "903dc0d32dbea657ec8e", "a379380c0316c238f620", "2893d49c8f9b1787bd1d", "dce74758c1fa40f6fb82", "921e9cffac3c937ae302", "7d39382fbcafa24cca49", "e29920f2e1b05ede980e", "726ce21320d052a188b9", "949f499a706145f16ca1", "389feeeba7cb103aec4f", "a11ed8ef5537635b43ad", "4d3ddeafb208b7a427e8", "eb00cf110e9a7b27cbff", "212ab216354ed0cf5ae4", "a2f2bf0fba380a726a70", "bc47e890dadaefe0bf7f", "cb59bd15f795d6f3bc96", "a6524c766f305991cc89", "bd5a3d3ed077e14143c0", "62dcb4cc87325ed1de46", "e3d337bb10738d3efe3b", "763206473ff24e86dfed", "8b1fc2dc4a36a21f23c1", "47dab36e4862222ea051", "e5445c675e51a37a5111", "cae2473f07312a14c1cf", "47f636598f2fc5d33057", "d828f08f469f61414406", "9e9885dad4a3de56ae6b", "bf11bec2c8ef7d87510d", "06f46775293074f11490", "aa72b6cb6713c585a0e7", "fee4738f2c155f7c66db", "71db6a8acb53bd4b3923", "0c65fe804cc022d7b0f8", "1b3cf601598c5ae6202f", "d68e713991f9b2e22845", "9b35525c66e6d8667cd8", "f111af96c1bff0ec7d6e", "3cc479424b97e10e80db", "fb8252c58cb31906385e", "5c9f33edcced3c1acbf3", "dfbd7db42e37abb26316", "a21f44933447791a822a", "874ebca79cac1d75ad63", "015b2e2dd8f95a700437", "81949532b3ad6d1c00ae", "19d5c382d17e6f7467c9", "556eec7e6676a0bf963a", "ccd07fb457134f65e320", "3077d044cf78a99d7b89", "419c24f2e18ff2844ebd", "b7d32c50a60cc3d78b6e", "22e3a0c6cc3950c7f43c", "61b580fb384bc3e2234f", "7a1d6433275d19a19c35", "3e2626a0aa6a45340ce8", "3f24dc48dbede9a42016", "b53e287a1f9eb0a5e862", "f3afc8379e88250850ad", "2769dbd3f9f893088a30", "9019f4c7e317f18ec17c", "0659782232bc7629a48e", "fd63206b5b7330dd347c", "16cccb606e8a0ecd2a8a", "762e04034ce94022d60e", "0aafc30e982e833b79cc", "22ec8b2a4086705a8298", "976c535e54e8e2a965e2", "d4cfd264449d3baf86f5", "4fbd718aa2063fce82a5", "2f3e16c62501efb2d845", "ce66b161e57a8436d931", "48910f678c901dec7468", "9e8e2536728b41942dab", "5c78c11755814b40ee66", "88271c4bf11d01bb2f85", "adc95a2471f05d9bf60c", "59de039a06791ba08f38", "4836bad05220263ef414", "6a4b36ecbd1e6980bce6", "f6b0052ed773f3f13b66", "729b1bfac2b1b5b6d088"]};
+ var LIBRES=['sin','veh'];
+ function norm(c){return String(c||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
+ function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')}
+ window.esPro=function(){try{return localStorage.getItem(PRO.key)==='1'}catch(e){return false}};
+ function activar(c){
+  if(!(window.crypto&&crypto.subtle&&window.TextEncoder)) return Promise.resolve(false);
+  return crypto.subtle.digest('SHA-256',new TextEncoder().encode(PRO.salt+norm(c))).then(function(b){
+   var ok=PRO.hashes.indexOf(hex(b).slice(0,20))>=0; if(ok){try{localStorage.setItem(PRO.key,'1')}catch(e){}} return ok;});
+ }
+ var INCLUYE=['Los 8 módulos con todo el contenido y su práctica','Las 82 preguntas para practicar por tema','Evaluación intermedia de 25 preguntas','Examen final con formato real: 35 preguntas en 45 minutos','Trivia de 80 preguntas con 5 vidas'];
+ function tarjeta(motivo){
+  var pro=esPro();
+  return '<div class="card" style="text-align:center"><div style="font-size:44px">⭐</div>'+
+   '<h2>'+(motivo?esc(motivo)+' es parte de RutaB Pro':'RutaB Pro')+'</h2>'+
+   (pro?'<p>✅ Ya tienes RutaB Pro activo en este equipo.</p><button class="btn" onclick="go(\'inicio\')">🏠 Ir al inicio</button>':
+   '<p>Desbloquea todo por <b>'+PRO.precio+'</b>, pago único.</p>'+
+   '<ul style="text-align:left;display:inline-block;margin:4px auto 12px">'+INCLUYE.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+
+   '<div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap"><input id="procode" type="text" autocomplete="off" autocapitalize="characters" placeholder="RB-XXXX-XXXX" aria-label="Código RutaB Pro" style="font:inherit;font-size:18px;padding:10px 12px;border:3px solid var(--tinta,#2E2435);border-radius:14px;width:220px;max-width:100%;text-transform:uppercase"><button class="btn y" type="button" data-pro-act>Activar</button></div>'+
+   '<p id="promsg" class="muted" style="min-height:1.5em" aria-live="polite"></p>'+
+   '<div class="sec">¿Cómo consigo mi código?</div>'+
+   (PRO.compra?'<p><a class="btn" href="'+PRO.compra+'" target="_blank" rel="noopener">⭐ Comprar RutaB Pro</a></p>':'')+
+   '<p>Escríbenos a <b style="user-select:all">'+PRO.correo+'</b> y te enviamos tu código. Si estudias en una escuela de conductores que usa RutaB, pídele tu código a tu escuela.</p>')+
+   '<p class="muted" style="font-size:14px">El libro de CONASET siempre es gratis. Pro desbloquea lo que agregamos: módulos, práctica y exámenes.</p></div>';
+ }
+ function bloqueo(motivo){ if(typeof timerId!=='undefined'&&timerId){clearInterval(timerId);timerId=null;} cur='pro'; nav(); app.innerHTML=tarjeta(motivo); window.scrollTo(0,0); }
+ document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('[data-pro-act]'); if(!b) return;
+  var inp=document.getElementById('procode'), msg=document.getElementById('promsg'); if(!inp) return;
+  if(!norm(inp.value)){msg.textContent='Escribe tu código, por ejemplo RB-7K3M-Q9PX.';inp.focus();return}
+  b.disabled=true; msg.textContent='Revisando…';
+  activar(inp.value).then(function(ok){
+   b.disabled=false;
+   if(ok){msg.textContent='✅ ¡Listo! RutaB Pro quedó activo en este equipo.'; setTimeout(function(){go('inicio')},1200);}
+   else msg.textContent='Ese código no es válido. Revisa que esté bien escrito (letras y números, sin espacios).';
+  });
+ });
+ document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target&&e.target.id==='procode'){var b=document.querySelector('[data-pro-act]');if(b)b.click()}});
+ R.pro=function(){ app.innerHTML=shead('Pro','⭐ RutaB Pro','Todo lo que necesitas para llegar listo al examen.')+tarjeta(''); };
+ VIEWS.push(['pro','⭐ Pro']);
+ var _modulo=modulo; modulo=function(id){
+  _modulo(id); if(esPro()||LIBRES.indexOf(id)>=0) return;
+  var sab=app.querySelector('.blk.sab'); if(!sab) return;
+  while(sab.nextSibling) sab.parentNode.removeChild(sab.nextSibling);
+  sab.insertAdjacentHTML('afterend',tarjeta('El contenido completo de este módulo')); sab.parentNode.removeChild(sab);
+ };
+ var _quiz=quiz; quiz=function(ids,t){
+  if(!esPro()){ var f=ids.filter(function(i){return Q[i]&&LIBRES.indexOf(Q[i].t)>=0}); if(!f.length) return bloqueo('Practicar este tema'); ids=f; }
+  return _quiz(ids,t);
+ };
+ var _ev=evaluacion; evaluacion=function(t){ if(t!=='diag'&&!esPro()) return bloqueo('La evaluación intermedia'); return _ev(t); };
+ var _sim=startSim; startSim=function(){ if(!esPro()) return bloqueo('El examen final con formato real'); return _sim(); };
+ if(R.simulacro){var _rs=R.simulacro; R.simulacro=function(a){ if(!esPro()) return bloqueo('El examen final con formato real'); return _rs(a); };}
+ var _tr=R.trivia; R.trivia=function(a){ if(!esPro()) return bloqueo('La trivia de 80 preguntas'); return _tr(a); };
+ var _est=R.estudiar; R.estudiar=function(a){
+  _est(a); if(esPro()) return;
+  app.querySelectorAll('[data-mod]').forEach(function(d){ if(LIBRES.indexOf(d.dataset.mod)<0){var s=d.querySelector('small:last-of-type'); if(s) s.insertAdjacentHTML('beforeend',' · 🔒 Pro');} });
+ };
+ var _ini=R.inicio; R.inicio=function(a){
+  _ini(a);
+  app.insertAdjacentHTML('afterbegin', esPro()?
+   '<div class="card" style="padding:10px 14px"><b>⭐ RutaB Pro activo.</b> Tienes todo desbloqueado.</div>':
+   '<div class="card"><b>Estás usando RutaB gratis.</b><p class="muted" style="margin:6px 0">Gratis: el libro completo, los módulos 1 y 2, el diagnóstico, el glosario y los requisitos.</p><p style="margin:6px 0">Con <b>RutaB Pro</b> ('+PRO.precio+', pago único) desbloqueas los 8 módulos, toda la práctica, la evaluación intermedia, el examen final con formato real y la trivia.</p><button class="btn y" type="button" onclick="go(\'pro\')">⭐ Desbloquear RutaB Pro</button></div>');
+ };
+ go(cur||'inicio');
+})();
+</script>
+
 <div id="instModal" role="dialog" aria-modal="true" aria-labelledby="instTitle"><div class="box" id="instBox"></div></div>
 <script>
 /* RutaB como app (v10, 2026-11-09): instalar en el celular y estudiar sin internet. */

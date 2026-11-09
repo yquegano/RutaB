@@ -2,7 +2,15 @@
 
 Regla: antes de cada cambio se guarda una copia fechada en `versiones/` y el detalle queda en Notion.
 
-## 2026-11-09 · v10 app (versión principal)
+## 2026-11-09 · v11 gratis y Pro (versión principal)
+Archivo: `versiones/RutaB_2026-11-09_v11-gratis-y-pro.html`. La anterior queda en `versiones/RutaB_2026-11-09_v10-app.html`.
+- **Gratis:** libro completo, módulos 1 y 2 (Siniestros y Vehículo), diagnóstico inicial, glosario, requisitos y créditos.
+- **RutaB Pro** ($4.990, pago único): los 8 módulos con todo su contenido y práctica, evaluación intermedia, examen final con formato real (35 preguntas en 45 minutos) y trivia de 80 preguntas.
+- Se activa con un código (RB-XXXX-XXXX) en la nueva pestaña "⭐ Pro". Los códigos no están en el repositorio: solo su huella (hash). El activado queda guardado en el equipo.
+- Inicio muestra si estás en la versión gratis o Pro. Los módulos bloqueados muestran 🔒 Pro.
+- `sw.js` pasa a la versión v11 para que todos reciban la actualización.
+
+## 2026-11-09 · v10 app
 Archivo: `versiones/RutaB_2026-11-09_v10-app.html`. La anterior queda en `versiones/RutaB_2026-11-07_v9.html` (idéntica a la que estaba publicada).
 - RutaB se puede instalar como app en el celular (Android, iPhone) y en el computador: botón "📲 App" arriba a la derecha.
 - Funciona sin internet: la app queda guardada y el botón "Guardar el libro" descarga las 170 páginas (unos 19 MB) para estudiar sin conexión.
