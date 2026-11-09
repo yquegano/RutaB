@@ -8,6 +8,7 @@ Archivo: `versiones/RutaB_2026-11-09_v10-app.html`. La anterior queda en `versio
 - Funciona sin internet: la app queda guardada y el botón "Guardar el libro" descarga las 170 páginas (unos 19 MB) para estudiar sin conexión.
 - Archivos nuevos: `manifest.webmanifest` (nombre, colores e íconos de la app), `sw.js` (lo que permite usarla sin internet) e `icons/` (gatito sobre fondo lila, en todos los tamaños).
 - Es el primer paso para publicarla en Google Play. El contenido, las preguntas y el diseño no cambian.
+- Nueva página `privacidad.html` (política de privacidad, la pide Google Play): RutaB no recoge datos personales; el progreso queda solo en el equipo.
 
 ## 2026-11-07 · v9
 Archivo: `versiones/RutaB_2026-11-07_v9.html`. La anterior queda en `versiones/RutaB_2026-11-07_v8.html`.
