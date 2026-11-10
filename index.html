@@ -644,7 +644,7 @@ const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); g
    '<div class="sec">¿Cómo consigo mi código?</div>'+
    (PRO.compra?'<p><a class="btn" href="'+PRO.compra+'" target="_blank" rel="noopener">⭐ Comprar RutaB Pro</a></p>':'')+
    '<p>Escríbenos a <b style="user-select:all">'+PRO.correo+'</b> y te enviamos tu código. Si estudias en una escuela de conductores que usa RutaB, pídele tu código a tu escuela.</p>')+
-   '<p class="muted" style="font-size:14px">El libro de CONASET siempre es gratis. Pro desbloquea lo que agregamos: módulos, práctica y exámenes.</p></div>';
+   '<p class="muted" style="font-size:14px">El libro de CONASET siempre es gratis. Pro desbloquea lo que agregamos: módulos, práctica y exámenes. <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a>.</p></div>';
  }
  function bloqueo(motivo){ if(typeof timerId!=='undefined'&&timerId){clearInterval(timerId);timerId=null;} cur='pro'; nav(); app.innerHTML=tarjeta(motivo); window.scrollTo(0,0); }
  document.addEventListener('click',function(e){
