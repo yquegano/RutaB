@@ -612,10 +612,24 @@ const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); g
  function norm(c){return String(c||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
  function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')}
  window.esPro=function(){try{return localStorage.getItem(PRO.key)==='1'}catch(e){return false}};
+ /* 10 nov 2026 · Códigos de un solo uso: si PRO.registro tiene la URL /exec del registro (Apps Script),
+    el código se marca como usado en la planilla y no sirve en otro equipo. Si está vacío, funciona como antes. */
+ PRO.registro=''; PRO.app='rutab'; var PRO_MOTIVO='';
+ var MOTIVOS={no_valido:'Ese código no es válido. Revisa que esté bien escrito (letras y números, sin espacios).',usado:'Ese código ya se activó en otro equipo. Cada código sirve una sola vez. Si cambiaste de equipo, escríbenos a '+PRO.correo+'.',anulado:'Ese código está anulado. Escríbenos a '+PRO.correo+'.',otra_app:'Ese código es de otra app.',no_existe:'Ese código no está registrado. Escríbenos a '+PRO.correo+'.',sin_internet:'Para activar tu código necesitas internet (solo esta vez). Conéctate y vuelve a intentarlo.',error:'No pudimos revisar el código ahora. Intenta de nuevo en unos minutos.'};
+ function equipoId(){var k=PRO.key+'_equipo',v=null;try{v=localStorage.getItem(k)}catch(e){}if(!v){v=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));try{localStorage.setItem(k,v)}catch(e){}}return v;}
  function activar(c){
-  if(!(window.crypto&&crypto.subtle&&window.TextEncoder)) return Promise.resolve(false);
+  PRO_MOTIVO='';
+  if(!(window.crypto&&crypto.subtle&&window.TextEncoder)){PRO_MOTIVO='error';return Promise.resolve(false);}
   return crypto.subtle.digest('SHA-256',new TextEncoder().encode(PRO.salt+norm(c))).then(function(b){
-   var ok=PRO.hashes.indexOf(hex(b).slice(0,20))>=0; if(ok){try{localStorage.setItem(PRO.key,'1')}catch(e){}} return ok;});
+   var ok=PRO.hashes.indexOf(hex(b).slice(0,20))>=0;
+   if(!ok){PRO_MOTIVO='no_valido';return false;}
+   if(!PRO.registro){try{localStorage.setItem(PRO.key,'1')}catch(e){}return true;}
+   var url=PRO.registro+'?accion=activar&app='+encodeURIComponent(PRO.app)+'&codigo='+encodeURIComponent(norm(c))+'&equipo='+encodeURIComponent(equipoId());
+   return fetch(url).then(function(r){return r.json()}).then(function(j){
+    if(j&&j.ok){try{localStorage.setItem(PRO.key,'1')}catch(e){}return true;}
+    PRO_MOTIVO=(j&&j.motivo)||'error';return false;
+   }).catch(function(){PRO_MOTIVO=navigator.onLine===false?'sin_internet':'error';return false;});
+  });
  }
  var INCLUYE=['Los 8 módulos con todo el contenido y su práctica','Las 82 preguntas para practicar por tema','Evaluación intermedia de 25 preguntas','Examen final con formato real: 35 preguntas en 45 minutos','Trivia de 80 preguntas con 5 vidas'];
  function tarjeta(motivo){
@@ -641,7 +655,7 @@ const h0=location.hash.slice(1)==='errores'?'reforzar':location.hash.slice(1); g
   activar(inp.value).then(function(ok){
    b.disabled=false;
    if(ok){msg.textContent='✅ ¡Listo! RutaB Pro quedó activo en este equipo.'; setTimeout(function(){go('inicio')},1200);}
-   else msg.textContent='Ese código no es válido. Revisa que esté bien escrito (letras y números, sin espacios).';
+   else msg.textContent=MOTIVOS[PRO_MOTIVO]||MOTIVOS.no_valido;
   });
  });
  document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target&&e.target.id==='procode'){var b=document.querySelector('[data-pro-act]');if(b)b.click()}});
